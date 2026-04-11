@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+
+@theme inline {
+  --color-primary: rgb(4, 70, 154);
+  --color-accent: rgb(249, 219, 0);
+}
+:root {
+  --background: #f9fafb;
+  --foreground: #1f2937;
+}
+
+body {
+  @apply bg-gray-50 text-gray-800 font-sans;
+}
