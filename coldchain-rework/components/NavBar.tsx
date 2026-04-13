@@ -2,87 +2,113 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
+
+const categories = [
+  { label: "Agricultura",                        href: "/productos?categoria=agricultura" },
+  { label: "Climatización",                      href: "/productos?categoria=climatizacion" },
+  { label: "Instrumentos y Equipos de Medición", href: "/productos?categoria=instrumentos" },
+  { label: "Logística y Transporte",             href: "/productos?categoria=logistica" },
+  { label: "Termohigrómetros y Termógrafos",     href: "/productos/otros" },
+];
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false);
+  const [menuOpen, setMenuOpen]     = useState(false);
+  const [dropdownOpen, setDropdown] = useState(false);
 
   return (
-    <nav className="w-full bg-white border-b sticky top-0 z-50">
+    <nav className="navbar">
+      <div className="navbar-inner">
 
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-
-        {/* 🟢 LOGO */}
-        <div className="flex items-center">
+        {/* LOGO */}
+        <Link href="/" className="navbar-logo">
           <Image
-            src="/images/hero/logo.jpg" // <-- put your logo here
-            alt="ColdChain logo"
+            src="/images/hero/logo.jpg"
+            alt="Logo"
             width={140}
             height={40}
-            className="object-contain"
+            priority
           />
-        </div>
+        </Link>
 
-        {/* 🔗 NAV LINKS */}
-        <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-700">
+        {/* DESKTOP LINKS */}
+        <div className="navbar-links">
+          <Link href="/" className="nav-link">Inicio</Link>
 
-          <a href="./productos/page.tsx" className="hover:text-[var(--color-primary)]">
-            Inicio
-          </a>
-
-
-          {/* 📦 DROPDOWN */}
+          {/* Dropdown */}
           <div
-            className="relative"
-            onMouseEnter={() => setOpen(true)}
-            onMouseLeave={() => setOpen(false)}
+            className="nav-dropdown"
+            onMouseEnter={() => setDropdown(true)}
+            onMouseLeave={() => setDropdown(false)}
           >
-            <button className="hover:text-[var(--color-primary)]">
-              Productos ▾
-            </button>
+            <Link href="/productos" className="nav-dropdown-trigger">
+              Productos
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" strokeWidth="2.5">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </Link>
 
-            {open && (
-              <div className="absolute top-full left-0 mt-3 w-64 bg-white border rounded-xl shadow-lg p-2">
-
-                <a href="/productos/fertilizantes" className="block px-4 py-2 hover:bg-gray-100 rounded">
-                  Agricultura
-                </a>
-
-                <a href="/productos/semillas" className="block px-4 py-2 hover:bg-gray-100 rounded">
-                  Climatización
-                </a>
-
-                <a href="/productos/agroquimicos" className="block px-4 py-2 hover:bg-gray-100 rounded">
-                  Instrumentos y Equipos de Medición
-                </a>
-
-                <a href="/productos/equipos" className="block px-4 py-2 hover:bg-gray-100 rounded">
-                  Logistica y Transporte
-                </a>
-
-                <a href="/productos/otros" className="block px-4 py-2 hover:bg-gray-100 rounded">
-                  Termohigrometros y Termógrafos
-                </a>
-
+            {dropdownOpen && (
+              <div className="nav-dropdown-menu">
+                {categories.map((c) => (
+                  <Link key={c.href} href={c.href} className="nav-dropdown-item">
+                    {c.label}
+                  </Link>
+                ))}
               </div>
             )}
           </div>
 
-          <a href="/contacto" className="hover:text-[var(--color-primary)]">
-            Contacto
-          </a>
-
+          <Link href="/contacto" className="nav-link">Contacto</Link>
         </div>
 
-        {/* 🔥 CTA */}
-        <a
-          href="/contacto"
-          className="hidden md:inline-block bg-[var(--color-primary)] text-white px-5 py-2 rounded-full text-sm font-semibold hover:opacity-90 transition"
-        >
+        {/* DESKTOP CTA */}
+        <Link href="/contacto" className="navbar-cta hidden md:inline-flex">
           Cotizar
-        </a>
+        </Link>
 
+        {/* MOBILE HAMBURGER */}
+        <button
+          className="navbar-hamburger"
+          onClick={() => setMenuOpen((v) => !v)}
+          aria-label="Abrir menú"
+        >
+          {menuOpen ? (
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" strokeWidth="2.5">
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          ) : (
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" strokeWidth="2.5">
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+          )}
+        </button>
       </div>
 
+      {/* MOBILE MENU */}
+      <div className={`navbar-mobile ${menuOpen ? "mobile-open" : ""}`}>
+        <Link href="/"         className="mobile-nav-link" onClick={() => setMenuOpen(false)}>Inicio</Link>
+        <Link href="/productos" className="mobile-nav-link" onClick={() => setMenuOpen(false)}>Productos</Link>
+        {categories.map((c) => (
+          <Link
+            key={c.href}
+            href={c.href}
+            className="mobile-nav-link"
+            style={{ paddingLeft: "28px", fontSize: ".84rem", color: "var(--gray-400)" }}
+            onClick={() => setMenuOpen(false)}
+          >
+            {c.label}
+          </Link>
+        ))}
+        <Link href="/contacto" className="mobile-nav-link" onClick={() => setMenuOpen(false)}>Contacto</Link>
+        <Link href="/contacto" className="mobile-nav-cta" onClick={() => setMenuOpen(false)}>Cotizar</Link>
+      </div>
     </nav>
   );
 }
