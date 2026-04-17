@@ -136,9 +136,9 @@ body {
 
 .nav-dropdown-menu {
   position: absolute;
-  top: calc(100% + 16px);
+  top: 100%;
   left: 50%;
-  transform: translateX(-50%) translateY(-6px);
+  transform: translateX(-50%);
   min-width: 260px;
   background: var(--white);
   border: 1px solid var(--gray-200);
@@ -150,6 +150,13 @@ body {
   transition: opacity var(--transition), transform var(--transition);
 }
 .nav-dropdown:hover .nav-dropdown-menu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Programmatic open state (used when JS controls visibility) */
+.nav-dropdown-menu.open {
   opacity: 1;
   pointer-events: auto;
   transform: translateX(-50%) translateY(0);

@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { client } from "@/lib/sanity";
 import CatalogClient from "./CatalogClient";
 
@@ -22,5 +23,9 @@ export default async function ProductosPage() {
     }`
   );
 
-  return <CatalogClient products={products} />;
+  return (
+    <Suspense fallback={<div>Loading catálogo…</div>}>
+      <CatalogClient products={products} />
+    </Suspense>
+  );
 }

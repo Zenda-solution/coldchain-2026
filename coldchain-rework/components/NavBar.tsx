@@ -1,20 +1,29 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 const categories = [
-  { label: "Agricultura",                        href: "/productos?categoria=agricultura" },
-  { label: "Climatización",                      href: "/productos?categoria=climatizacion" },
-  { label: "Instrumentos y Equipos de Medición", href: "/productos?categoria=instrumentos" },
-  { label: "Logística y Transporte",             href: "/productos?categoria=logistica" },
-  { label: "Termohigrómetros y Termógrafos",     href: "/productos/otros" },
+  { label: "Agricultura",                        href: `/productos?categoria=${encodeURIComponent("Cultivo")}` },
+  { label: "Climatización",                      href: `/productos?categoria=${encodeURIComponent("Climatización")}` },
+  { label: "Instrumentos y Equipos de Medición", href: `/productos?categoria=${encodeURIComponent("Instrumentos y Equipos de Medición")}` },
+  { label: "Logística y Transporte",             href: `/productos?categoria=${encodeURIComponent("Logística y Transporte")}` },
+  { label: "Termohigrómetros y Termógrafos",     href: `/productos?categoria=${encodeURIComponent("Termohigrómetros y Termógrafos")}` },
 ];
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen]     = useState(false);
   const [dropdownOpen, setDropdown] = useState(false);
+  const leaveTimeout = useRef<number | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (leaveTimeout.current) {
+        clearTimeout(leaveTimeout.current);
+      }
+    };
+  }, []);
 
   return (
     <nav className="navbar">
@@ -38,8 +47,16 @@ export default function Navbar() {
           {/* Dropdown */}
           <div
             className="nav-dropdown"
-            onMouseEnter={() => setDropdown(true)}
-            onMouseLeave={() => setDropdown(false)}
+            onMouseEnter={() => {
+              if (leaveTimeout.current) {
+                clearTimeout(leaveTimeout.current);
+                leaveTimeout.current = null;
+              }
+              setDropdown(true);
+            }}
+            onMouseLeave={() => {
+              leaveTimeout.current = window.setTimeout(() => setDropdown(false), 300);
+            }}
           >
             <Link href="/productos" className="nav-dropdown-trigger">
               Productos
@@ -50,7 +67,18 @@ export default function Navbar() {
             </Link>
 
             {dropdownOpen && (
-              <div className="nav-dropdown-menu">
+              <div
+                className={`nav-dropdown-menu ${dropdownOpen ? "open" : ""}`}
+                onMouseEnter={() => {
+                  if (leaveTimeout.current) {
+                    clearTimeout(leaveTimeout.current);
+                    leaveTimeout.current = null;
+                  }
+                }}
+                onMouseLeave={() => {
+                  leaveTimeout.current = window.setTimeout(() => setDropdown(false), 300);
+                }}
+              >
                 {categories.map((c) => (
                   <Link key={c.href} href={c.href} className="nav-dropdown-item">
                     {c.label}
