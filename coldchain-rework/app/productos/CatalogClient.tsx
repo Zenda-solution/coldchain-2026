@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useSearchParams, useRouter } from "next/navigation";
 import type { Product } from "./page";
 
 const WHATSAPP = "593999999999"; // ← reemplaza con tu número
@@ -22,8 +23,40 @@ export default function CatalogClient({ products }: { products: Product[] }) {
     new Set(products.map((p) => p.category).filter(Boolean))
   );
 
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
+  // Derive the selected category from the URL param when present;
+  // fall back to internal `activeCategory` when no param exists.
+  const param = searchParams?.get("categoria");
+
+  const normalize = (s: string) =>
+    s
+      .normalize("NFD")
+      .replace(/\p{Diacritic}/gu, "")
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, " ")
+      .trim();
+
+  const findCategoryFromParam = (catParam?: string | null) => {
+    if (!catParam) return null;
+    const direct = categories.find((c) => c.toLowerCase() === catParam.toLowerCase());
+    if (direct) return direct;
+    const paramNorm = normalize(catParam);
+    const fuzzy = categories.find((c) => {
+      const cNorm = normalize(c);
+      return cNorm === paramNorm || cNorm.includes(paramNorm) || paramNorm.includes(cNorm);
+    });
+    if (fuzzy) return fuzzy;
+    if (catParam.toLowerCase() === ALL.toLowerCase()) return ALL;
+    return null;
+  };
+
+  const paramCategory = findCategoryFromParam(param);
+  const selectedCategory = param ? (paramCategory ?? ALL) : activeCategory;
+
   const filtered = products.filter((p) => {
-    const matchCat  = activeCategory === ALL || p.category === activeCategory;
+    const matchCat  = selectedCategory === ALL || p.category === selectedCategory;
     const matchSearch =
       search === "" ||
       p.name.toLowerCase().includes(search.toLowerCase()) ||
@@ -64,7 +97,7 @@ export default function CatalogClient({ products }: { products: Product[] }) {
             <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
           </svg>
           Filtrar por categoría
-          {activeCategory !== ALL && <span className="filter-active-dot" />}
+          {selectedCategory !== ALL && <span className="filter-active-dot" />}
         </button>
 
         {/* SIDEBAR */}
@@ -80,8 +113,12 @@ export default function CatalogClient({ products }: { products: Product[] }) {
             {[ALL, ...categories].map((cat) => (
               <li key={cat}>
                 <button
-                  className={`cat-btn${activeCategory === cat ? " active" : ""}`}
-                  onClick={() => { setActiveCategory(cat); setSidebarOpen(false); }}
+                  className={`cat-btn${selectedCategory === cat ? " active" : ""}`}
+                  onClick={() => {
+                    setActiveCategory(cat);
+                    setSidebarOpen(false);
+                    router.push(`/productos?categoria=${encodeURIComponent(cat)}`);
+                  }}
                 >
                   <span className="cat-dot" />
                   {cat}
@@ -138,10 +175,16 @@ export default function CatalogClient({ products }: { products: Product[] }) {
           </div>
 
           {/* Active filter chip */}
-          {activeCategory !== ALL && (
+          {selectedCategory !== ALL && (
             <div className="active-filter-chip">
-              <span>{activeCategory}</span>
-              <button onClick={() => setActiveCategory(ALL)} aria-label="Quitar filtro">×</button>
+              <span>{selectedCategory}</span>
+              <button
+                onClick={() => {
+                  setActiveCategory(ALL);
+                  router.push('/productos');
+                }}
+                aria-label="Quitar filtro"
+              >×</button>
             </div>
           )}
 
@@ -152,7 +195,7 @@ export default function CatalogClient({ products }: { products: Product[] }) {
                 <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
               </svg>
               <p>No se encontraron productos</p>
-              <button onClick={() => { setSearch(""); setActiveCategory(ALL); }}>
+              <button onClick={() => { setSearch(""); setActiveCategory(ALL); router.push('/productos'); }}>
                 Limpiar filtros
               </button>
             </div>
