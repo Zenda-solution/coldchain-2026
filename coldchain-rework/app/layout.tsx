@@ -7,13 +7,13 @@ import { Albert_Sans, Instrument_Serif } from "next/font/google";
 const albert = Albert_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-body",
+  variable: "--font-body", // opcional pero limpio
 });
 
 const serif = Instrument_Serif({
   subsets: ["latin"],
   weight: ["400"],
-  style: ["normal", "italic"],
+  style: ["normal"],
   variable: "--font-display",
 });
 

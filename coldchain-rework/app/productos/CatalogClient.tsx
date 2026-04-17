@@ -4,6 +4,14 @@ import { useState } from "react";
 import Link from "next/link";
 import type { Product } from "./page";
 
+import { Albert_Sans } from 'next/font/google';
+
+const albertSans = Albert_Sans({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-albert', // optional but clean
+});
+
 const WHATSAPP = "593999999999"; // ← reemplaza con tu número
 const ALL = "Todos";
 
@@ -44,7 +52,7 @@ export default function CatalogClient({ products }: { products: Product[] }) {
             Catálogo
           </span>
           <h1 className="catalog-hero-title">
-            Nuestros <strong>Productos</strong>
+            <strong>Nuestros Productos</strong>
           </h1>
           <p className="catalog-hero-sub">
             Soluciones agrícolas especializadas para cada etapa del campo
