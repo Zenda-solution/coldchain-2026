@@ -674,7 +674,7 @@
       ]
     },
     {
-      "nombre_categoria": "Logistica y transporte",
+      "nombre_categoria": "Logística y Transporte",
       "tipos": [
         {
           "nombre_tipo": "Logistica y transporte",
@@ -720,146 +720,7 @@
       ]
     },
     {
-      "nombre_categoria": "Termohigrómetros y termógrafos",
-      "tipos": [
-        {
-          "nombre_tipo": "Monitor de temperatura",
-          "productos": [
-            {
-              "nombre": "TempTale ULTRA",
-              "descripcion": "Registrador de temperatura diseñado para monitorear y registrar las condiciones térmicas durante el transporte y almacenamiento de productos sensibles. Cuenta con pantalla LCD para visualización rápida y descarga de datos vía USB, generando reportes automáticos para la verificación de la cadena de frío.\nCaracterísticas principales:\nRegistro continuo de temperatura durante el transporte o almacenamiento.\nHasta 6 alarmas programables para detectar excursiones de temperatura.\nDescarga de datos por USB con generación automática de reportes.\nMemoria de hasta 16.000 registros de datos.\nRango de temperatura:\n−30 °C a +70 °C\n✔ Ideal para logística farmacéutica, alimentos, biotecnología y control de cadena de frío.",
-              "imagen": "/images/temptale-ultra.webp",
-              "pdf": "/pdfs/temptale-ultra.pdf"
-            },
-            {
-              "nombre": "TempTale ULTRA FIT",
-              "descripcion": "egistrador de temperatura compacto diseñado para monitorear las condiciones térmicas durante el transporte y almacenamiento de productos sensibles. Su diseño delgado facilita su uso en empaques con espacio limitado, proporcionando control confiable de la cadena de frío.\nCaracterísticas principales:\nDiseño compacto y delgado, ideal para envíos con espacio limitado.\nDescarga de datos vía USB para generar reportes rápidos del envío.\nPantalla LCD de fácil lectura para visualizar el estado del monitoreo.\nRango de temperatura:\n−30 °C a +70 °C",
-              "imagen": "/images/temptale-ultra-fit.webp",
-              "pdf": "/pdfs/temptale-ultra-fit.pdf"
-            },
-            {
-              "nombre": "TempTale ULTRA HUMIDITY",
-              "descripcion": "Registrador diseñado para monitorear temperatura y humedad relativa durante el transporte y almacenamiento de productos sensibles, proporcionando control y trazabilidad en la cadena de frío. Dispone de software para gestionar y analizar los datos de los monitores TempTale®, permitiendo descargar, visualizar, analizar y generar reportes de los registros obtenidos durante el envío.\nCaracterísticas principales:\nMonitoreo de temperatura y humedad relativa en un solo dispositivo.\nDescarga de datos vía USB para análisis y generación de reportes.\nPantalla LCD para visualizar estado, alarmas y condiciones del envío.\nRango de medición:\nTemperatura: −30 °C a +70 °C\nHumedad relativa: 10 % a 90 % RH 🌡️💧",
-              "imagen": "/images/temptale-ultra-humidity.webp",
-              "pdf": "/pdfs/temptale-ultra-humidity.pdf"
-            }
-          ]
-        },
-        {
-          "nombre_tipo": "Monitores de temperatura y ubicación en tiempo real",
-          "productos": [
-            {
-              "nombre": "Familia TempTale GEO EAGLE",
-              "descripcion": "Dispositivos de monitoreo en tiempo real de temperatura y ubicación, diseñados para brindar visibilidad completa durante el transporte de productos sensibles. Utilizan conectividad celular para transmitir datos durante todo el trayecto, permitiendo un control continuo de la cadena de frío.\nIdeales para logística farmacéutica, alimentos y productos sensibles a la temperatura. \nCaracterísticas principales:\nMonitoreo en tiempo real de temperatura, ubicación y estado del envío.\nTransmisión de datos por red celular para seguimiento continuo durante el transporte.\nBatería de larga duración, con versiones extendidas para monitoreos prolongados.\nAmplia cobertura de red, con modelos compatibles en zonas con limitada señal 2G.\nRango de temperatura:\nTempTale GEO Eagle: de -20 °C a +55 °C\nTempTale GEO Eagle Extended: de -30 °C a +55 °C",
-              "imagen": "/images/familia-temptale-geo-eagle.webp",
-              "pdf": "/pdfs/familia-temptale-geo-eagle.pdf"
-            },
-            {
-              "nombre": "TempTale GEO LTE",
-              "descripcion": "Monitor de temperatura y ubicación en tiempo real diseñado para la supervisión de envíos en la cadena de frío. Utiliza conectividad celular LTE (4G/5G) con respaldo 2G, permitiendo visibilidad continua de las condiciones del transporte y del estado del envío.\nCaracterísticas principales:\nMonitoreo en tiempo real de temperatura y ubicación durante el transporte.\nIntegración con plataformas de monitoreo para control y trazabilidad de la cadena de frío.\nRango de medición:\nRefrigerado: −10 °C a +55 °C\nCongelado (Extended): −30 °C a +55 °C\nSensor de humedad: 10–100 % RH.\n✔ Ideal para logística farmacéutica, alimentos, biotecnología y productos sensibles a la temperatura.",
-              "imagen": "/images/temptale-geo-lte.webp",
-              "pdf": "/pdfs/temptale-geo-lte.pdf"
-            }
-          ]
-        },
-        {
-          "nombre_tipo": "Termohigrometros",
-          "productos": [
-            {
-              "nombre": "Termohigrómetro BT3",
-              "descripcion": "Equipo digital diseñado para monitorear temperatura y humedad ambiental, ideal para controlar condiciones en laboratorios, almacenes, invernaderos, cámaras de refrigeración y ambientes interiores. Cuenta con pantalla LCD y sonda externa, lo que permite medir simultáneamente temperatura interior y exterior con lecturas claras y precisas.\nCaracterísticas principales:\nMedición de temperatura y humedad relativa en un solo equipo.\nMemoria de valores máximos y mínimos (MAX/MIN) para seguimiento de condiciones ambientales.\nPantalla LCD con reloj y alarma, además de selección de unidades °C/°F.\nRango de medición:\nTemperatura interna: 0 °C a 50 °C\nTemperatura externa (sonda): −50 °C a +70 °C\nHumedad relativa: 20 % a 99 % RH",
-              "imagen": "/images/termohigrometro-bt3.webp",
-              "pdf": "/pdfs/termohigrometro-bt3.pdf"
-            },
-            {
-              "nombre": "Mini Termohigrometro punto de rocío",
-              "descripcion": "Equipo compacto y portátil para la medición precisa de temperatura, humedad relativa y cálculo de punto de rocío, ideal para aplicaciones agrícolas, almacenamiento y control ambiental.\nRangos de medición:\nTemperatura: -10 a 50 °C\nHumedad relativa: 0 a 100 % HR\nPunto de rocío: -10 a 50 °C (calculado)\nResolución: 0.1 °C / 0.1 % HR\nPrecisión: ±1 °C / ±5 % HR",
-              "imagen": "/images/mini-termohigrometro-punto-de-rocio.webp",
-              "pdf": "/pdfs/mini-termohigrometro-punto-de-rocio.pdf"
-            },
-            {
-              "nombre": "HI9565 Termohigrometro con punto de rocío",
-              "descripcion": "El HI9565 es un termohigrómetro portátil diseñado para medir con precisión temperatura, humedad relativa y punto de rocío, ideal para aplicaciones en agricultura, almacenamiento y control ambiental. Su sonda externa permite lecturas rápidas y confiables en diferentes condiciones.\nRangos de medición:\nHumedad relativa: 5.0 a 95.0 % HR\nTemperatura: -10.0 a 60.0 °C\nPunto de rocío: -20.0 a 60.0 °C\nHumedad relativa: 0.1 % HR\nTemperatura: 0.1 °C",
-              "imagen": "/images/hi9565-termohigrometro-con-punto-de-rocio.webp",
-              "pdf": "/pdfs/hi9565-termohigrometro-con-punto-de-rocio.pdf"
-            },
-            {
-              "nombre": "TempTale ULTRA HUMIDITY",
-              "descripcion": "Registrador diseñado para monitorear temperatura y humedad relativa durante el transporte y almacenamiento de productos sensibles, proporcionando control y trazabilidad en la cadena de frío. Dispone de software para gestionar y analizar los datos de los monitores TempTale®, permitiendo descargar, visualizar, analizar y generar reportes de los registros obtenidos durante el envío.\nCaracterísticas principales:\nMonitoreo de temperatura y humedad relativa en un solo dispositivo.\nDescarga de datos vía USB para análisis y generación de reportes.\nPantalla LCD para visualizar estado, alarmas y condiciones del envío.\nRango de medición:\nTemperatura: −30 °C a +70 °C\nHumedad relativa: 10 % a 90 % RH 🌡️💧",
-              "imagen": "/images/temptale-ultra-humidity.webp",
-              "pdf": "/pdfs/temptale-ultra-humidity.pdf"
-            },
-            {
-              "nombre": "TempTale GEO LTE",
-              "descripcion": "Monitor de temperatura y ubicación en tiempo real diseñado para la supervisión de envíos en la cadena de frío. Utiliza conectividad celular LTE (4G/5G) con respaldo 2G, permitiendo visibilidad continua de las condiciones del transporte y del estado del envío.\nCaracterísticas principales:\nMonitoreo en tiempo real de temperatura y ubicación durante el transporte.\nIntegración con plataformas de monitoreo para control y trazabilidad de la cadena de frío.\nRango de medición:\nRefrigerado: −10 °C a +55 °C\nCongelado (Extended): −30 °C a +55 °C\nSensor de humedad: 10–100 % RH.\n✔ Ideal para logística farmacéutica, alimentos, biotecnología y productos sensibles a la temperatura.",
-              "imagen": "/images/temptale-geo-lte.webp",
-              "pdf": "/pdfs/temptale-geo-lte.pdf"
-            }
-          ]
-        },
-        {
-          "nombre_tipo": "Termometros",
-          "productos": [
-            {
-              "nombre": "Termometro Max Min IT201",
-              "descripcion": "Termómetro digital diseñado para medir y registrar la temperatura máxima y mínima alcanzada en un periodo determinado, ideal para monitoreo en refrigeración, laboratorios, invernaderos y ambientes controlados. Cuenta con pantalla LCD de doble línea para visualizar fácilmente las mediciones.\nRango de medición:\nInterior: −20 °C a +70 °C\nExterior (sonda): −50 °C a +70 °C",
-              "imagen": "/images/termometro-max-min-it201.webp",
-              "pdf": "/pdfs/termometro-max-min-it201.pdf"
-            },
-            {
-              "nombre": "Termometro de aguja 15cm y 30cm",
-              "descripcion": "Termómetro digital de penetración diseñado para medir la temperatura interna de líquidos, alimentos y otros materiales, ofreciendo lecturas rápidas y precisas. Su sonda de acero inoxidable permite una medición directa en diferentes aplicaciones industriales, alimentarias o de laboratorio.\nCaracterísticas principales:\nSonda de acero inoxidable disponible en 15 cm y 30 cm para diferentes profundidades de medición.\nPantalla LCD digital de fácil lectura.\nLectura rápida y precisa para control de temperatura en procesos y alimentos.\nRango de temperatura:\n−50 °C a +300 °C",
-              "imagen": "/images/termometro-de-aguja-15cm-y-30cm.webp",
-              "pdf": "/pdfs/termometro-de-aguja-15cm-y-30cm.pdf"
-            },
-            {
-              "nombre": "HI98501 Termómetro digital Checktemp®",
-              "descripcion": "Termómetro HI98501 Hanna portátil de alta precisión con sonda de penetración, ideal para mediciones rápidas en líquidos y productos semisólidos en aplicaciones de laboratorio, industria alimentaria y campo.\nRango de medición: -50.0 a 150.0 °C\nResolución: 0.1 °C\nSonda: 106 mm de longitud, Ø 3.6 mm, acero inoxidable AISI 316\nCuenta con diseño impermeable (IP65) y función CAL Check™, asegurando mediciones confiables y durabilidad en cada uso.",
-              "imagen": "/images/hi98501-termometro-digital-checktemp.webp",
-              "pdf": "/pdfs/hi98501-termometro-digital-checktemp.pdf"
-            },
-            {
-              "nombre": "HI98509 Termometro digital con sonda de acero inoxidable",
-              "descripcion": "El HI98509 Checktemp 1 Digital Thermometer de Hanna es un termómetro de alta precisión diseñado para medir temperatura en líquidos, alimentos, aire o materiales semisólidos. Incorpora una sonda de penetración de acero inoxidable AISI 316 conectada mediante cable flexible de 1 m, lo que permite mediciones seguras y rápidas en diferentes aplicaciones industriales y de control de calidad.\nRango de temperatura:\n−50 °C a +150 °C",
-              "imagen": "/images/hi98509-termometro-digital-con-sonda-de-acero-inoxidable.webp",
-              "pdf": "/pdfs/hi98509-termometro-digital-con-sonda-de-acero-inoxidable.pdf"
-            },
-            {
-              "nombre": "Termometro digital con sonda - Freezer",
-              "descripcion": "Termómetro digital diseñado para monitorear la temperatura en refrigeradores y congeladores, permitiendo verificar de forma continua las condiciones de almacenamiento. Incorpora sonda externa con cable, ideal para medir la temperatura interna sin necesidad de abrir el equipo constantemente.\nRango de temperatura:\n−50 °C a +70 °C\nTamaño de la sonda:\n1 m de cable con sonda externa",
-              "imagen": "/images/termometro-digital-con-sonda-freezer.webp",
-              "pdf": "/pdfs/termometro-digital-con-sonda-freezer.pdf"
-            },
-            {
-              "nombre": "Termometro BOE de punta",
-              "descripcion": "El termómetro de punta BOECO 311 es un instrumento digital compacto y resistente al agua, ideal para mediciones rápidas y confiables en laboratorio, alimentos y control general de temperatura.\nCuenta con diseño tipo lápiz con sonda de acero inoxidable de aproximadamente 120 mm, lo que permite una medición precisa en líquidos, semisólidos y superficies. Su construcción waterproof facilita la limpieza y el uso en ambientes exigentes.\nIntegra una pantalla LCD de fácil lectura, respuesta rápida y función de apagado automático para optimizar la vida útil de la batería.\nRango de medición:\nTemperatura: −50 °C a +300 °C",
-              "imagen": "/images/termometro-boe-de-punta.webp",
-              "pdf": "/pdfs/termometro-boe-de-punta.pdf"
-            },
-            {
-              "nombre": "Termometro laser Fluke 62Max",
-              "descripcion": "El termómetro láser Fluke 62 MAX permite medir temperatura sin contacto mediante tecnología infrarroja, ideal para inspecciones rápidas en equipos eléctricos, motores, sistemas HVAC y superficies industriales. Su diseño compacto y resistente ofrece mediciones confiables incluso en entornos exigentes.\nCaracterísticas principales:\nMedición infrarroja sin contacto con puntero láser para mayor precisión.\nRelación distancia-punto 10:1 para mediciones seguras a distancia.\nProtección IP54 contra polvo y salpicaduras, resistente a caídas de hasta 3m.\nRango de temperatura:\n−30 °C a +500 °C",
-              "imagen": "/images/termometro-laser-fluke-62max.webp",
-              "pdf": "/pdfs/termometro-laser-fluke-62max.pdf"
-            },
-            {
-              "nombre": "Termometro infrarojo Corporal",
-              "descripcion": "El Termómetro Corporal Infrarrojo de mano es un dispositivo diseñado para medir la temperatura corporal de forma rápida, segura e higiénica. Ideal para uso en personas, permite obtener lecturas precisas en tan solo 0.6 segundos, siendo perfecto para hogares, clínicas y controles sanitarios.\nEspecificaciones:\nRango de medición: 32 °C a 42.9 °C\nPrecisión: ± 0.2 °C\nDistancia de medición: 5 a 8 cm\nTiempo de respuesta: 0.6 segundos\nAhorro de energía: apagado automático en 30 segundos\nCuenta con pantalla digital y operación sencilla para un monitoreo eficiente y confiable.",
-              "imagen": "/images/termometro-infrarojo-corporal.webp",
-              "pdf": "/pdfs/termometro-infrarojo-corporal.pdf"
-            },
-            {
-              "nombre": "Termometro infrarojo corporal K3S",
-              "descripcion": "El K3S Infrared Thermometer es un termómetro infrarrojo sin contacto diseñado para medir la temperatura corporal de forma rápida, segura e higiénica. Ideal para uso en personas en hogares, clínicas y puntos de control, permite obtener lecturas precisas en segundos sin necesidad de contacto directo.\nRango de medición:\nTemperatura corporal: 32.0 °C a 42.9 °C\nSuperficies: 0 °C a 100 °C\nCuenta con pantalla digital, alarma de fiebre y memoria de lecturas, facilitando un monitoreo eficiente y continuo.",
-              "imagen": "/images/termometro-infrarojo-corporal-k3s.webp",
-              "pdf": "/pdfs/termometro-infrarojo-corporal-k3s.pdf"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "nombre_categoria": "Instrumentos y equipos de medición",
+      "nombre_categoria": "Instrumentos y Equipos de Medición",
       "tipos": [
         {
           "nombre_tipo": "Agricultura",
@@ -1079,6 +940,145 @@
               "descripcion": "Equipo de alto rendimiento diseñado para la medición precisa de conductividad, TDS y salinidad. Pantalla LCD de 5.5 pulgadas.",
               "imagen": "/images/hi2030-01-medidor-de-edge-tds-salinidad.webp",
               "pdf": "/pdfs/hi2030-01-medidor-de-edge-tds-salinidad.pdf"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nombre_categoria": "Termohigrómetros y Termógrafos",
+      "tipos": [
+        {
+          "nombre_tipo": "Monitor de temperatura",
+          "productos": [
+            {
+              "nombre": "TempTale ULTRA",
+              "descripcion": "Registrador de temperatura diseñado para monitorear y registrar las condiciones térmicas durante el transporte y almacenamiento de productos sensibles. Cuenta con pantalla LCD para visualización rápida y descarga de datos vía USB, generando reportes automáticos para la verificación de la cadena de frío.\nCaracterísticas principales:\nRegistro continuo de temperatura durante el transporte o almacenamiento.\nHasta 6 alarmas programables para detectar excursiones de temperatura.\nDescarga de datos por USB con generación automática de reportes.\nMemoria de hasta 16.000 registros de datos.\nRango de temperatura:\n−30 °C a +70 °C\n✔ Ideal para logística farmacéutica, alimentos, biotecnología y control de cadena de frío.",
+              "imagen": "/images/temptale-ultra.webp",
+              "pdf": "/pdfs/temptale-ultra.pdf"
+            },
+            {
+              "nombre": "TempTale ULTRA FIT",
+              "descripcion": "egistrador de temperatura compacto diseñado para monitorear las condiciones térmicas durante el transporte y almacenamiento de productos sensibles. Su diseño delgado facilita su uso en empaques con espacio limitado, proporcionando control confiable de la cadena de frío.\nCaracterísticas principales:\nDiseño compacto y delgado, ideal para envíos con espacio limitado.\nDescarga de datos vía USB para generar reportes rápidos del envío.\nPantalla LCD de fácil lectura para visualizar el estado del monitoreo.\nRango de temperatura:\n−30 °C a +70 °C",
+              "imagen": "/images/temptale-ultra-fit.webp",
+              "pdf": "/pdfs/temptale-ultra-fit.pdf"
+            },
+            {
+              "nombre": "TempTale ULTRA HUMIDITY",
+              "descripcion": "Registrador diseñado para monitorear temperatura y humedad relativa durante el transporte y almacenamiento de productos sensibles, proporcionando control y trazabilidad en la cadena de frío. Dispone de software para gestionar y analizar los datos de los monitores TempTale®, permitiendo descargar, visualizar, analizar y generar reportes de los registros obtenidos durante el envío.\nCaracterísticas principales:\nMonitoreo de temperatura y humedad relativa en un solo dispositivo.\nDescarga de datos vía USB para análisis y generación de reportes.\nPantalla LCD para visualizar estado, alarmas y condiciones del envío.\nRango de medición:\nTemperatura: −30 °C a +70 °C\nHumedad relativa: 10 % a 90 % RH 🌡️💧",
+              "imagen": "/images/temptale-ultra-humidity.webp",
+              "pdf": "/pdfs/temptale-ultra-humidity.pdf"
+            }
+          ]
+        },
+        {
+          "nombre_tipo": "Monitores de temperatura y ubicación en tiempo real",
+          "productos": [
+            {
+              "nombre": "Familia TempTale GEO EAGLE",
+              "descripcion": "Dispositivos de monitoreo en tiempo real de temperatura y ubicación, diseñados para brindar visibilidad completa durante el transporte de productos sensibles. Utilizan conectividad celular para transmitir datos durante todo el trayecto, permitiendo un control continuo de la cadena de frío.\nIdeales para logística farmacéutica, alimentos y productos sensibles a la temperatura. \nCaracterísticas principales:\nMonitoreo en tiempo real de temperatura, ubicación y estado del envío.\nTransmisión de datos por red celular para seguimiento continuo durante el transporte.\nBatería de larga duración, con versiones extendidas para monitoreos prolongados.\nAmplia cobertura de red, con modelos compatibles en zonas con limitada señal 2G.\nRango de temperatura:\nTempTale GEO Eagle: de -20 °C a +55 °C\nTempTale GEO Eagle Extended: de -30 °C a +55 °C",
+              "imagen": "/images/familia-temptale-geo-eagle.webp",
+              "pdf": "/pdfs/familia-temptale-geo-eagle.pdf"
+            },
+            {
+              "nombre": "TempTale GEO LTE",
+              "descripcion": "Monitor de temperatura y ubicación en tiempo real diseñado para la supervisión de envíos en la cadena de frío. Utiliza conectividad celular LTE (4G/5G) con respaldo 2G, permitiendo visibilidad continua de las condiciones del transporte y del estado del envío.\nCaracterísticas principales:\nMonitoreo en tiempo real de temperatura y ubicación durante el transporte.\nIntegración con plataformas de monitoreo para control y trazabilidad de la cadena de frío.\nRango de medición:\nRefrigerado: −10 °C a +55 °C\nCongelado (Extended): −30 °C a +55 °C\nSensor de humedad: 10–100 % RH.\n✔ Ideal para logística farmacéutica, alimentos, biotecnología y productos sensibles a la temperatura.",
+              "imagen": "/images/temptale-geo-lte.webp",
+              "pdf": "/pdfs/temptale-geo-lte.pdf"
+            }
+          ]
+        },
+        {
+          "nombre_tipo": "Termohigrometros",
+          "productos": [
+            {
+              "nombre": "Termohigrómetro BT3",
+              "descripcion": "Equipo digital diseñado para monitorear temperatura y humedad ambiental, ideal para controlar condiciones en laboratorios, almacenes, invernaderos, cámaras de refrigeración y ambientes interiores. Cuenta con pantalla LCD y sonda externa, lo que permite medir simultáneamente temperatura interior y exterior con lecturas claras y precisas.\nCaracterísticas principales:\nMedición de temperatura y humedad relativa en un solo equipo.\nMemoria de valores máximos y mínimos (MAX/MIN) para seguimiento de condiciones ambientales.\nPantalla LCD con reloj y alarma, además de selección de unidades °C/°F.\nRango de medición:\nTemperatura interna: 0 °C a 50 °C\nTemperatura externa (sonda): −50 °C a +70 °C\nHumedad relativa: 20 % a 99 % RH",
+              "imagen": "/images/termohigrometro-bt3.webp",
+              "pdf": "/pdfs/termohigrometro-bt3.pdf"
+            },
+            {
+              "nombre": "Mini Termohigrometro punto de rocío",
+              "descripcion": "Equipo compacto y portátil para la medición precisa de temperatura, humedad relativa y cálculo de punto de rocío, ideal para aplicaciones agrícolas, almacenamiento y control ambiental.\nRangos de medición:\nTemperatura: -10 a 50 °C\nHumedad relativa: 0 a 100 % HR\nPunto de rocío: -10 a 50 °C (calculado)\nResolución: 0.1 °C / 0.1 % HR\nPrecisión: ±1 °C / ±5 % HR",
+              "imagen": "/images/mini-termohigrometro-punto-de-rocio.webp",
+              "pdf": "/pdfs/mini-termohigrometro-punto-de-rocio.pdf"
+            },
+            {
+              "nombre": "HI9565 Termohigrometro con punto de rocío",
+              "descripcion": "El HI9565 es un termohigrómetro portátil diseñado para medir con precisión temperatura, humedad relativa y punto de rocío, ideal para aplicaciones en agricultura, almacenamiento y control ambiental. Su sonda externa permite lecturas rápidas y confiables en diferentes condiciones.\nRangos de medición:\nHumedad relativa: 5.0 a 95.0 % HR\nTemperatura: -10.0 a 60.0 °C\nPunto de rocío: -20.0 a 60.0 °C\nHumedad relativa: 0.1 % HR\nTemperatura: 0.1 °C",
+              "imagen": "/images/hi9565-termohigrometro-con-punto-de-rocio.webp",
+              "pdf": "/pdfs/hi9565-termohigrometro-con-punto-de-rocio.pdf"
+            },
+            {
+              "nombre": "TempTale ULTRA HUMIDITY",
+              "descripcion": "Registrador diseñado para monitorear temperatura y humedad relativa durante el transporte y almacenamiento de productos sensibles, proporcionando control y trazabilidad en la cadena de frío. Dispone de software para gestionar y analizar los datos de los monitores TempTale®, permitiendo descargar, visualizar, analizar y generar reportes de los registros obtenidos durante el envío.\nCaracterísticas principales:\nMonitoreo de temperatura y humedad relativa en un solo dispositivo.\nDescarga de datos vía USB para análisis y generación de reportes.\nPantalla LCD para visualizar estado, alarmas y condiciones del envío.\nRango de medición:\nTemperatura: −30 °C a +70 °C\nHumedad relativa: 10 % a 90 % RH 🌡️💧",
+              "imagen": "/images/temptale-ultra-humidity.webp",
+              "pdf": "/pdfs/temptale-ultra-humidity.pdf"
+            },
+            {
+              "nombre": "TempTale GEO LTE",
+              "descripcion": "Monitor de temperatura y ubicación en tiempo real diseñado para la supervisión de envíos en la cadena de frío. Utiliza conectividad celular LTE (4G/5G) con respaldo 2G, permitiendo visibilidad continua de las condiciones del transporte y del estado del envío.\nCaracterísticas principales:\nMonitoreo en tiempo real de temperatura y ubicación durante el transporte.\nIntegración con plataformas de monitoreo para control y trazabilidad de la cadena de frío.\nRango de medición:\nRefrigerado: −10 °C a +55 °C\nCongelado (Extended): −30 °C a +55 °C\nSensor de humedad: 10–100 % RH.\n✔ Ideal para logística farmacéutica, alimentos, biotecnología y productos sensibles a la temperatura.",
+              "imagen": "/images/temptale-geo-lte.webp",
+              "pdf": "/pdfs/temptale-geo-lte.pdf"
+            }
+          ]
+        },
+        {
+          "nombre_tipo": "Termometros",
+          "productos": [
+            {
+              "nombre": "Termometro Max Min IT201",
+              "descripcion": "Termómetro digital diseñado para medir y registrar la temperatura máxima y mínima alcanzada en un periodo determinado, ideal para monitoreo en refrigeración, laboratorios, invernaderos y ambientes controlados. Cuenta con pantalla LCD de doble línea para visualizar fácilmente las mediciones.\nRango de medición:\nInterior: −20 °C a +70 °C\nExterior (sonda): −50 °C a +70 °C",
+              "imagen": "/images/termometro-max-min-it201.webp",
+              "pdf": "/pdfs/termometro-max-min-it201.pdf"
+            },
+            {
+              "nombre": "Termometro de aguja 15cm y 30cm",
+              "descripcion": "Termómetro digital de penetración diseñado para medir la temperatura interna de líquidos, alimentos y otros materiales, ofreciendo lecturas rápidas y precisas. Su sonda de acero inoxidable permite una medición directa en diferentes aplicaciones industriales, alimentarias o de laboratorio.\nCaracterísticas principales:\nSonda de acero inoxidable disponible en 15 cm y 30 cm para diferentes profundidades de medición.\nPantalla LCD digital de fácil lectura.\nLectura rápida y precisa para control de temperatura en procesos y alimentos.\nRango de temperatura:\n−50 °C a +300 °C",
+              "imagen": "/images/termometro-de-aguja-15cm-y-30cm.webp",
+              "pdf": "/pdfs/termometro-de-aguja-15cm-y-30cm.pdf"
+            },
+            {
+              "nombre": "HI98501 Termómetro digital Checktemp®",
+              "descripcion": "Termómetro HI98501 Hanna portátil de alta precisión con sonda de penetración, ideal para mediciones rápidas en líquidos y productos semisólidos en aplicaciones de laboratorio, industria alimentaria y campo.\nRango de medición: -50.0 a 150.0 °C\nResolución: 0.1 °C\nSonda: 106 mm de longitud, Ø 3.6 mm, acero inoxidable AISI 316\nCuenta con diseño impermeable (IP65) y función CAL Check™, asegurando mediciones confiables y durabilidad en cada uso.",
+              "imagen": "/images/hi98501-termometro-digital-checktemp.webp",
+              "pdf": "/pdfs/hi98501-termometro-digital-checktemp.pdf"
+            },
+            {
+              "nombre": "HI98509 Termometro digital con sonda de acero inoxidable",
+              "descripcion": "El HI98509 Checktemp 1 Digital Thermometer de Hanna es un termómetro de alta precisión diseñado para medir temperatura en líquidos, alimentos, aire o materiales semisólidos. Incorpora una sonda de penetración de acero inoxidable AISI 316 conectada mediante cable flexible de 1 m, lo que permite mediciones seguras y rápidas en diferentes aplicaciones industriales y de control de calidad.\nRango de temperatura:\n−50 °C a +150 °C",
+              "imagen": "/images/hi98509-termometro-digital-con-sonda-de-acero-inoxidable.webp",
+              "pdf": "/pdfs/hi98509-termometro-digital-con-sonda-de-acero-inoxidable.pdf"
+            },
+            {
+              "nombre": "Termometro digital con sonda - Freezer",
+              "descripcion": "Termómetro digital diseñado para monitorear la temperatura en refrigeradores y congeladores, permitiendo verificar de forma continua las condiciones de almacenamiento. Incorpora sonda externa con cable, ideal para medir la temperatura interna sin necesidad de abrir el equipo constantemente.\nRango de temperatura:\n−50 °C a +70 °C\nTamaño de la sonda:\n1 m de cable con sonda externa",
+              "imagen": "/images/termometro-digital-con-sonda-freezer.webp",
+              "pdf": "/pdfs/termometro-digital-con-sonda-freezer.pdf"
+            },
+            {
+              "nombre": "Termometro BOE de punta",
+              "descripcion": "El termómetro de punta BOECO 311 es un instrumento digital compacto y resistente al agua, ideal para mediciones rápidas y confiables en laboratorio, alimentos y control general de temperatura.\nCuenta con diseño tipo lápiz con sonda de acero inoxidable de aproximadamente 120 mm, lo que permite una medición precisa en líquidos, semisólidos y superficies. Su construcción waterproof facilita la limpieza y el uso en ambientes exigentes.\nIntegra una pantalla LCD de fácil lectura, respuesta rápida y función de apagado automático para optimizar la vida útil de la batería.\nRango de medición:\nTemperatura: −50 °C a +300 °C",
+              "imagen": "/images/termometro-boe-de-punta.webp",
+              "pdf": "/pdfs/termometro-boe-de-punta.pdf"
+            },
+            {
+              "nombre": "Termometro laser Fluke 62Max",
+              "descripcion": "El termómetro láser Fluke 62 MAX permite medir temperatura sin contacto mediante tecnología infrarroja, ideal para inspecciones rápidas en equipos eléctricos, motores, sistemas HVAC y superficies industriales. Su diseño compacto y resistente ofrece mediciones confiables incluso en entornos exigentes.\nCaracterísticas principales:\nMedición infrarroja sin contacto con puntero láser para mayor precisión.\nRelación distancia-punto 10:1 para mediciones seguras a distancia.\nProtección IP54 contra polvo y salpicaduras, resistente a caídas de hasta 3m.\nRango de temperatura:\n−30 °C a +500 °C",
+              "imagen": "/images/termometro-laser-fluke-62max.webp",
+              "pdf": "/pdfs/termometro-laser-fluke-62max.pdf"
+            },
+            {
+              "nombre": "Termometro infrarojo Corporal",
+              "descripcion": "El Termómetro Corporal Infrarrojo de mano es un dispositivo diseñado para medir la temperatura corporal de forma rápida, segura e higiénica. Ideal para uso en personas, permite obtener lecturas precisas en tan solo 0.6 segundos, siendo perfecto para hogares, clínicas y controles sanitarios.\nEspecificaciones:\nRango de medición: 32 °C a 42.9 °C\nPrecisión: ± 0.2 °C\nDistancia de medición: 5 a 8 cm\nTiempo de respuesta: 0.6 segundos\nAhorro de energía: apagado automático en 30 segundos\nCuenta con pantalla digital y operación sencilla para un monitoreo eficiente y confiable.",
+              "imagen": "/images/termometro-infrarojo-corporal.webp",
+              "pdf": "/pdfs/termometro-infrarojo-corporal.pdf"
+            },
+            {
+              "nombre": "Termometro infrarojo corporal K3S",
+              "descripcion": "El K3S Infrared Thermometer es un termómetro infrarrojo sin contacto diseñado para medir la temperatura corporal de forma rápida, segura e higiénica. Ideal para uso en personas en hogares, clínicas y puntos de control, permite obtener lecturas precisas en segundos sin necesidad de contacto directo.\nRango de medición:\nTemperatura corporal: 32.0 °C a 42.9 °C\nSuperficies: 0 °C a 100 °C\nCuenta con pantalla digital, alarma de fiebre y memoria de lecturas, facilitando un monitoreo eficiente y continuo.",
+              "imagen": "/images/termometro-infrarojo-corporal-k3s.webp",
+              "pdf": "/pdfs/termometro-infrarojo-corporal-k3s.pdf"
             }
           ]
         }

@@ -1,3 +1,5 @@
+const WHATSAPP = "593999999999"; // reemplaza con tu número
+
 export function CTA() {
   return (
     <section className="relative pt-32 overflow-hidden">
@@ -33,7 +35,14 @@ export function CTA() {
         </p>
 
         <div className="mt-6 flex gap-4 flex-wrap justify-center">
-          <a className="group bg-yellow-400 text-black px-8 py-3 rounded-full text-lg font-semibold flex items-center gap-2 transition hover:scale-105 shadow-md">
+          <a
+            href={`https://wa.me/${WHATSAPP}?text=${encodeURIComponent("Hola, me gustaría conversar sobre soluciones para optimizar mi operación.")}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            role="button"
+            aria-label="Comenzar conversación por WhatsApp"
+            className="group bg-yellow-400 text-black px-8 py-3 rounded-full text-lg font-semibold flex items-center gap-2 transition hover:scale-105 shadow-md cursor-pointer cta-commence"
+          >
             Comenzar Conversación
             <span className="transition group-hover:translate-x-1">→</span>
           </a>

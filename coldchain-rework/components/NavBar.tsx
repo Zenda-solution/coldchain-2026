@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const categories = [
-  { label: "Agricultura",                        href: `/productos?categoria=${encodeURIComponent("Cultivo")}` },
+  { label: "Agricultura",                        href: `/productos?categoria=${encodeURIComponent("Agricultura")}` },
   { label: "Climatización",                      href: `/productos?categoria=${encodeURIComponent("Climatización")}` },
   { label: "Instrumentos y Equipos de Medición", href: `/productos?categoria=${encodeURIComponent("Instrumentos y Equipos de Medición")}` },
   { label: "Logística y Transporte",             href: `/productos?categoria=${encodeURIComponent("Logística y Transporte")}` },

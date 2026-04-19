@@ -5,6 +5,7 @@ import { MisionVision } from "@/components/Misionvision";
 import { CTA } from "@/components/CTA";
 import { ContactForm } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -35,14 +36,14 @@ export default function Hero() {
         {/* CTA */}
         <div className="flex gap-3 flex-wrap justify-center mt-2">
 
-          <a className="group bg-yellow-400 text-black px-7 py-2.5 rounded-full font-semibold flex items-center gap-2 transition hover:scale-105">
+          <Link href="/productos" className="group bg-yellow-400 text-black px-7 py-2.5 rounded-full font-semibold flex items-center gap-2 transition hover:scale-105 cursor-pointer">
             Ver Catálogo
             <span className="transition group-hover:translate-x-1">→</span>
-          </a>
+          </Link>
 
-          <a className="border border-white/40 px-7 py-2.5 rounded-full font-semibold transition hover:bg-white hover:text-blue-900">
+          <Link href="/contacto" className="border border-white/40 px-7 py-2.5 rounded-full font-semibold transition hover:bg-white hover:text-blue-900 cursor-pointer">
             Contactar
-          </a>
+          </Link>
 
         </div>
 
@@ -72,6 +73,6 @@ export default function Hero() {
 
         <ContactForm />
         <Footer />
-    ,</>
+    </>
   );
 }

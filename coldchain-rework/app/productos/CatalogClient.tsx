@@ -21,9 +21,36 @@ export default function CatalogClient({ products }: { products: Product[] }) {
   const [search, setSearch]                 = useState("");
   const [sidebarOpen, setSidebarOpen]       = useState(false);
 
-  const categories = Array.from(
+  const rawCategories = Array.from(
     new Set(products.map((p) => p.category).filter((c): c is string => !!c))
   );
+
+  const normalizeForSort = (s: string) =>
+    s
+      .normalize("NFD")
+      .replace(/\p{Diacritic}/gu, "")
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, " ")
+      .trim();
+
+  const preferredOrder = [
+    "Agricultura",
+    "Climatización",
+    "Instrumentos y Equipos de Medición",
+    "Logística y Transporte",
+    "Termohigrómetros y Termógrafos",
+  ];
+
+  const categories = [
+    // keep only those preferred labels that actually exist in the data, respecting diacritics/casing
+    ...preferredOrder.filter((label) =>
+      rawCategories.some((c) => normalizeForSort(c) === normalizeForSort(label))
+    ),
+    // then append any remaining categories that weren't in the preferred list
+    ...rawCategories.filter(
+      (c) => !preferredOrder.some((label) => normalizeForSort(c) === normalizeForSort(label))
+    ),
+  ];
 
   const searchParams = useSearchParams();
   const router = useRouter();

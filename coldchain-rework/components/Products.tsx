@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export function Products() {
   const options = [
     { image: "/images/hero/menu1.png", title: "AGRO" },
@@ -41,12 +43,12 @@ export function Products() {
         {/* BUTTON */}
         <div className="mt-12 text-center">
           <div className="mt-12 text-center">
-  <a className="inline-flex group bg-blue-900 text-white px-6 py-2.5 rounded-full font-semibold flex items-center gap-2 text-lg md:text-xl transition transform hover:scale-105 hover:bg-blue-800">
-    Ver Catálogo
-    <span className="transition-transform group-hover:translate-x-1">→</span>
-  </a>
-</div>
-          
+            <Link href="/productos" className="inline-flex group bg-blue-900 text-white px-6 py-2.5 rounded-full font-semibold flex items-center gap-2 text-lg md:text-xl transition transform hover:scale-105 hover:bg-blue-800 cursor-pointer">
+              Ver Catálogo
+              <span className="transition-transform group-hover:translate-x-1">→</span>
+            </Link>
+          </div>
+
         </div>
 
       </div>

@@ -92,6 +92,7 @@ body {
 .nav-link {
   color: var(--gray-600);
   text-decoration: none;
+  cursor: pointer;
   font-weight: 500;
   transition: color var(--transition);
   position: relative;
@@ -184,6 +185,7 @@ body {
   font-size: .875rem;
   font-weight: 600;
   text-decoration: none;
+  cursor: pointer;
   transition: filter var(--transition), transform var(--transition);
   white-space: nowrap;
   display: inline-flex;
@@ -221,6 +223,7 @@ body {
   font-weight: 500;
   text-decoration: none;
   transition: background var(--transition), color var(--transition);
+  cursor: pointer;
 }
 .mobile-nav-link:hover {
   background: var(--blue-xlight);
@@ -237,6 +240,7 @@ body {
   font-weight: 600;
   font-size: .9rem;
   text-decoration: none;
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {
@@ -552,6 +556,20 @@ body {
   box-shadow: 0 10px 30px rgba(13,40,110,0.14);
 }
 
+/* CTA: 'Comenzar Conversación' active/click state */
+.cta-commence {
+  transition: transform var(--transition), box-shadow var(--transition), filter var(--transition);
+}
+.cta-commence:active {
+  transform: translateY(2px) scale(0.995);
+  box-shadow: none !important;
+  filter: brightness(0.95);
+}
+.cta-commence:focus-visible {
+  outline: 3px solid rgba(29,92,191,0.12);
+  outline-offset: 2px;
+}
+
 @media (max-width: 768px) {
   .type-pill { padding: 7px 12px; font-size: .84rem; }
 }
@@ -700,6 +718,7 @@ body {
   background: transparent;
   transition: background var(--transition), color var(--transition), border-color var(--transition);
   white-space: nowrap;
+  cursor: pointer;
 }
 .btn-details:hover {
   background: var(--blue-xlight);
