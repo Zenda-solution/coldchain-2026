@@ -2,16 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useSearchParams, useRouter } from "next/navigation";
 import type { Product } from "./page";
-
-import { Albert_Sans } from 'next/font/google';
-
-const albertSans = Albert_Sans({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-albert', // optional but clean
-});
 
 const WHATSAPP = "593999999999"; // ← reemplaza con tu número
 const ALL = "Todos";
@@ -28,7 +21,7 @@ export default function CatalogClient({ products }: { products: Product[] }) {
   const [sidebarOpen, setSidebarOpen]       = useState(false);
 
   const categories = Array.from(
-    new Set(products.map((p) => p.category).filter(Boolean))
+    new Set(products.map((p) => p.category).filter((c): c is string => !!c))
   );
 
   const searchParams = useSearchParams();
@@ -218,7 +211,14 @@ export default function CatalogClient({ products }: { products: Product[] }) {
                   {/* Image */}
                   <div className="card-img-wrap">
                     {product.image ? (
-                      <img src={product.image} alt={product.name} loading="lazy" />
+                      <Image
+                        src={product.image}
+                        alt={product.name}
+                        width={420}
+                        height={320}
+                        style={{ objectFit: "contain" }}
+                        loading="lazy"
+                      />
                     ) : (
                       <div className="card-img-placeholder">
                         <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="1.2">

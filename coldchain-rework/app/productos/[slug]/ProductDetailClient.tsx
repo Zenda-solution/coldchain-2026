@@ -3,23 +3,11 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { ChevronRight, Download, ArrowRight } from "lucide-react";
+import type { Product as LocalProduct } from "@/lib/localProducts";
 
 const WHATSAPP = "593999999999"; // reemplaza con tu número
 
-type Product = {
-  name: string;
-  slug: string;
-  description: string;
-  image: string;
-  pdf: string;
-  category: string;
-  type?: string;
-  features?: string[];
-  applications?: string[];
-  presentation?: string;
-  activeIngredient?: string;
-  registrationNumber?: string;
-};
+type Product = LocalProduct;
 
 export default function ProductDetailClient({
   product,
