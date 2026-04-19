@@ -396,7 +396,7 @@ export default function ProductDetailClient({
                       gap: 20,
                     }}
                   >
-                    {product.pdf && (
+                    {product.pdf ? (
                       <div
                         style={{
                           display: "flex",
@@ -482,6 +482,32 @@ export default function ProductDetailClient({
 
                           <Download size={18} color="var(--navy)" />
                         </a>
+                      </div>
+                    ) : (
+                      <div
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                          gap: 14,
+                        }}
+                      >
+                        <h2 style={sectionTitle}>Ficha técnica</h2>
+
+                        <div
+                          role="status"
+                          aria-live="polite"
+                          style={{
+                            padding: 14,
+                            borderRadius: 16,
+                            background:
+                              "linear-gradient(180deg, #f8fbff 0%, #f2f7ff 100%)",
+                            border: "1px solid rgba(40, 123, 255, 0.08)",
+                            color: "var(--gray-500)",
+                            fontSize: "0.95rem",
+                          }}
+                        >
+                          Ficha técnica no disponible
+                        </div>
                       </div>
                     )}
 
