@@ -234,7 +234,7 @@
           ]
         },
         {
-          "nombre_tipo": "Productos para Postcosecha",
+          "nombre_tipo": "Postcosecha",
           "productos": [
             {
               "nombre": "Absorbentes de Etileno en sachets",
@@ -257,7 +257,7 @@
             {
               "nombre": "Malla Antitrips",
               "descripcion": "La malla antitrips es un material de filtrado/fijación que se coloca en las aberturas o respiraderos de las cajas de exportación para evitar el ingreso o salida de trips y otros insectos pequeños, que son plagas comunes en flores cortadas y pueden afectar, calidad fitosanitaria del producto, certificaciones de exportación, vida útil y frescura en destino\n\nLa malla permite ventilación correcta dentro de la caja (muy importante para flores delicadas) y para cumplir con las regulaciones fitosanitarias de muchos países exigen.\n\n* Malla de poliéster o similar, suficientemente fina para bloquear insectos tabanoides (<1 mm).\n* Alta resistencia mecánica, para no romperse durante manipulación y transporte.\n* Buena permeabilidad al aire, permitiendo que la flor “respire” sin generar condensación.",
-              "imagen": "/images/malla-antitrips.webp",
+              "imagen": "/images/agricultura/malla-antitrips.webp",
               "pdf": "/pdfs/malla-antitrips.pdf"
             },
             {
@@ -275,157 +275,139 @@
           ]
         },
         {
-          "nombre_tipo": "Productos y Accesorios para Fumigación y Riego",
+          "nombre_tipo": "Fumigación y Riesgo",
           "productos": [
             {
               "nombre": "Manguera para fumigación Turca",
               "descripcion": "Manguera parafumigación compuesto especial de PVC resistente a pesticidas y fertilizantes.\nTextil sintético de alta tenacidad.Cubierta PVC especial resistente a la abrasión, ozono y condiciones\nclimáticas. Aplicación: Para fumigación agrícola con pesticidas, fertilizantes, insecticidas, etc. Características:\nPresión de trabajo: 100 bar, Diámetro: 8mm, 100 metros de largo, Certificación ISO1307",
-              "imagen": "/images/manguera-para-fumigacion-turca.webp",
-              "pdf": "/pdfs/manguera-para-fumigacion-turca.pdf"
+              "imagen": "/images/agricultura/manguera-para-fumigacion-turca.webp",
+              "pdf": "/pdfs/agricultura/manguera-para-fumigacion-turca.pdf"
             },
             {
               "nombre": "Manguera para fumigación Española",
               "descripcion": "Manguera para fumigación están fabricadas con termocaucho de alta resistencia a la intemperie y con un refuerzo textil de poliéster de alta tenacidad lo que las hacen distinguidas por su durabilidad.\nGracias a su resistencia son ideales para afrontar el trabajo en diversas circunstancias, cultivos y climas.\nPresión de trabajo: 80 bar, Diámetro: 8mm, 100 metros de largo, Certificación ISO1307",
-              "imagen": "/images/manguera-para-fumigacion-espanola.webp",
-              "pdf": "/pdfs/manguera-para-fumigacion-espanola.pdf"
+              "imagen": "/images/agricultura/manguera-para-fumigacion-espanola.webp",
+              "pdf": "/pdfs/agricultura/manguera-para-fumigacion-espanola.pdf"
             },
             {
               "nombre": "Manguera para Fumigación Korena",
               "descripcion": "Manguera para fumigación Material PVC de alta calidad, reforzado con hilo trenzado de alta\ntenacidad. Presión de Trabajo: aproximadamente 853 psi, Presión de Rotura: aproximadamente 2560 psi.\nTemperatura de Operación: Diseñadas para resistir condiciones climáticas adversas, manteniendo flexibilidad y resistencia.\nAplicaciones: Fumigación agrícola, control de plagas, suministro de agua a alta presión, excavaciones, limpieza de vehículos y embarcaciones.\nPresión de trabajo: 60 bar, Diámetro: 8.5mm, 100 metros de largo",
-              "imagen": "/images/manguera-para-fumigacion-korena.webp",
-              "pdf": "/pdfs/manguera-para-fumigacion-korena.pdf"
+              "imagen": "/images/agricultura/manguera-para-fumigacion-korena.webp",
+              "pdf": "/pdfs/agricultura/manguera-para-fumigacion-korena.pdf"
             },
             {
-              "nombre": "Filtos de Succión",
+              "nombre": "Filtros de Succión",
               "descripcion": "Filtros de succión diseñados para el sector florícola, ideales para proteger sistemas de riego al evitar el ingreso de partículas y residuos. Fabricados con malla de alta resistencia, garantizan un flujo constante y limpio, prolongando la vida útil de bombas, válvulas y equipos. Su diseño práctico permite una instalación sencilla y un mantenimiento eficiente en campo.",
-              "imagen": "/images/filtos-de-succion.webp",
-              "pdf": "/pdfs/filtos-de-succion.pdf"
+              "imagen": "/images/agricultura/filtros-de-succion.webp"
             },
             {
               "nombre": "Succionador Irrometer",
               "descripcion": "El succionador o lisímetro Irrometer es una herramienta especializada para el monitoreo de la solución del suelo en cultivos agrícolas. Permite extraer muestras directamente desde la zona radicular, facilitando el análisis de nutrientes y sales disueltas para una gestión precisa de la fertirrigación. Ideal para el sector florícola, ayuda a optimizar el uso de agua y fertilizantes, mejorando la productividad y la salud del cultivo.\nTamaños: 15cm, 30cm, 45cm, 60cm, 90cm",
-              "imagen": "/images/succionador-irrometer.webp",
-              "pdf": "/pdfs/succionador-irrometer.pdf"
+              "imagen": "/images/agricultura/succionador-irrometer.webp",
+              "pdf": "/pdfs/agricultura/succionador-irrometer.pdf"
             },
             {
               "nombre": "Tensiómetro Irrometer",
               "descripcion": "El tensiómetro Irrometer es un instrumento preciso para medir la tensión de humedad en el suelo, permitiendo conocer cuándo y cuánto regar los cultivos. Diseñado para uso agrícola y florícola, ayuda a optimizar el riego al indicar la disponibilidad real de agua en la zona radicular, evitando tanto el exceso como el déficit hídrico. Su uso mejora la eficiencia del agua, favorece el desarrollo saludable de las plantas y aumenta la productividad del cultivo.\nTamaños: 15cm, 30cm, 45cm, 60cm, 90cm \n\nEl tensiómetro Irrometer mide la tensión de humedad del suelo en centibares (cb), que es equivalente a kilopascales (kPa).\n\nEsta unidad indica la fuerza que deben hacer las raíces para extraer el agua del suelo:\n0–10 cb (kPa): Suelo muy húmedo (casi saturado)\n10–30 cb: Humedad adecuada (óptimo para la mayoría de cultivos)\n30–60 cb: Suelo seco, la planta empieza a estresarse\n60+ cb: Estrés hídrico alto, requiere riego urgente",
-              "imagen": "/images/tensiometro-irrometer.webp",
-              "pdf": "/pdfs/tensiometro-irrometer.pdf"
+              "imagen": "/images/agricultura/tensiometro-irrometer.webp",
+              "pdf": "/pdfs/agricultura/tensiometro-irrometer.pdf"
             },
             {
               "nombre": "Kit para succionador - Lisímetro",
               "descripcion": "El kit para succionador o lisímetro incluye todos los componentes necesarios para la instalación y uso eficiente en campo.\nGeneralmente está compuesto por manguera, pinza (accesorios de conexión), tapón.",
-              "imagen": "/images/kit-para-succionador-lisimetro.webp",
-              "pdf": "/pdfs/kit-para-succionador-lisimetro.pdf"
+              "imagen": "/images/agricultura/kit-para-succionador-lisimetro.webp"
             },
             {
               "nombre": "Bomba Irrometer para Succionador",
               "descripcion": "La bomba Irrometer para succionador es un dispositivo diseñado para generar vacío y facilitar la extracción de la solución del suelo a través del lisímetro. Su uso permite obtener muestras precisas de agua y nutrientes directamente desde la zona radicular, optimizando el monitoreo y manejo de la fertirrigación.\n\nEs fácil de usar, portátil y compatible con los succionadores Irrometer, siendo una herramienta esencial para el control técnico en cultivos agrícolas y florícolas.",
-              "imagen": "/images/bomba-irrometer-para-succionador.webp",
-              "pdf": "/pdfs/bomba-irrometer-para-succionador.pdf"
+              "imagen": "/images/agricultura/bomba-irrometer-para-succionador.webp"
             },
             {
               "nombre": "Bomba Irrometer para Tensiómetro",
               "descripcion": "La bomba Irrometer para tensiómetro es una herramienta utilizada para realizar el mantenimiento y correcto funcionamiento del equipo. Su principal función es generar vacío dentro del tensiómetro, permitiendo eliminar burbujas de aire y asegurar lecturas precisas de la humedad del suelo.\n\nEs fácil de usar y esencial para calibrar y recargar el tensiómetro, garantizando mediciones confiables que ayudan a optimizar el riego y mejorar el manejo del cultivo.",
-              "imagen": "/images/bomba-irrometer-para-tensiometro.webp",
+              "imagen": "/images/agricultura/bomba-irrometer-para-tensiometro.webp",
               "pdf": "/pdfs/bomba-irrometer-para-tensiometro.pdf"
             },
             {
               "nombre": "Jeringa Irrometer",
               "descripcion": "La jeringa Irrometer es un accesorio utilizado con los succionadores y tensiómetros para extraer o inyectar vacío en el sistema, facilitando la obtención de muestras de solución del suelo o el mantenimiento del tensiómetro. Permite purgar aire, generar vacío controlado y asegurar lecturas precisas de humedad o nutrientes en el suelo.",
-              "imagen": "/images/jeringa-irrometer.webp",
-              "pdf": "/pdfs/jeringa-irrometer.pdf"
+              "imagen": "/images/agricultura/jeringa-irrometer.webp"
             },
             {
               "nombre": "Solucion Irrometer",
               "descripcion": "La solución Irrometer es un líquido especial utilizado para llenar tensiómetros y succionadores, asegurando un contacto óptimo entre el sensor y el suelo. Facilita la transmisión precisa de la tensión de agua o extracción de muestras de solución del suelo, garantizando mediciones confiables para el manejo del riego y la fertirrigación en cultivos agrícolas y florícolas.",
-              "imagen": "/images/solucion-irrometer.webp",
-              "pdf": "/pdfs/solucion-irrometer.pdf"
+              "imagen": "/images/agricultura/solucion-irrometer.webp"
             },
             {
               "nombre": "Mango Filtro",
               "descripcion": "El mango filtro es un accesorio metálico que se instala en la entrada de la lanza de fumigación para filtrar partículas y sedimentos del líquido aplicado. Su diseño robusto y de acero asegura un flujo constante, evita obstrucciones en boquillas y prolonga la vida útil del equipo de fumigación, garantizando aplicaciones más eficientes y uniformes en cultivos.",
-              "imagen": "/images/mango-filtro.webp",
-              "pdf": "/pdfs/mango-filtro.pdf"
+              "imagen": "/images/agricultura/mango-filtro.webp"
             },
             {
               "nombre": "Lanza recta 3 boquillas",
               "descripcion": "La lanza recta con 3 boquillas es un accesorio de fumigación diseñado para aplicaciones precisas en cultivos. Su estructura recta permite una distribución uniforme del producto, mientras que las tres boquillas proporcionan un patrón de aspersión amplio y constante. Ideal para el manejo eficiente de plaguicidas y fertilizantes líquidos, ayuda a cubrir superficies extensas con menor esfuerzo y evita saturación o desperdicio del producto.",
-              "imagen": "/images/lanza-recta-3-boquillas.webp",
-              "pdf": "/pdfs/lanza-recta-3-boquillas.pdf"
+              "imagen": "/images/agricultura/lanza-recta-3-boquillas.webp"
             },
             {
               "nombre": "Lanza curva 3 boquillas",
               "descripcion": "La lanza curva con 3 boquillas es un accesorio de fumigación diseñado para alcanzar áreas de difícil acceso en los cultivos, como debajo de hojas o entre ramas densas. Su curvatura facilita una aplicación más ergonómica y dirigida, mientras que las tres boquillas aseguran una cobertura uniforme y eficiente del producto, optimizando el uso de plaguicidas y fertilizantes líquidos.",
-              "imagen": "/images/lanza-curva-3-boquillas.webp",
-              "pdf": "/pdfs/lanza-curva-3-boquillas.pdf"
+              "imagen": "/images/agricultura/lanza-curva-3-boquillas.webp"
             },
             {
               "nombre": "Girelo simple plástico metálico",
               "descripcion": "El gírelo simple plástico-metálico es un accesorio de fumigación que permite regular y dirigir el flujo del líquido de manera práctica. Su diseño combina la resistencia del metal con la ligereza del plástico, ofreciendo durabilidad y facilidad de uso. Es ideal para conectar lanzas y boquillas, asegurando un flujo constante y seguro durante la aplicación de plaguicidas o fertilizantes líquidos.",
-              "imagen": "/images/girelo-simple-plastico-metalico.webp",
-              "pdf": "/pdfs/girelo-simple-plastico-metalico.pdf"
+              "imagen": "/images/agricultura/girelo-simple-plastico-metalico.webp"
             },
             {
               "nombre": "Girelo doble plástico metálico",
               "descripcion": "El gírelo doble plástico-metálico es un accesorio de fumigación que permite conectar dos boquillas o lanzas al mismo tiempo, ofreciendo mayor flexibilidad y cobertura durante la aplicación de productos líquidos. Su combinación de metal y plástico garantiza resistencia y ligereza, asegurando un flujo constante y seguro, al tiempo que facilita maniobras más precisas en cultivos.",
-              "imagen": "/images/girelo-doble-plastico-metalico.webp",
-              "pdf": "/pdfs/girelo-doble-plastico-metalico.pdf"
+              "imagen": "/images/agricultura/girelo-doble-plastico-metalico.webp"
             },
             {
               "nombre": "Girelo simple metálico",
               "descripcion": "El gírelo simple metálico es un accesorio de fumigación que permite conectar y regular el flujo de una sola boquilla o lanza. Fabricado completamente en metal, ofrece máxima resistencia y durabilidad, asegurando un flujo constante y seguro durante la aplicación de plaguicidas o fertilizantes líquidos en cultivos, incluso en condiciones exigentes.",
-              "imagen": "/images/girelo-simple-metalico.webp",
-              "pdf": "/pdfs/girelo-simple-metalico.pdf"
+              "imagen": "/images/agricultura/girelo-simple-metalico.webp"
             },
             {
               "nombre": "Girelo doble metálico",
               "descripcion": "El gírelo doble metálico es un accesorio de fumigación que permite conectar y regular simultáneamente el flujo de dos boquillas o lanzas. Fabricado completamente en metal, proporciona máxima resistencia y durabilidad, asegurando aplicaciones uniformes y seguras de plaguicidas o fertilizantes líquidos, incluso en condiciones de uso exigentes.",
-              "imagen": "/images/girelo-doble-metalico.webp",
-              "pdf": "/pdfs/girelo-doble-metalico.pdf"
+              "imagen": "/images/agricultura/girelo-doble-metalico.webp"
             },
             {
               "nombre": "Disco boquilla D35",
               "descripcion": "El disco boquilla D35 un orificio es un accesorio para pulverización agrícola que regula el patrón y flujo del líquido aplicado. Diseñado para distribuir uniformemente plaguicidas o fertilizantes líquidos, su tamaño y diseño permiten una cobertura eficiente y constante, optimizando el uso del producto y mejorando la efectividad de la fumigación en cultivos.",
-              "imagen": "/images/disco-boquilla-d35.webp",
-              "pdf": "/pdfs/disco-boquilla-d35.pdf"
+              "imagen": "/images/agricultura/disco-boquilla-d35.webp"
             },
             {
               "nombre": "Disco boquilla C35",
               "descripcion": "El disco boquilla C35 de dos orificios es un accesorio para pulverización agrícola que controla el patrón de aspersión y el caudal del líquido aplicado. Su diseño permite una distribución uniforme de plaguicidas o fertilizantes líquidos, asegurando eficiencia en la cobertura del cultivo y optimizando el uso del producto durante la fumigación.",
-              "imagen": "/images/disco-boquilla-c35.webp",
-              "pdf": "/pdfs/disco-boquilla-c35.pdf"
+              "imagen": "/images/agricultura/disco-boquilla-c35.webp"
             },
             {
               "nombre": "Disco boquilla B7",
               "descripcion": "El disco boquilla B7 de tres orificios es un accesorio de pulverización agrícola diseñado para controlar el patrón de aspersión y el caudal del líquido aplicado. Su construcción permite una distribución uniforme de plaguicidas o fertilizantes líquidos, garantizando una cobertura eficiente y optimizando el uso del producto durante la fumigación en cultivos.",
-              "imagen": "/images/disco-boquilla-b7.webp",
-              "pdf": "/pdfs/disco-boquilla-b7.pdf"
+              "imagen": "/images/agricultura/disco-boquilla-b7.webp"
             },
             {
               "nombre": "Boquilla de cerámica Albuz",
               "descripcion": "La boquilla de cerámica Albuz es un accesorio de pulverización agrícola de alta precisión, fabricada en cerámica resistente al desgaste. \nLa línea ATR es la evolución de la boquilla Albuz, pensada para agricultores que buscan máxima precisión, durabilidad y eficiencia en aplicaciones exigentes",
-              "imagen": "/images/boquilla-de-ceramica-albuz.webp",
+              "imagen": "/images/agricultura/boquilla-de-ceramica-albuz.webp",
               "pdf": "/pdfs/boquilla-de-ceramica-albuz.pdf"
             },
             {
               "nombre": "Filtro malla",
               "descripcion": "El filtro malla es un componente esencial para sistemas de riego y pulverización, diseñado para retener partículas y sedimentos que puedan obstruir bombas, boquillas o tuberías. Fabricado con malla metálica resistente, garantiza un flujo limpio y constante, protege los equipos y facilita el mantenimiento, contribuyendo a una aplicación eficiente y sin interrupciones en cultivos agrícolas y florícolas.",
-              "imagen": "/images/filtro-malla.webp",
-              "pdf": "/pdfs/filtro-malla.pdf"
+              "imagen": "/images/agricultura/filtro-malla.webp"
             },
             {
               "nombre": "Filtro antigoteo Mesh",
               "descripcion": "El filtro antigoteo Mesh es un accesorio diseñado para sistemas de riego por goteo, cuya función es evitar la obstrucción de los emisores o goteros al retener partículas y residuos del agua. Su malla fina asegura un flujo constante y uniforme, protegiendo los goteros y prolongando la vida útil del sistema, garantizando un riego eficiente y libre de interrupciones.",
-              "imagen": "/images/filtro-antigoteo-mesh.webp",
-              "pdf": "/pdfs/filtro-antigoteo-mesh.pdf"
+              "imagen": "/images/agricultura/filtro-antigoteo-mesh.webp"
             },
             {
               "nombre": "Empaque malla filtro",
               "descripcion": "El empaque para malla de filtro es un componente que asegura el correcto sellado entre las partes del filtro, evitando fugas y garantizando que todo el líquido pase únicamente a través de la malla filtrante. Fabricado con materiales resistentes y duraderos, protege el sistema de riego o pulverización, mantiene la eficiencia del filtrado y facilita el mantenimiento del equipo.",
-              "imagen": "/images/empaque-malla-filtro.webp",
-              "pdf": "/pdfs/empaque-malla-filtro.pdf"
+              "imagen": "/images/agricultura/empaque-malla-filtro.webp"
             }
           ]
         }
