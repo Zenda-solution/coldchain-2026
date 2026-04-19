@@ -68,7 +68,7 @@ export function getAllProducts(): Product[] {
         const description = p.descripcion || p.description || "";
         const image = (p.imagen || p.image || "").trim();
         const pdf = (p.pdf || "").trim();
-        const category = tipoName || catName || "";
+        const category = catName || tipoName || "";
         const baseSlug = slugify(name) || Math.random().toString(36).slice(2, 8);
         let slug = baseSlug;
         let suffix = 1;
@@ -86,7 +86,9 @@ export function getAllProducts(): Product[] {
           category,
         };
 
-        if (p.type) prod.type = p.type;
+        // prefer the `tipo` name as product type, fall back to product-level `type` if present
+        if (tipoName) prod.type = tipoName;
+        else if (p.type) prod.type = p.type;
         if (p.features) prod.features = p.features;
         if (p.applications) prod.applications = p.applications;
         if (p.presentation) prod.presentation = p.presentation;

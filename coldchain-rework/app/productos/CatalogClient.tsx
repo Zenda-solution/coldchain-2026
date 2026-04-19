@@ -17,6 +17,7 @@ function waLink(name: string) {
 
 export default function CatalogClient({ products }: { products: Product[] }) {
   const [activeCategory, setActiveCategory] = useState(ALL);
+  const [activeType, setActiveType] = useState(ALL);
   const [search, setSearch]                 = useState("");
   const [sidebarOpen, setSidebarOpen]       = useState(false);
 
@@ -30,6 +31,7 @@ export default function CatalogClient({ products }: { products: Product[] }) {
   // Derive the selected category from the URL param when present;
   // fall back to internal `activeCategory` when no param exists.
   const param = searchParams?.get("categoria");
+  const typeParam = searchParams?.get("tipo");
 
   const normalize = (s: string) =>
     s
@@ -56,13 +58,41 @@ export default function CatalogClient({ products }: { products: Product[] }) {
   const paramCategory = findCategoryFromParam(param);
   const selectedCategory = param ? (paramCategory ?? ALL) : activeCategory;
 
+  // derive available types for the selected category (or all if ALL selected)
+  const types = Array.from(
+    new Set(
+      products
+        .filter((p) => selectedCategory === ALL || p.category === selectedCategory)
+        .map((p) => p.type)
+        .filter((t): t is string => !!t)
+    )
+  );
+
+  const findTypeFromParam = (typeParam?: string | null) => {
+    if (!typeParam) return null;
+    const direct = types.find((t) => t?.toLowerCase() === typeParam.toLowerCase());
+    if (direct) return direct;
+    const paramNorm = normalize(typeParam);
+    const fuzzy = types.find((t) => {
+      const tNorm = normalize(t || "");
+      return tNorm === paramNorm || tNorm.includes(paramNorm) || paramNorm.includes(tNorm);
+    });
+    if (fuzzy) return fuzzy;
+    if (typeParam.toLowerCase() === ALL.toLowerCase()) return ALL;
+    return null;
+  };
+
+  const paramType = findTypeFromParam(typeParam);
+  const selectedType = typeParam ? (paramType ?? ALL) : activeType;
+
   const filtered = products.filter((p) => {
     const matchCat  = selectedCategory === ALL || p.category === selectedCategory;
+    const matchType = selectedType === ALL || p.type === selectedType;
     const matchSearch =
       search === "" ||
       p.name.toLowerCase().includes(search.toLowerCase()) ||
       p.description?.toLowerCase().includes(search.toLowerCase());
-    return matchCat && matchSearch;
+    return matchCat && matchType && matchSearch;
   });
 
   return (
@@ -117,6 +147,7 @@ export default function CatalogClient({ products }: { products: Product[] }) {
                   className={`cat-btn${selectedCategory === cat ? " active" : ""}`}
                   onClick={() => {
                     setActiveCategory(cat);
+                    setActiveType(ALL);
                     setSidebarOpen(false);
                     router.push(`/productos?categoria=${encodeURIComponent(cat)}`);
                   }}
@@ -132,6 +163,8 @@ export default function CatalogClient({ products }: { products: Product[] }) {
               </li>
             ))}
           </ul>
+
+          {/* removed sidebar type list (moved to top filter row) */}
 
           <div className="sidebar-divider" />
 
@@ -186,6 +219,33 @@ export default function CatalogClient({ products }: { products: Product[] }) {
                 }}
                 aria-label="Quitar filtro"
               >×</button>
+            </div>
+          )}
+
+          {/* Type filter pills (top) */}
+          {types.length > 0 && (
+            <div className="type-filter-row">
+              <div className="type-pills">
+                {[ALL, ...types].map((t) => (
+                  <button
+                    key={t}
+                    className={`type-pill${selectedType === t ? " active" : ""}`}
+                    onClick={() => {
+                      setActiveType(t);
+                      setSidebarOpen(false);
+                      if (t === ALL) {
+                        if (selectedCategory === ALL) router.push('/productos');
+                        else router.push(`/productos?categoria=${encodeURIComponent(selectedCategory)}`);
+                      } else {
+                        if (selectedCategory === ALL) router.push(`/productos?tipo=${encodeURIComponent(t)}`);
+                        else router.push(`/productos?categoria=${encodeURIComponent(selectedCategory)}&tipo=${encodeURIComponent(t)}`);
+                      }
+                    }}
+                  >
+                    {t}
+                  </button>
+                ))}
+              </div>
             </div>
           )}
 
