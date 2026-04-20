@@ -29,7 +29,7 @@ export default function Carousel() {
         sm+:     aspect-[16/7] → medium ratio
         lg+:     aspect-[29/11] → original wide ratio
       */}
-      <div className="relative aspect-[4/3] sm:aspect-[16/7] lg:aspect-[29/11] w-full">
+      <div className="relative aspect-[16/7] sm:aspect-[16/7] lg:aspect-[29/11] w-full">
 
         {images.map((src, index) => (
           <img

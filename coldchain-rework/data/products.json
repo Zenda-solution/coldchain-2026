@@ -67,14 +67,14 @@
             {
               "nombre": "Analizador de Etileno SCS56",
               "descripcion": "El analizador de etileno SCS56 es un instrumento portátil y práctico para medir concentraciones de etileno (C₂H₄) en cámaras de almacenamiento, transporte de fruta, salas de maduración y entornos donde la gestión del gas es crítica para mantener calidad de productos frescos. Utiliza un sensor electroquímico con bomba de muestreo integrada, ofreciendo lecturas directas en rango de 0–100 ppm con alta resolución de 0,2 ppm, lo que permite detectar incluso pequeños aumentos de etileno que pueden afectar la vida útil de cultivos y productos sensibles.\n\nDiseñado para uso operativo en campo, cuenta con alimentación por baterías, pantalla digital de fácil lectura, respuesta rápida y baja deriva del cero, facilitando el monitoreo de la atmósfera sin necesidad de equipo pesado o infraestructura fija. Este medidor portátil es especialmente útil para verificar la eficacia de sistemas de ventilación o absorción de etileno y tomar decisiones rápidas que preserven la calidad y frescura del producto.\n\n👉 Ideal para horticultura, poscosecha, almacenamiento y logística de frutas, verduras y otros productos sensibles al etileno.",
-              "imagen": "/images/analizador-de-etileno-scs56.webp",
-              "pdf": "/pdfs/analizador-de-etileno-scs56.pdf"
+              "imagen": "/images/agricultura/analizador-de-etileno-scs56.webp",
+              "pdf": "/pdfs/agricultura/analizador-de-etileno-scs56.pdf"
             },
             {
               "nombre": "Kit de Cloro15ml",
               "descripcion": "Kit de Cloro 0.3 a 3.0 ppm y pH 6.8 a 8.2 (presentación en caja azul) es un equipo colorimétrico de análisis visual diseñado para medir simultáneamente el nivel de cloro residual libre y el pH del agua dentro de rangos críticos para procesos de desinfección y control de calidad. Incorpora dos reactivos específicos: uno con ortotolidina para la medición de cloro y otro con rojo de fenol para la medición de pH, junto con un comparador de color que permite obtener resultados claros y fiables comparando la muestra con escalas calibradas. Con un rango de cloro de 0.3 a 3.0 ppm y un rango de pH de 6.8 a 8.2, este kit permite evaluar si los parámetros se encuentran dentro de los niveles óptimos para seguridad y eficacia en aplicaciones de agua, lavado y procesos sanitarios, facilitando el control en campo o laboratorio sin necesidad de instrumentos complejos.",
-              "imagen": "/images/kit-de-cloro15ml.webp",
-              "pdf": "/pdfs/kit-de-cloro15ml.pdf"
+              "imagen": "/images/agricultura/kit-de-cloro15ml.webp",
+              "pdf": "/pdfs/agricultura/kit-de-cloro15ml.pdf"
             },
             {
               "nombre": "Kit de Cloro Ever Flor",
@@ -256,20 +256,17 @@
             {
               "nombre": "Malla Antitrips",
               "descripcion": "La malla antitrips es un material de filtrado/fijación que se coloca en las aberturas o respiraderos de las cajas de exportación para evitar el ingreso o salida de trips y otros insectos pequeños, que son plagas comunes en flores cortadas y pueden afectar, calidad fitosanitaria del producto, certificaciones de exportación, vida útil y frescura en destino\n\nLa malla permite ventilación correcta dentro de la caja (muy importante para flores delicadas) y para cumplir con las regulaciones fitosanitarias de muchos países exigen.\n\n* Malla de poliéster o similar, suficientemente fina para bloquear insectos tabanoides (<1 mm).\n* Alta resistencia mecánica, para no romperse durante manipulación y transporte.\n* Buena permeabilidad al aire, permitiendo que la flor “respire” sin generar condensación.",
-              "imagen": "/images/agricultura/malla-antitrips.webp",
-              "pdf": "/pdfs/malla-antitrips.pdf"
+              "imagen": "/images/agricultura/malla-antitrips.webp"
             },
             {
               "nombre": "Monitores de Temperatura - Datalogger",
               "descripcion": "Los monitores de temperatura tipo datalogger TempTale® de Sensitech son dispositivos electrónicos de alta precisión diseñados para registrar, almacenar y monitorear continuamente las condiciones térmicas a lo largo de la cadena de frío en procesos de almacenamiento y transporte. Equipados con sensores calibrados y certificación trazable (NIST), estos equipos permiten capturar datos críticos de temperatura (y en algunos modelos también humedad) con alta exactitud, generando reportes detallados para la toma de decisiones en recepción y control de calidad. Disponibles en versiones convencionales y en tiempo real, ofrecen funciones avanzadas como alarmas programables, conectividad inalámbrica, geolocalización y transmisión de datos, garantizando visibilidad total del estado del producto durante todo el trayecto. Su diseño compacto, robusto y fácil de usar los convierte en una solución confiable para industrias alimentarias, farmacéuticas y florícolas, ayudando a reducir riesgos, asegurar cumplimiento normativo y optimizar la logística de productos sensibles.",
-              "imagen": "/images/agricultura/monitores-de-temperatura-datalogger.webp",
-              "pdf": "/pdfs/monitores-de-temperatura-datalogger.pdf"
+              "imagen": "/images/agricultura/monitores-de-temperatura-datalogger.webp"
             },
             {
               "nombre": "Sellos de Seguridad - Precintos",
               "descripcion": "Los sellos de seguridad tipo precintos, disponibles en versiones plásticas, metálicas y tipo botella, son dispositivos diseñados para garantizar la inviolabilidad y trazabilidad de productos, actuando como mecanismos de evidencia de apertura o manipulación. Fabricados en materiales como polipropileno (PP), polietileno (PE) o acero, incorporan sistemas de cierre irreversibles que, una vez activados, solo pueden retirarse mediante ruptura, dejando evidencia visible de cualquier intento de acceso no autorizado . Los precintos plásticos destacan por su versatilidad y bajo costo para aplicaciones logísticas y de control, mientras que los metálicos ofrecen mayor resistencia mecánica y seguridad para cargas de alto valor o exportación . Por su parte, los sellos tipo botella integran bandas o anillos de seguridad que evidencian la apertura del envase, siendo ampliamente utilizados en industrias alimentarias, farmacéuticas y químicas . Disponibles en múltiples longitudes, resistencias y opciones de personalización (numeración, códigos de barras o QR), estos sistemas permiten optimizar el control, prevenir adulteraciones y asegurar la integridad del producto durante almacenamiento y transporte.",
-              "imagen": "/images/agricultura/sellos-de-seguridad-precintos.webp",
-              "pdf": "/pdfs/agricultura/sellos-de-seguridad-precintos.pdf"
+              "imagen": "/images/agricultura/sellos-de-seguridad-precintos.webp"
             }
           ]
         },
@@ -421,26 +418,26 @@
             {
               "nombre": "Aislante Térmico Sisalation",
               "descripcion": "SISALATION® Woven Foil, Aislante de Calor Anti fuego para Techos, hecho de Aluminio 100%.\nSISALATION MULTIPROPOSITO® es producido e importado de Australia.\nCon SISALATION WOVEN FOIL® \nEvita el ingreso de calor * rebaja la temperatura interior, Impide el acceso de polvo e impurezas * mejora la apariencia estetica.\nCompuesto de 2 capas de Aluminio 100% + 1 capa extrusión de polietileno + 1 capa de recubrimiento antideslumbrante + Hilo de vidrio de refuerzo + 1 capa de papel kraft + Adhesivo. \n- Ningún Componente Plástico/Combustible\nPresentación: Rollos de 75 m2 (1.250mm X 60mts – 14 Kilos Rollo) Color Plata\nAislar contra el calor del sol con SISALATION es la decisión técnica correcta. Ni los extractores ni los ventiladores evitan que el Sol caliente los techos y estos transmitan la radiación al interior de la edificación generando temperaturas que afectan negativamente La productividad de personas, máquinas y productos.",
-              "imagen": "/images/aislante-termico-sisalation.webp",
-              "pdf": "/pdfs/aislante-termico-sisalation.pdf"
+              "imagen": "/images/climatizacion/aislante-termico-sisalation.webp",
+              "pdf": "/pdfs/climatizacion/aislante-termico-sisalation.pdf"
             },
             {
               "nombre": "Brazo Mecánico tipo Diadema",
               "descripcion": "oporte metálico diseñado para la instalación de ventiladores industriales de 36 pulgadas en columnas o estructuras. Su sistema de sujeción tipo diadema permite una rotación de 360°, facilitando dirigir el flujo de aire según las necesidades del área. Es ampliamente utilizado en invernaderos del sector floricultor, donde se requiere mejorar la circulación y distribución del aire también en ambientes industriales, bodegas o áreas de trabajo.\n\nBeneficios clave\nCompatible con ventiladores industriales de 36\".\nSistema de sujeción tipo diadema para montaje en columnas o estructuras.\nPermite orientar el flujo de aire según la necesidad del área.\nEstructura metálica resistente para uso continuo.\nInstalación práctica y segura.",
-              "imagen": "/images/brazo-mecanico-tipo-diadema.webp",
-              "pdf": "/pdfs/brazo-mecanico-tipo-diadema.pdf"
+              "imagen": "/images/climatizacion/brazo-mecanico-tipo-diadema.webp",
+              "pdf": "/pdfs/climatizacion/brazo-mecanico-tipo-diadema.pdf"
             },
             {
               "nombre": "Ventilador Katana 36\" bifásico y trifásico",
               "descripcion": "Ventilador industrial de 36 pulgadas diseñado para generar alto flujo de aire y ventilación eficiente en espacios amplios. Su estructura robusta y motor de alto rendimiento lo hacen ideal para invernaderos del sector floricultor, bodegas y áreas de producción, mejorando la circulación del aire y el control ambiental. En aplicaciones florícolas, la ventilación adecuada ayuda a reducir el estrés de los cultivos y contribuye al control de enfermedades como la botrytis y el mildiu velloso, al disminuir la humedad y favorecer un ambiente más equilibrado. Disponible en configuración eléctrica bifásica y trifásica según los requerimientos de instalación.\nBeneficios clave\nAlto rendimiento de ventilación para mejorar la circulación de aire en espacios amplios.\nApoya a reducir el estrés del cultivo y contribuye al control de enfermedades como botrytis y mildiu velloso al disminuir la humedad en invernaderos.\nDiseño robusto para uso continuo, ideal para invernaderos, bodegas y áreas de producción.",
-              "imagen": "/images/ventilador-katana-36-bifasico-y-trifasico.webp",
-              "pdf": "/pdfs/ventilador-katana-36-bifasico-y-trifasico.pdf"
+              "imagen": "/images/climatizacion/ventilador-katana-36-bifasico-y-trifasico.webp",
+              "pdf": "/pdfs/climatizacion/ventilador-katana-36-bifasico-y-trifasico.pdf"
             },
             {
               "nombre": "Ventilador Katana 36\" movil",
               "descripcion": "Ventilador industrial de 36 pulgadas con base móvil, diseñado para proporcionar alto flujo de aire y ventilación eficiente en diferentes áreas de trabajo. Su estructura robusta permite trasladarlo fácilmente según las necesidades de ventilación, siendo ideal para invernaderos del sector floricultor, bodegas y áreas de producción donde se requiere mejorar la circulación de aire y el control ambiental.\nBeneficios clave\nBase móvil que facilita su traslado y ubicación en diferentes áreas.\nAlto rendimiento de ventilación para mejorar la circulación del aire.\nIdeal para invernaderos, bodegas y áreas productivas que requieren ventilación flexible.",
-              "imagen": "/images/ventilador-katana-36-movil.webp",
-              "pdf": "/pdfs/ventilador-katana-36-movil.pdf"
+              "imagen": "/images/climatizacion/ventilador-katana-36-movil.webp",
+              "pdf": "/pdfs/climatizacion/ventilador-katana-36-movil.pdf"
             }
           ]
         }
