@@ -16,7 +16,7 @@ export function Products() {
         {/* TITLE */}
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-extrabold text-blue-900 tracking-tight">
-            ¿Qué estás buscando?
+            Conoce nuestro catálogo de productos
           </h2>
         </div>
 
@@ -32,10 +32,7 @@ export function Products() {
                 className="w-full h-full object-cover aspect-square transition-transform group-hover:scale-105"
               />
 
-              {/* TITLE OVERLAY */}
-              <div className="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                <span className="text-white text-lg font-semibold">{opt.title}</span>
-              </div>
+             
 
             </div>
           ))}
