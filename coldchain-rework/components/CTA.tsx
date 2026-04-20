@@ -1,4 +1,4 @@
-const WHATSAPP = "593999999999"; // reemplaza con tu número
+import { WHATSAPP, CTA_TEXTS } from "@/lib/siteConfig";
 
 export function CTA() {
   return (
@@ -36,14 +36,14 @@ export function CTA() {
 
         <div className="mt-6 flex gap-4 flex-wrap justify-center">
           <a
-            href={`https://wa.me/${WHATSAPP}?text=${encodeURIComponent("Hola, me gustaría conversar sobre soluciones para optimizar mi operación.")}`}
+            href={`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(CTA_TEXTS.startConversationMessage)}`}
             target="_blank"
             rel="noopener noreferrer"
             role="button"
-            aria-label="Comenzar conversación por WhatsApp"
+            aria-label={CTA_TEXTS.startConversationLabel}
             className="group bg-yellow-400 text-black px-8 py-3 rounded-full text-lg font-semibold flex items-center gap-2 transition hover:scale-105 shadow-md cursor-pointer cta-commence"
           >
-            Comenzar Conversación
+            {CTA_TEXTS.startConversationLabel}
             <span className="transition group-hover:translate-x-1">→</span>
           </a>
         </div>

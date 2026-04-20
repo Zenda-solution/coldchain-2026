@@ -4,8 +4,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { ChevronRight, Download, ArrowRight } from "lucide-react";
 import type { Product as LocalProduct } from "@/lib/localProducts";
-
-const WHATSAPP = "593999999999"; // reemplaza con tu número
+import { WHATSAPP, MESSAGES } from "@/lib/siteConfig";
 
 type Product = LocalProduct;
 
@@ -506,7 +505,7 @@ export default function ProductDetailClient({
                             fontSize: "0.95rem",
                           }}
                         >
-                          Ficha técnica no disponible
+                          {MESSAGES.pdfNotAvailable}
                         </div>
                       </div>
                     )}

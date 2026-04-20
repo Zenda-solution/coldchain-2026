@@ -45,7 +45,7 @@
           ]
         },
         {
-          "nombre_tipo": "Productos para Cultivo",
+          "nombre_tipo": "Cultivo",
           "productos": [
             {
               "nombre": "IBA - K",
@@ -62,7 +62,7 @@
           ]
         },
         {
-          "nombre_tipo": "Productos para Medición y Análisis",
+          "nombre_tipo": "Medición y Análisis",
           "productos": [
             {
               "nombre": "Analizador de Etileno SCS56",
@@ -239,20 +239,19 @@
             {
               "nombre": "Absorbentes de Etileno en sachets",
               "descripcion": "Los absorbentes de etileno en sachets marca Ryan de Sensitech están diseñados para prolongar la vida útil de frutas y hortalizas mediante la eliminación activa del etileno (C₂H₄), gas responsable de acelerar los procesos de maduración y senescencia. Utilizan una formulación avanzada basada en agentes oxidantes y materiales adsorbentes de alta eficiencia, capaces de reducir significativamente la concentración de etileno en ambientes de almacenamiento, transporte y poscosecha. Su presentación en sachets permite una fácil aplicación dentro de cajas o pallets, sin requerir equipos adicionales, contribuyendo a mantener la calidad, firmeza y frescura del producto, reducir mermas y optimizar la cadena logística en exportación y distribución.",
-              "imagen": "/images/absorbentes-de-etileno-en-sachets.webp",
-              "pdf": "/pdfs/absorbentes-de-etileno-en-sachets.pdf"
+              "imagen": "/images/agricultura/absorbentes-de-etileno-en-sachets.webp",
+              "pdf": "/pdfs/agricultura/absorbentes-de-etileno-en-sachets.pdf"
             },
             {
               "nombre": "Absorbentes de Etileno en filtros",
               "descripcion": "Los absorbentes de etileno en filtros están diseñados para sistemas de ventilación y almacenamiento en cámaras frigoríficas, donde eliminan de forma continua el etileno (C₂H₄) del ambiente, retardando los procesos de maduración y deterioro en productos hortofrutícolas. Incorporan un medio activo de alta capacidad basado en agentes oxidantes y adsorbentes que capturan y descomponen el etileno de manera eficiente incluso en condiciones de alta carga, permitiendo una mayor vida útil y conservación de la calidad. Su formato de 100 cm facilita la integración en equipos de flujo de aire, optimizando la distribución del tratamiento sin necesidad de modificaciones complejas. Adicionalmente, son ampliamente utilizados en el sector florícola, donde contribuyen a reducir la senescencia, prevenir la caída de pétalos y mantener la frescura y calidad visual de flores cortadas durante almacenamiento y exportación, minimizando mermas y maximizando el valor comercial del producto.",
-              "imagen": "/images/absorbentes-de-etileno-en-filtros.webp",
-              "pdf": "/pdfs/absorbentes-de-etileno-en-filtros.pdf"
+              "imagen": "/images/agricultura/absorbentes-de-etileno-en-filtros.webp",
+              "pdf": "/pdfs/agricultura/absorbentes-de-etileno-en-filtros.pdf"
             },
             {
               "nombre": "Plastico de guarde por kilos",
               "descripcion": "El plástico de guarde también conocido como sábana plástica, está fabricado en polietileno de alta densidad, ofreciendo una solución versátil y económica para la protección de productos y superficies en entornos agrícolas y florícolas. Se presenta en rollos o cortes por peso, con un espesor de 1,25 MLP y ancho de 35\" (88,9cm) que determinan su resistencia mecánica y durabilidad, adaptándose a diversas aplicaciones. Gracias a su impermeabilidad, flexibilidad y resistencia a la humedad y agentes químicos, es ideal para cubrir camas de cultivo, proteger flor cortada, aislar áreas de trabajo y resguardar productos durante cosecha, poscosecha y transporte. Además, puede incorporar aditivos UV que prolongan su vida útil y mejoran su desempeño en condiciones de exposición solar, contribuyendo a mantener la calidad, higiene y eficiencia operativa en procesos florícolas.",
-              "imagen": "/images/plastico-de-guarde-por-kilos.webp",
-              "pdf": "/pdfs/plastico-de-guarde-por-kilos.pdf"
+              "imagen": "/images/agricultura/plastico-de-guarde-por-kilos.webp"
             },
             {
               "nombre": "Malla Antitrips",
@@ -263,14 +262,14 @@
             {
               "nombre": "Monitores de Temperatura - Datalogger",
               "descripcion": "Los monitores de temperatura tipo datalogger TempTale® de Sensitech son dispositivos electrónicos de alta precisión diseñados para registrar, almacenar y monitorear continuamente las condiciones térmicas a lo largo de la cadena de frío en procesos de almacenamiento y transporte. Equipados con sensores calibrados y certificación trazable (NIST), estos equipos permiten capturar datos críticos de temperatura (y en algunos modelos también humedad) con alta exactitud, generando reportes detallados para la toma de decisiones en recepción y control de calidad. Disponibles en versiones convencionales y en tiempo real, ofrecen funciones avanzadas como alarmas programables, conectividad inalámbrica, geolocalización y transmisión de datos, garantizando visibilidad total del estado del producto durante todo el trayecto. Su diseño compacto, robusto y fácil de usar los convierte en una solución confiable para industrias alimentarias, farmacéuticas y florícolas, ayudando a reducir riesgos, asegurar cumplimiento normativo y optimizar la logística de productos sensibles.",
-              "imagen": "/images/monitores-de-temperatura-datalogger.webp",
+              "imagen": "/images/agricultura/monitores-de-temperatura-datalogger.webp",
               "pdf": "/pdfs/monitores-de-temperatura-datalogger.pdf"
             },
             {
               "nombre": "Sellos de Seguridad - Precintos",
               "descripcion": "Los sellos de seguridad tipo precintos, disponibles en versiones plásticas, metálicas y tipo botella, son dispositivos diseñados para garantizar la inviolabilidad y trazabilidad de productos, actuando como mecanismos de evidencia de apertura o manipulación. Fabricados en materiales como polipropileno (PP), polietileno (PE) o acero, incorporan sistemas de cierre irreversibles que, una vez activados, solo pueden retirarse mediante ruptura, dejando evidencia visible de cualquier intento de acceso no autorizado . Los precintos plásticos destacan por su versatilidad y bajo costo para aplicaciones logísticas y de control, mientras que los metálicos ofrecen mayor resistencia mecánica y seguridad para cargas de alto valor o exportación . Por su parte, los sellos tipo botella integran bandas o anillos de seguridad que evidencian la apertura del envase, siendo ampliamente utilizados en industrias alimentarias, farmacéuticas y químicas . Disponibles en múltiples longitudes, resistencias y opciones de personalización (numeración, códigos de barras o QR), estos sistemas permiten optimizar el control, prevenir adulteraciones y asegurar la integridad del producto durante almacenamiento y transporte.",
-              "imagen": "/images/sellos-de-seguridad-precintos.webp",
-              "pdf": "/pdfs/sellos-de-seguridad-precintos.pdf"
+              "imagen": "/images/agricultura/sellos-de-seguridad-precintos.webp",
+              "pdf": "/pdfs/agricultura/sellos-de-seguridad-precintos.pdf"
             }
           ]
         },

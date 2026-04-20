@@ -6,6 +6,7 @@ import { CTA } from "@/components/CTA";
 import { ContactForm } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import Link from "next/link";
+import { CTA_TEXTS, ROUTES } from "@/lib/siteConfig";
 
 export default function Hero() {
   return (
@@ -36,13 +37,13 @@ export default function Hero() {
         {/* CTA */}
         <div className="flex gap-3 flex-wrap justify-center mt-2">
 
-          <Link href="/productos" className="group bg-yellow-400 text-black px-7 py-2.5 rounded-full font-semibold flex items-center gap-2 transition hover:scale-105 cursor-pointer">
-            Ver Catálogo
+          <Link href={ROUTES.products} className="group bg-yellow-400 text-black px-7 py-2.5 rounded-full font-semibold flex items-center gap-2 transition hover:scale-105 cursor-pointer">
+            {CTA_TEXTS.viewCatalogLabel}
             <span className="transition group-hover:translate-x-1">→</span>
           </Link>
 
-          <Link href="/contacto" className="border border-white/40 px-7 py-2.5 rounded-full font-semibold transition hover:bg-white hover:text-blue-900 cursor-pointer">
-            Contactar
+          <Link href={ROUTES.contact} className="border border-white/40 px-7 py-2.5 rounded-full font-semibold transition hover:bg-white hover:text-blue-900 cursor-pointer">
+            {CTA_TEXTS.contactLabel}
           </Link>
 
         </div>

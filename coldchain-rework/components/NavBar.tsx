@@ -3,19 +3,19 @@
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { NAV_CATEGORIES, categoryHref, CTA_TEXTS, ROUTES, WHATSAPP } from "@/lib/siteConfig";
 
-const categories = [
-  { label: "Agricultura",                        href: `/productos?categoria=${encodeURIComponent("Agricultura")}` },
-  { label: "Climatización",                      href: `/productos?categoria=${encodeURIComponent("Climatización")}` },
-  { label: "Instrumentos y Equipos de Medición", href: `/productos?categoria=${encodeURIComponent("Instrumentos y Equipos de Medición")}` },
-  { label: "Logística y Transporte",             href: `/productos?categoria=${encodeURIComponent("Logística y Transporte")}` },
-  { label: "Termohigrómetros y Termógrafos",     href: `/productos?categoria=${encodeURIComponent("Termohigrómetros y Termógrafos")}` },
-];
+const categories = NAV_CATEGORIES.map((c) => ({
+  label: c.label,
+  href: categoryHref(c.param ?? c.label),
+}));
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen]     = useState(false);
   const [dropdownOpen, setDropdown] = useState(false);
   const leaveTimeout = useRef<number | null>(null);
+
+  const waHref = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(CTA_TEXTS.startConversationMessage)}`;
 
   useEffect(() => {
     return () => {
@@ -88,13 +88,13 @@ export default function Navbar() {
             )}
           </div>
 
-          <Link href="/contacto" className="nav-link">Contacto</Link>
+          <Link href={ROUTES.contact} className="nav-link">{CTA_TEXTS.contactLabel}</Link>
         </div>
 
         {/* DESKTOP CTA */}
-        <Link href="/contacto" className="navbar-cta hidden md:inline-flex">
-          Cotizar
-        </Link>
+        <a href={waHref} target="_blank" rel="noopener noreferrer" className="navbar-cta hidden md:inline-flex">
+          {CTA_TEXTS.quoteLabel}
+        </a>
 
         {/* MOBILE HAMBURGER */}
         <button
@@ -134,8 +134,8 @@ export default function Navbar() {
             {c.label}
           </Link>
         ))}
-        <Link href="/contacto" className="mobile-nav-link" onClick={() => setMenuOpen(false)}>Contacto</Link>
-        <Link href="/contacto" className="mobile-nav-cta" onClick={() => setMenuOpen(false)}>Cotizar</Link>
+        <Link href={ROUTES.contact} className="mobile-nav-link" onClick={() => setMenuOpen(false)}>{CTA_TEXTS.contactLabel}</Link>
+        <a href={waHref} className="mobile-nav-cta" onClick={() => setMenuOpen(false)} target="_blank" rel="noopener noreferrer">{CTA_TEXTS.quoteLabel}</a>
       </div>
     </nav>
   );

@@ -5,9 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useSearchParams, useRouter } from "next/navigation";
 import type { Product } from "./page";
-
-const WHATSAPP = "593999999999"; // ← reemplaza con tu número
-const ALL = "Todos";
+import { WHATSAPP, NAV_CATEGORIES, ALL, CTA_TEXTS } from "@/lib/siteConfig";
 
 function waLink(name: string) {
   return `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(
@@ -33,24 +31,26 @@ export default function CatalogClient({ products }: { products: Product[] }) {
       .replace(/[^a-z0-9]+/g, " ")
       .trim();
 
-  const preferredOrder = [
-    "Agricultura",
-    "Climatización",
-    "Instrumentos y Equipos de Medición",
-    "Logística y Transporte",
-    "Termohigrómetros y Termógrafos",
-  ];
+  // preferred params from site config (use param if present, otherwise label)
+  const preferredParams = NAV_CATEGORIES.map((c) => c.param ?? c.label);
 
   const categories = [
-    // keep only those preferred labels that actually exist in the data, respecting diacritics/casing
-    ...preferredOrder.filter((label) =>
-      rawCategories.some((c) => normalizeForSort(c) === normalizeForSort(label))
+    // keep only those preferred params/labels that actually exist in the data
+    ...preferredParams.filter((p) =>
+      rawCategories.some((c) => normalizeForSort(c) === normalizeForSort(p))
     ),
     // then append any remaining categories that weren't in the preferred list
     ...rawCategories.filter(
-      (c) => !preferredOrder.some((label) => normalizeForSort(c) === normalizeForSort(label))
+      (c) => !preferredParams.some((p) => normalizeForSort(c) === normalizeForSort(p))
     ),
   ];
+
+  const displayNameFor = (cat: string) => {
+    const match = NAV_CATEGORIES.find(
+      (n) => normalizeForSort(n.param ?? n.label) === normalizeForSort(cat) || normalizeForSort(n.label) === normalizeForSort(cat)
+    );
+    return match ? match.label : cat;
+  };
 
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -60,21 +60,15 @@ export default function CatalogClient({ products }: { products: Product[] }) {
   const param = searchParams?.get("categoria");
   const typeParam = searchParams?.get("tipo");
 
-  const normalize = (s: string) =>
-    s
-      .normalize("NFD")
-      .replace(/\p{Diacritic}/gu, "")
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, " ")
-      .trim();
+  // reuse normalizeForSort above for fuzzy matching
 
   const findCategoryFromParam = (catParam?: string | null) => {
     if (!catParam) return null;
     const direct = categories.find((c) => c.toLowerCase() === catParam.toLowerCase());
     if (direct) return direct;
-    const paramNorm = normalize(catParam);
+    const paramNorm = normalizeForSort(catParam);
     const fuzzy = categories.find((c) => {
-      const cNorm = normalize(c);
+      const cNorm = normalizeForSort(c);
       return cNorm === paramNorm || cNorm.includes(paramNorm) || paramNorm.includes(cNorm);
     });
     if (fuzzy) return fuzzy;
@@ -99,9 +93,9 @@ export default function CatalogClient({ products }: { products: Product[] }) {
     if (!typeParam) return null;
     const direct = types.find((t) => t?.toLowerCase() === typeParam.toLowerCase());
     if (direct) return direct;
-    const paramNorm = normalize(typeParam);
+    const paramNorm = normalizeForSort(typeParam);
     const fuzzy = types.find((t) => {
-      const tNorm = normalize(t || "");
+      const tNorm = normalizeForSort(t || "");
       return tNorm === paramNorm || tNorm.includes(paramNorm) || paramNorm.includes(tNorm);
     });
     if (fuzzy) return fuzzy;
@@ -180,7 +174,7 @@ export default function CatalogClient({ products }: { products: Product[] }) {
                   }}
                 >
                   <span className="cat-dot" />
-                  {cat}
+                  {displayNameFor(cat)}
                   <span className="cat-count">
                     {cat === ALL
                       ? products.length
@@ -222,7 +216,7 @@ export default function CatalogClient({ products }: { products: Product[] }) {
               <input
                 type="text"
                 className="search-input"
-                placeholder="Buscar productos…"
+                placeholder={CTA_TEXTS.searchPlaceholder}
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
               />

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ROUTES, CTA_TEXTS } from "@/lib/siteConfig";
 
 export function Products() {
   const options = [
@@ -43,8 +44,8 @@ export function Products() {
         {/* BUTTON */}
         <div className="mt-12 text-center">
           <div className="mt-12 text-center">
-            <Link href="/productos" className="inline-flex group bg-blue-900 text-white px-6 py-2.5 rounded-full font-semibold flex items-center gap-2 text-lg md:text-xl transition transform hover:scale-105 hover:bg-blue-800 cursor-pointer">
-              Ver Catálogo
+            <Link href={ROUTES.products} className="inline-flex group bg-blue-900 text-white px-6 py-2.5 rounded-full font-semibold flex items-center gap-2 text-lg md:text-xl transition transform hover:scale-105 hover:bg-blue-800 cursor-pointer">
+              {CTA_TEXTS.viewCatalogLabel}
               <span className="transition-transform group-hover:translate-x-1">→</span>
             </Link>
           </div>
