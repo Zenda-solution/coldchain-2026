@@ -1,7 +1,9 @@
 "use client";
 
+import { WHATSAPP } from "../lib/siteConfig";
+
 export function FloatingWhatsApp() {
-  const phone = "593999999999"; // 👈 your number
+  const phone = WHATSAPP; // from site config
 
   const message = encodeURIComponent(
     "Hola, me gustaría obtener más información sobre sus productos."

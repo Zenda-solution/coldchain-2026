@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { WHATSAPP, CTA_TEXTS } from "@/lib/siteConfig";
 
 export function CTA() {
@@ -5,16 +6,20 @@ export function CTA() {
     <section className="relative pt-16 sm:pt-24 md:pt-32 overflow-hidden">
 
       {/* CLOUDS — clipped so they never overflow the viewport */}
-      <img
+      <Image
         src="/images/hero/cloud-left.webp"
         alt=""
         aria-hidden="true"
+        width={500}
+        height={300}
         className="absolute -left-10 top-6 w-[180px] sm:w-[300px] md:w-[500px] opacity-60 pointer-events-none select-none"
       />
-      <img
-        src="/images/hero/cloud-right.png"
+      <Image
+        src="/images/hero/cloud-right.webp"
         alt=""
         aria-hidden="true"
+        width={500}
+        height={300}
         className="absolute -right-10 top-12 w-[180px] sm:w-[300px] md:w-[500px] opacity-60 pointer-events-none select-none"
       />
 
@@ -51,10 +56,12 @@ export function CTA() {
       </div>
 
       {/* FULL-WIDTH IMAGE */}
-      <div className="w-full mt-12 md:mt-20">
-        <img
-          src="/images/hero/CTA3.png"
+      <div className="w-full mt-12 md:mt-20 relative">
+        <Image
+          src="/images/hero/CTA3.webp"
           alt="Campo"
+          width={1200}
+          height={600}
           className="w-full h-auto object-contain"
         />
       </div>

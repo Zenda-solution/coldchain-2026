@@ -3,9 +3,9 @@
 import { useEffect, useState } from "react";
 
 const images = [
-  "/images/hero/hero1.png",
-  "/images/hero/hero2.png",
-  "/images/hero/hero3.png",
+  "/images/hero/hero1.webp",
+  "/images/hero/hero2.webp",
+  "/images/hero/hero3.webp",
 ];
 
 export default function Carousel() {

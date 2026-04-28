@@ -32,11 +32,12 @@ export default function Navbar() {
         {/* LOGO */}
         <Link href="/" className="navbar-logo">
           <Image
-            src="/images/hero/logo.jpg"
+            src="/images/hero/logo.webp"
             alt="Logo"
             width={140}
             height={40}
             priority
+            style={{ width: "auto" }}
           />
         </Link>
 

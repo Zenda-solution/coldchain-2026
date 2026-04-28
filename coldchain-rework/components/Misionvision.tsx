@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export function MisionVision() {
   return (
     <div className="space-y-12 md:space-y-20 relative z-10 px-4 sm:px-6">
@@ -18,11 +20,13 @@ export function MisionVision() {
         </div>
 
         {/* Image — 260px tall on mobile, fixed square on desktop */}
-        <div className="w-full h-64 md:w-[420px] md:h-auto md:min-h-[400px] overflow-hidden flex-shrink-0">
-          <img
-            src="/images/hero/mision.jpg"
+        <div className="w-full h-64 md:w-[420px] md:h-auto md:min-h-[400px] overflow-hidden flex-shrink-0 relative">
+          <Image
+            src="/images/hero/mision.webp"
             alt="Misión"
-            className="w-full h-full object-cover"
+            fill
+            sizes="(max-width: 767px) 100vw, 420px"
+            className="object-cover"
           />
         </div>
       </div>
@@ -31,11 +35,13 @@ export function MisionVision() {
       <div className="flex flex-col-reverse md:flex-row items-stretch gap-0 md:gap-6 rounded-2xl overflow-hidden shadow-md">
 
         {/* Image */}
-        <div className="w-full h-64 md:w-[420px] md:h-auto md:min-h-[400px] overflow-hidden flex-shrink-0">
-          <img
-            src="/images/hero/vision.jpg"
+        <div className="w-full h-64 md:w-[420px] md:h-auto md:min-h-[400px] overflow-hidden flex-shrink-0 relative">
+          <Image
+            src="/images/hero/vision.webp"
             alt="Visión"
-            className="w-full h-full object-cover"
+            fill
+            sizes="(max-width: 767px) 100vw, 420px"
+            className="object-cover"
           />
         </div>
 

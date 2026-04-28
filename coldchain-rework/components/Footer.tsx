@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export function Footer() {
   return (
     <footer className="bg-primary text-white py-24">
@@ -6,10 +8,12 @@ export function Footer() {
 
         {/* LOGO */}
         <div className="flex flex-col items-start gap-6">
-          <img
-            src="/images/hero/logo-blanco.png"
+          <Image
+            src="/images/hero/logo-blanco.webp"
             alt="Coldchain"
             className="w-80"
+            width={320}
+            height={80}
           />
           <p className="text-white text-base leading-relaxed max-w-sm">
             Soluciones confiables para sectores estratégicos del Ecuador.

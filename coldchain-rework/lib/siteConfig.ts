@@ -1,6 +1,6 @@
 export type NavCategory = { label: string; param?: string };
 
-export const WHATSAPP = "593999999999";
+export const WHATSAPP = "593958871713";
 
 export const NAV_CATEGORIES: NavCategory[] = [
   { label: "Agricultura", param: "Agricultura" },

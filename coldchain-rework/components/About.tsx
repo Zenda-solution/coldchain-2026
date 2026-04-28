@@ -1,12 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-
-const stats = [
-  { value: "+30", label: "Años de trayectoria" },
-  { value: "5", label: "Sectores atendidos" },
-  { value: "100%", label: "Soporte técnico local" },
-];
+import Image from "next/image";
 
 const pillars = [
   {
@@ -94,9 +89,11 @@ export function About() {
               >
                 
                 {/* Ecuador map */}
-                <img
-                  src="/images/hero/about4.png" // 🔁 replace with your file
+                <Image
+                  src="/images/hero/about4.webp"
                   alt="Cobertura en Ecuador"
+                  width={360}
+                  height={360}
                   className="relative z-10 w-[120%] h-[120%] object-contain opacity-100 scale-110"
                 />
               </div>
