@@ -29,7 +29,6 @@ export function Footer() {
               Facturación y Ventas
             </h4>
             <p className="text-white text-base leading-loose">
-              (593) 02 3210659 – 3112231 ext.104 <br />
               (593) 098 700 4993 <br />
               ventas3@coldchain.com.ec
             </p>
@@ -65,7 +64,6 @@ export function Footer() {
               Atención al Cliente
             </h4>
             <p className="text-white text-base leading-loose">
-              (593) 02 3210659 – Ext.102 <br />
               (593) 096 355 9394 <br />
               atencionalcliente@coldchain.com.ec
             </p>

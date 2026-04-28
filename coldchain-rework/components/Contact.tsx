@@ -1,4 +1,15 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+
 export function ContactForm() {
+  const router = useRouter();
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    router.push("/gracias");
+  };
+
   return (
     /*
       The -mt-24 overlap looks great on desktop but causes the card to sit
@@ -23,19 +34,19 @@ export function ContactForm() {
           </div>
 
           {/* FORM */}
-          <form className="space-y-4 sm:space-y-6">
+          <form className="space-y-4 sm:space-y-6" onSubmit={handleSubmit}>
 
             {/* NOMBRE + EMPRESA — stack on mobile */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <input
                 type="text"
                 placeholder="Nombre completo"
-                className="w-full p-3 sm:p-4 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm sm:text-base"
+                className="w-full p-3 sm:p-4 rounded-xl border border-gray-300 bg-gray-50 shadow-inner focus:bg-white focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm sm:text-base transition-colors"
               />
               <input
                 type="text"
                 placeholder="Empresa"
-                className="w-full p-3 sm:p-4 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm sm:text-base"
+                className="w-full p-3 sm:p-4 rounded-xl border border-gray-300 bg-gray-50 shadow-inner focus:bg-white focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm sm:text-base transition-colors"
               />
             </div>
 
@@ -44,17 +55,17 @@ export function ContactForm() {
               <input
                 type="email"
                 placeholder="Correo electrónico"
-                className="w-full p-3 sm:p-4 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm sm:text-base"
+                className="w-full p-3 sm:p-4 rounded-xl border border-gray-300 bg-gray-50 shadow-inner focus:bg-white focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm sm:text-base transition-colors"
               />
               <input
                 type="tel"
                 placeholder="Teléfono (opcional)"
-                className="w-full p-3 sm:p-4 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm sm:text-base"
+                className="w-full p-3 sm:p-4 rounded-xl border border-gray-300 bg-gray-50 shadow-inner focus:bg-white focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm sm:text-base transition-colors"
               />
             </div>
 
             {/* SELECT */}
-            <select className="w-full p-3 sm:p-4 rounded-xl border border-gray-300 text-gray-600 focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm sm:text-base">
+            <select className="w-full p-3 sm:p-4 rounded-xl border border-gray-300 bg-gray-50 shadow-inner focus:bg-white text-gray-600 focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm sm:text-base transition-colors">
               <option>¿En qué estás interesado?</option>
               <option>Agro</option>
               <option>Florícola</option>
@@ -65,7 +76,7 @@ export function ContactForm() {
             {/* MENSAJE */}
             <textarea
               placeholder="Cuéntanos un poco más sobre lo que necesitas..."
-              className="w-full p-3 sm:p-4 rounded-xl border border-gray-300 h-32 sm:h-36 resize-none focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm sm:text-base"
+              className="w-full p-3 sm:p-4 rounded-xl border border-gray-300 bg-gray-50 shadow-inner focus:bg-white h-32 sm:h-36 resize-none focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm sm:text-base transition-colors"
             />
 
             {/* SUBMIT */}

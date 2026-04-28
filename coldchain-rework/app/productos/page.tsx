@@ -1,16 +1,33 @@
 import { Suspense } from "react";
 import CatalogClient from "./CatalogClient";
 import { client } from "@/lib/client";
+import type { Metadata } from "next";
 
-export type Product = {
-  name: string;
-  slug: string;
-  description?: string;
-  image?: string;
-  pdf?: string;
-  category?: string;
-  type?: string;
+export const metadata: Metadata = {
+  title: "Catálogo de Productos para Medición y Análisis en Ecuador",
+  description:
+    "Explora el catálogo completo de Coldchain: equipos de medición para agricultura, laboratorio e industria en Ecuador. Encuentra el equipo ideal y cotiza hoy.",
+  alternates: {
+    canonical: "https://coldchain.com.ec/productos",
+  },
+  openGraph: {
+    title: "Catálogo de Equipos de Medición en Ecuador | Coldchain",
+    description:
+      "Explora el catálogo completo de Coldchain: equipos de medición para agricultura, laboratorio e industria en Ecuador.",
+    url: "https://coldchain.com.ec/productos",
+    type: "website",
+  },
+  twitter: {
+    title: "Catálogo de Equipos de Medición en Ecuador | Coldchain",
+    description:
+      "Explora el catálogo completo de Coldchain: equipos de medición para agricultura, laboratorio e industria en Ecuador.",
+  },
 };
+
+
+// Product type is defined centrally in lib/localProducts
+export type { Product } from "@/lib/localProducts";
+import type { Product } from "@/lib/localProducts";
 
 async function getProducts(): Promise<Product[]> {
   return client.fetch(`

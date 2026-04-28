@@ -16,6 +16,8 @@ export default function ProductDetailClient({
   relatedProducts?: Product[];
 }) {
   const [screen, setScreen] = useState<"desktop" | "tablet" | "mobile">("desktop");
+  const [waHover, setWaHover] = useState(false);
+  const [hoveredCard, setHoveredCard] = useState<string | null>(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -230,140 +232,140 @@ export default function ProductDetailClient({
                 }}
               >
                 {/* top content: image + heading */}
-               <div
-  style={{
-    display: "grid",
-    gridTemplateColumns: heroColumns,
-    gap: screen === "mobile" ? 18 : 28,
-    alignItems: "center", // 🔥 clave para centrar vertical
-  }}
->
-  {/* LEFT — TITLE CENTERED */}
-  <div
-    style={{
-      minWidth: 0,
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "center", // 🔥 vertical center
-      alignItems: screen === "mobile" ? "flex-start" : "center", // center desktop
-      textAlign: screen === "mobile" ? "left" : "center",
-      gap: 16,
-      height: "100%",
-    }}
-  >
-    <h1
-      style={{
-        margin: 0,
-        color: "var(--navy)",
-        fontSize:
-          screen === "mobile"
-            ? "clamp(1.9rem, 8vw, 2.6rem)"
-            : "clamp(2.4rem, 3.2vw, 3.2rem)",
-        lineHeight: 0.95,
-        letterSpacing: "-0.04em",
-        fontWeight: 800,
-      }}
-    >
-      {product.name}
-    </h1>
-
-    <div
-      style={{
-        display: "flex",
-        flexWrap: "wrap",
-        gap: 8,
-        justifyContent: screen === "mobile" ? "flex-start" : "center",
-      }}
-    >
-      {product.category && (
-        <span
-          style={{
-            ...tagBase,
-            background: "rgba(40, 123, 255, 0.10)",
-            color: "var(--blue)",
-            border: "1px solid rgba(40, 123, 255, 0.18)",
-          }}
-        >
-          {product.category}
-        </span>
-      )}
-
-      {product.type && (
-        <span
-          style={{
-            ...tagBase,
-            background: "rgba(234, 179, 8, 0.14)",
-            color: "var(--navy)",
-            border: "1px solid rgba(234, 179, 8, 0.22)",
-          }}
-        >
-          {product.type}
-        </span>
-      )}
-    </div>
-
-    <div
-      style={{
-        width: 80,
-        height: 4,
-        borderRadius: 999,
-        background:
-          "linear-gradient(90deg, var(--blue), var(--yellow))",
-      }}
-    />
-  </div>
-
-        {/* RIGHT — IMAGE */}
-        <div style={{ minWidth: 0 }}>
-            <div
-            style={{
-
-            
-            maxWidth: 260, // 👈 ADD THIS
-            margin: "0 auto", // 👈 center it inside column
-            
-
-                width: "100%",
-                aspectRatio: "4 / 5",
-                borderRadius: 22,
-                overflow: "hidden",
-                background: "linear-gradient(180deg, #ffffff 0%, #f7fafc 100%)",
-                border: "1px solid rgba(14, 51, 107, 0.08)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-            }}
-            >
-            {product.image ? (
-                <img
-                src={product.image}
-                alt={product.name}
-                loading="lazy"
-                style={{
-                    width: "100%",
-                    height: "80%",
-                    objectFit: "contain",
-                    display: "block",
-                    padding: 18,
-                }}
-                />
-            ) : (
                 <div
-                style={{
-                    width: "100%",
-                    height: "100%",
+                  style={{
                     display: "grid",
-                    placeItems: "center",
-                    color: "var(--gray-400)",
-                    fontSize: "0.95rem",
-                }}
+                    gridTemplateColumns: heroColumns,
+                    gap: screen === "mobile" ? 18 : 28,
+                    alignItems: "center", // 🔥 clave para centrar vertical
+                  }}
                 >
-                Sin imagen
+                  {/* LEFT — TITLE CENTERED */}
+                  <div
+                    style={{
+                      minWidth: 0,
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "center", // 🔥 vertical center
+                      alignItems: screen === "mobile" ? "flex-start" : "center", // center desktop
+                      textAlign: screen === "mobile" ? "left" : "center",
+                      gap: 16,
+                      height: "100%",
+                    }}
+                  >
+                    <h1
+                      style={{
+                        margin: 0,
+                        color: "var(--navy)",
+                        fontSize:
+                          screen === "mobile"
+                            ? "clamp(1.9rem, 8vw, 2.6rem)"
+                            : "clamp(2.4rem, 3.2vw, 3.2rem)",
+                        lineHeight: 0.95,
+                        letterSpacing: "-0.04em",
+                        fontWeight: 800,
+                      }}
+                    >
+                      {product.name}
+                    </h1>
+
+                    <div
+                      style={{
+                        display: "flex",
+                        flexWrap: "wrap",
+                        gap: 8,
+                        justifyContent: screen === "mobile" ? "flex-start" : "center",
+                      }}
+                    >
+                      {product.category && (
+                        <span
+                          style={{
+                            ...tagBase,
+                            background: "rgba(40, 123, 255, 0.10)",
+                            color: "var(--blue)",
+                            border: "1px solid rgba(40, 123, 255, 0.18)",
+                          }}
+                        >
+                          {product.category}
+                        </span>
+                      )}
+
+                      {product.type && (
+                        <span
+                          style={{
+                            ...tagBase,
+                            background: "rgba(234, 179, 8, 0.14)",
+                            color: "var(--navy)",
+                            border: "1px solid rgba(234, 179, 8, 0.22)",
+                          }}
+                        >
+                          {product.type}
+                        </span>
+                      )}
+                    </div>
+
+                    <div
+                      style={{
+                        width: 80,
+                        height: 4,
+                        borderRadius: 999,
+                        background:
+                          "linear-gradient(90deg, var(--blue), var(--yellow))",
+                      }}
+                    />
+                  </div>
+
+                  {/* RIGHT — IMAGE */}
+                  <div style={{ minWidth: 0 }}>
+                    <div
+                      style={{
+
+
+                        maxWidth: 260, // 👈 ADD THIS
+                        margin: "0 auto", // 👈 center it inside column
+
+
+                        width: "100%",
+                        aspectRatio: "4 / 5",
+                        borderRadius: 22,
+                        overflow: "hidden",
+                        background: "linear-gradient(180deg, #ffffff 0%, #f7fafc 100%)",
+                        border: "1px solid rgba(14, 51, 107, 0.08)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    >
+                      {product.image ? (
+                        <img
+                          src={product.image}
+                          alt={product.name}
+                          loading="lazy"
+                          style={{
+                            width: "100%",
+                            height: "80%",
+                            objectFit: "contain",
+                            display: "block",
+                            padding: 18,
+                          }}
+                        />
+                      ) : (
+                        <div
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            display: "grid",
+                            placeItems: "center",
+                            color: "var(--gray-400)",
+                            fontSize: "0.95rem",
+                          }}
+                        >
+                          Sin imagen
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 </div>
-            )}
-            </div>
-        </div>
-        </div>
                 {/* description */}
                 <div
                   style={{
@@ -768,6 +770,8 @@ export default function ProductDetailClient({
                     href={waLink}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onMouseEnter={() => setWaHover(true)}
+                    onMouseLeave={() => setWaHover(false)}
                     style={{
                       width: "100%",
                       minHeight: 50,
@@ -778,11 +782,16 @@ export default function ProductDetailClient({
                       justifyContent: "center",
                       gap: 10,
                       textDecoration: "none",
-                      background: "#25d366",
+                      background: waHover ? "#1db954" : "#25d366",
                       color: "white",
                       fontSize: "0.95rem",
                       fontWeight: 800,
-                      boxShadow: "0 14px 26px rgba(37, 211, 102, 0.18)",
+                      boxShadow: waHover
+                        ? "0 18px 34px rgba(37, 211, 102, 0.32)"
+                        : "0 14px 26px rgba(37, 211, 102, 0.18)",
+                      transform: waHover ? "translateY(-2px) scale(1.015)" : "translateY(0) scale(1)",
+                      transition: "background 180ms ease, box-shadow 180ms ease, transform 180ms ease",
+                      cursor: "pointer",
                     }}
                   >
                     <span>Solicitar cotización</span>
@@ -881,8 +890,8 @@ export default function ProductDetailClient({
                   screen === "mobile"
                     ? "1fr"
                     : screen === "tablet"
-                    ? "repeat(2, minmax(0, 1fr))"
-                    : "repeat(3, minmax(0, 1fr))",
+                      ? "repeat(2, minmax(0, 1fr))"
+                      : "repeat(3, minmax(0, 1fr))",
                 gap: 20,
               }}
             >
@@ -890,12 +899,20 @@ export default function ProductDetailClient({
                 <Link
                   key={item.slug}
                   href={`/productos/${item.slug}`}
+                  onMouseEnter={() => setHoveredCard(item.slug)}
+                  onMouseLeave={() => setHoveredCard(null)}
                   style={{
                     ...softCard,
                     overflow: "hidden",
                     textDecoration: "none",
                     display: "flex",
                     flexDirection: "column",
+                    transform: hoveredCard === item.slug ? "translateY(-6px)" : "translateY(0)",
+                    boxShadow: hoveredCard === item.slug
+                      ? "0 22px 48px rgba(14, 51, 107, 0.14)"
+                      : softCard.boxShadow,
+                    transition: "transform 200ms ease, box-shadow 200ms ease",
+                    cursor: "pointer",
                   }}
                 >
                   <div

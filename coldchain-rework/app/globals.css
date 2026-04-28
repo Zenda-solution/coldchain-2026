@@ -207,7 +207,7 @@ img {
 }
 
 .navbar-cta {
-  background: var(--blue);
+  background: linear-gradient(135deg, var(--blue-mid), var(--blue));
   color: var(--white);
   padding: 9px 22px;
   border-radius: var(--radius-pill);
@@ -215,15 +215,17 @@ img {
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;
-  transition: filter var(--transition), transform var(--transition);
+  transition: all var(--transition);
   white-space: nowrap;
   display: inline-flex;
   align-items: center;
+  box-shadow: 0 4px 10px rgba(4, 70, 154, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.15);
 }
 
 .navbar-cta:hover {
   filter: brightness(1.12);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(4, 70, 154, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.2);
 }
 
 /* ── Mobile hamburger ── */
@@ -273,7 +275,7 @@ img {
   margin-top: 10px;
   display: block;
   text-align: center;
-  background: var(--blue);
+  background: linear-gradient(135deg, var(--blue-mid), var(--blue));
   color: var(--white);
   padding: 13px;
   border-radius: var(--radius-pill);
@@ -281,6 +283,14 @@ img {
   font-size: .9rem;
   text-decoration: none;
   cursor: pointer;
+  transition: all var(--transition);
+  box-shadow: 0 4px 10px rgba(4, 70, 154, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+}
+
+.mobile-nav-cta:hover {
+  filter: brightness(1.12);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(4, 70, 154, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.2);
 }
 
 /* ════════════════════════════════════════════
@@ -288,7 +298,7 @@ img {
 ════════════════════════════════════════════ */
 .catalog-hero {
   position: relative;
-  background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 65%, #1d5cbf 100%);
+  @apply bg-gradient-to-b from-blue-900 via-blue-800 to-blue-800;
   padding: 72px var(--page-px) 60px;
   overflow: hidden;
 }
@@ -328,16 +338,16 @@ img {
 
 .catalog-hero-title {
   font-family: var(--font-body);
-  font-size: clamp(1.7rem, 5vw, 3.4rem);
-  font-weight: 600;
+  font-size: clamp(2rem, 5vw, 3.75rem);
+  font-weight: 700;
   color: var(--white);
-  line-height: 1.15;
+  line-height: 1.1;
   letter-spacing: -.01em;
 }
 
 .catalog-hero-title strong {
   font-style: normal;
-  font-weight: 500;
+  font-weight: 900;
 }
 
 .catalog-hero-sub {
@@ -1376,4 +1386,33 @@ img {
 .btn-cotizar {
   position: relative;
   z-index: 3;
+}
+
+/* ════════════════════════════════════════════
+   FADE IN UP ANIMATIONS
+════════════════════════════════════════════ */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: transform, opacity;
+}
+
+.animate-fade-in-up-delayed {
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+  will-change: transform, opacity;
+}
+
+.animate-fade-in-up-slow {
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+  will-change: transform, opacity;
 }
