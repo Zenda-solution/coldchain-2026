@@ -101,7 +101,7 @@ export default function ContactPage() {
             {/* Map */}
             <div className="h-full min-h-[400px] w-full bg-white/10 border border-white/20 rounded-3xl overflow-hidden backdrop-blur-md relative">
               <iframe 
-                src="https://www.google.com/maps?q=-0.270873486995697,-78.46299743652344&z=15&hl=en&output=embed"
+                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3989.7736965389613!2d-78.46552472503545!3d-0.27098469972634814!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMMKwMTYnMTUuNSJTIDc4wrAyNyc0Ni42Ilc!5e0!3m2!1sen!2sec!4v1777425987176!5m2!1sen!2sec"
                 width="100%" 
                 height="100%" 
                 style={{ border: 0, minHeight: '400px' }} 
