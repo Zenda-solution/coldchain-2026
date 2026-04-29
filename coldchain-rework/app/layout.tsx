@@ -41,6 +41,11 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
   },
+  icons: {
+    icon: "/images/hero/logo.webp",
+    shortcut: "/images/hero/logo.webp",
+    apple: "/images/hero/logo.webp",
+  },
   robots: {
     index: true,
     follow: true,
@@ -87,6 +92,9 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${albert.variable} ${serif.variable}`}>
       <head>
+        <link rel="icon" href="/images/hero/logo.webp" type="image/webp" />
+        <link rel="shortcut icon" href="/images/hero/logo.webp" type="image/webp" />
+        <link rel="apple-touch-icon" href="/images/hero/logo.webp" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
@@ -98,4 +106,4 @@ export default function RootLayout({
       </body>
     </html>
   );
-}
+}
