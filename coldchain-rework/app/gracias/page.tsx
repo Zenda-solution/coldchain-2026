@@ -23,7 +23,7 @@ export default function ThankYouPage() {
             
             <h1 className="text-3xl sm:text-4xl font-bold mb-4">¡Gracias por contactarnos!</h1>
             <p className="text-gray-600 text-base sm:text-lg mb-8">
-              Hemos recibido tu mensaje correctamente. Nuestro equipo revisará la información de tu proyecto y nos pondremos en contacto contigo a la brevedad posible.
+              Hemos recibido tu mensaje correctamente. Nuestro equipo revisará la información de tu proyecto y nos pondremos en contacto contigo lo más pronto posible.
             </p>
             
             <Link 

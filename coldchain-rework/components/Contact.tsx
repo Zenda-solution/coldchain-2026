@@ -1,25 +1,62 @@
 "use client";
 
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 export function ContactForm() {
   const router = useRouter();
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    router.push("/gracias");
+  const [formData, setFormData] = useState({
+    name: "",
+    company: "",
+    email: "",
+    phone: "",
+    interest: "",
+    message: "",
+  });
+
+  const [status, setStatus] = useState<"idle" | "loading" | "error">("idle");
+
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("loading");
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          access_key: "03fc3475-1a20-4e4d-baa4-d2720fb34211", // 🔑 Replace this
+          ...formData,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        router.push("/gracias");
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
+  };
+
+  const inputClass =
+    "w-full p-3 sm:p-4 rounded-xl border border-gray-300 bg-gray-50 shadow-inner focus:bg-white focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm sm:text-base transition-colors";
+
   return (
-    /*
-      The -mt-24 overlap looks great on desktop but causes the card to sit
-      under the section above on narrow screens. We zero it out on mobile
-      and restore it on md+.
-    */
     <section className="relative mt-0 md:-mt-24 py-16 sm:py-20 md:py-28 bg-yellow-400">
-
       <div className="max-w-[800px] mx-auto px-4 sm:px-6">
-
         {/* CARD */}
         <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8 md:p-12">
 
@@ -36,65 +73,101 @@ export function ContactForm() {
           {/* FORM */}
           <form className="space-y-4 sm:space-y-6" onSubmit={handleSubmit}>
 
-            {/* NOMBRE + EMPRESA — stack on mobile */}
+            {/* NOMBRE + EMPRESA */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <input
                 type="text"
+                name="name"
                 placeholder="Nombre completo"
-                className="w-full p-3 sm:p-4 rounded-xl border border-gray-300 bg-gray-50 shadow-inner focus:bg-white focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm sm:text-base transition-colors"
+                required
+                value={formData.name}
+                onChange={handleChange}
+                className={inputClass}
               />
               <input
                 type="text"
+                name="company"
                 placeholder="Empresa"
-                className="w-full p-3 sm:p-4 rounded-xl border border-gray-300 bg-gray-50 shadow-inner focus:bg-white focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm sm:text-base transition-colors"
+                value={formData.company}
+                onChange={handleChange}
+                className={inputClass}
               />
             </div>
 
-            {/* EMAIL + TEL — stack on mobile */}
+            {/* EMAIL + TEL */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <input
                 type="email"
+                name="email"
                 placeholder="Correo electrónico"
-                className="w-full p-3 sm:p-4 rounded-xl border border-gray-300 bg-gray-50 shadow-inner focus:bg-white focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm sm:text-base transition-colors"
+                required
+                value={formData.email}
+                onChange={handleChange}
+                className={inputClass}
               />
               <input
                 type="tel"
+                name="phone"
                 placeholder="Teléfono (opcional)"
-                className="w-full p-3 sm:p-4 rounded-xl border border-gray-300 bg-gray-50 shadow-inner focus:bg-white focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm sm:text-base transition-colors"
+                value={formData.phone}
+                onChange={handleChange}
+                className={inputClass}
               />
             </div>
 
             {/* SELECT */}
-            <select className="w-full p-3 sm:p-4 rounded-xl border border-gray-300 bg-gray-50 shadow-inner focus:bg-white text-gray-600 focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm sm:text-base transition-colors">
-              <option>¿En qué estás interesado?</option>
-              <option>Agro</option>
-              <option>Florícola</option>
-              <option>Alimentos</option>
-              <option>Industria</option>
+            <select
+              name="interest"
+              required
+              value={formData.interest}
+              onChange={handleChange}
+              className={`${inputClass} text-gray-600`}
+            >
+              <option value="" disabled>
+                ¿En qué estás interesado?
+              </option>
+              <option value="Agro">Agro</option>
+              <option value="Florícola">Florícola</option>
+              <option value="Alimentos">Alimentos</option>
+              <option value="Industria">Industria</option>
             </select>
 
             {/* MENSAJE */}
             <textarea
+              name="message"
               placeholder="Cuéntanos un poco más sobre lo que necesitas..."
-              className="w-full p-3 sm:p-4 rounded-xl border border-gray-300 bg-gray-50 shadow-inner focus:bg-white h-32 sm:h-36 resize-none focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm sm:text-base transition-colors"
+              required
+              value={formData.message}
+              onChange={handleChange}
+              className={`${inputClass} h-32 sm:h-36 resize-none`}
             />
+
+            {/* ERROR */}
+            {status === "error" && (
+              <p className="text-red-500 text-sm text-center">
+                Hubo un error al enviar el mensaje. Por favor intenta de nuevo.
+              </p>
+            )}
 
             {/* SUBMIT */}
             <div className="text-center pt-2 sm:pt-4">
               <button
                 type="submit"
+                disabled={status === "loading"}
                 className="group bg-yellow-400 text-black px-7 sm:px-8 py-3 rounded-full text-base sm:text-lg font-semibold
-                           flex items-center gap-2 mx-auto transition hover:scale-105 shadow-md"
+                           flex items-center gap-2 mx-auto transition hover:scale-105 shadow-md
+                           disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
               >
-                Enviar mensaje
-                <span className="transition group-hover:translate-x-1">→</span>
+                {status === "loading" ? "Enviando..." : "Enviar mensaje"}
+                {status !== "loading" && (
+                  <span className="transition group-hover:translate-x-1">→</span>
+                )}
               </button>
             </div>
 
           </form>
         </div>
       </div>
-
     </section>
   );
 }
