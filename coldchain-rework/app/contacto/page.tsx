@@ -42,7 +42,7 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
             {/* Contact Details */}
             <div className="bg-white rounded-3xl p-8 sm:p-12 shadow-xl flex flex-col justify-center text-blue-900">
-              <h2 className="text-2xl sm:text-3xl font-bold mb-8 text-yellow-500">Información de Contacto</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold mb-8 text-yellow-500">Información de Contacto y Soporte Técnico</h2>
               
               <div className="space-y-8">
                 {/* Address */}
@@ -55,7 +55,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-xl mb-1">Ubicación</h3>
-                    <p className="text-gray-600">Jorge Icaza N12F y Calle B a 300 metros de la calle Sebastián de Benalcázar.</p>
+                    <p className="text-gray-600">Jorge Icaza N12F y Calle B, a 300 metros de la calle Sebastián de Benalcázar.</p>
+                    <p className="text-blue-700 font-semibold text-base mt-1">La Armenia, Quito, Ecuador</p>
                   </div>
                 </div>
 

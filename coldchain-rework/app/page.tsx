@@ -9,14 +9,15 @@ import Link from "next/link";
 import { CTA_TEXTS, ROUTES } from "@/lib/siteConfig";
 import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 import type { Metadata } from "next";
+import { FeaturedProductsSlider } from "@/components/FeaturedProducts";
+import { client } from "@/lib/client";
+import type { Product } from "@/lib/localProducts";
 
 export const metadata: Metadata = {
   title: "Coldchain | Equipos de Medición para Agricultura e Industria en Ecuador",
   description:
     "Más de 30 años proveyendo equipos de medición y análisis para agricultura, floricultura, laboratorio e industria en Ecuador. Cotiza con Coldchain.",
-  alternates: {
-    canonical: "https://coldchain.com.ec",
-  },
+  alternates: { canonical: "https://coldchain.com.ec" },
   openGraph: {
     title: "Coldchain | Equipos de Medición en Ecuador",
     description:
@@ -31,20 +32,40 @@ export const metadata: Metadata = {
   },
 };
 
+async function getFeaturedProducts(): Promise<Product[]> {
+  return client.fetch(`
+    *[
+      _type == "product" &&
+      (
+        title match "*Proyem*" ||
+        title match "*Irrometer*" ||
+        title match "*termógrafo*"  ||
+        title match "*termografo*"  ||
+        title match "*Termógrafo*"  ||
+        title match "*Termografo*"
+      )
+    ][0...3] {
+      "name": title,
+      "slug": slug.current,
+      "image": image.asset->url,
+      "category": category->title,
+      "type": productType->title
+    }
+  `);
+}
 
-export default function Hero() {
+export default async function Hero() {
+  const featuredProducts = await getFeaturedProducts();
+
   return (
     <>
       <section className="w-full bg-gradient-to-b from-blue-900 via-blue-800 to-blue-100 text-white pt-12 sm:pt-16 pb-16 overflow-x-hidden">
-
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 flex flex-col items-center text-center gap-5 sm:gap-6">
 
-          {/* TRUST BADGE */}
           <div className="animate-fade-in-up px-4 py-1 rounded-full border border-white/20 bg-white/5 text-xs sm:text-sm text-white/80">
             +30 años en el mercado ecuatoriano
           </div>
 
-          {/* TITLE */}
           <h1 className="animate-fade-in-up-delayed w-full text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1]">
             Precisión y{" "}
             <span className="text-yellow-400">confianza</span>
@@ -52,13 +73,11 @@ export default function Hero() {
             para el sector agrícola
           </h1>
 
-          {/* DESC */}
           <p className="animate-fade-in-up-slow w-full max-w-4xl text-white/80 text-base sm:text-lg">
             Equipos de medición y análisis diseñados para optimizar procesos,
             mejorar la calidad y garantizar resultados confiables.
           </p>
 
-          {/* CTAs */}
           <div className="animate-fade-in-up-delayed flex gap-3 flex-wrap justify-center mt-1 sm:mt-2">
             <Link
               href={ROUTES.products}
@@ -76,14 +95,11 @@ export default function Hero() {
             </Link>
           </div>
 
-          {/* CAROUSEL */}
           <div className="animate-fade-in-up-slow w-full mt-3 sm:mt-4">
             <Carousel />
           </div>
-
         </div>
 
-        {/* SECTIONS */}
         <div className="mt-8 sm:mt-10">
           <About />
         </div>
@@ -92,6 +108,8 @@ export default function Hero() {
           <Products />
         </div>
 
+       
+
         <div className="mt-14 sm:mt-20">
           <MisionVision />
         </div>
@@ -99,13 +117,11 @@ export default function Hero() {
         <div className="mt-14 sm:mt-20">
           <CTA />
         </div>
-
       </section>
 
       <ContactForm />
       <Footer />
-
-       <FloatingWhatsApp />
+      <FloatingWhatsApp />
     </>
   );
 }

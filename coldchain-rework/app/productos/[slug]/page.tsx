@@ -68,23 +68,32 @@ export default async function ProductoDetallePage({
   const product = await getProduct(slug);
   if (!product) notFound();
 
-  const relatedProducts = await client.fetch(
-    `*[
-      _type == "product" &&
-      slug.current != $slug &&
-      category->title == $category
-    ][0...3]{
-      _id,
-      "name": title,
-      "slug": slug.current,
-      description,
-      "image": image.asset->url,
-      "pdf": technicalFile.asset->url,
-      "category": category->title,
-      "type": productType->title
-    }`,
-    { slug, category: product.category }
-  );
+  const relatedNames = ["Proyem", "Irrometer", "Termógrafos"];
+
+const relatedProducts = await client.fetch(
+  `*[
+    _type == "product" &&
+    slug.current != $slug &&
+    (
+      title match "*Proyem*" ||
+      title match "*Irrometer*" ||
+      title match "*termógrafo*" ||
+      title match "*termografo*" ||
+      title match "*Termógrafos*" ||
+      title match "*Termografos*"
+    )
+  ][0...3]{
+    _id,
+    "name": title,
+    "slug": slug.current,
+    description,
+    "image": image.asset->url,
+    "pdf": technicalFile.asset->url,
+    "category": category->title,
+    "type": productType->title
+  }`,
+  { slug }
+);
 
   const url = `${BASE}/productos/${slug}`;
 
@@ -140,4 +149,4 @@ export default async function ProductoDetallePage({
       <ProductDetailClient product={product} relatedProducts={relatedProducts} />
     </>
   );
-}
+}
