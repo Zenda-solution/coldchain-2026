@@ -2,13 +2,19 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { ChevronRight, Download, ArrowRight } from "lucide-react";
+import {
+  ChevronRight,
+  Download,
+  ArrowRight,
+  ChevronLeft,
+} from "lucide-react";
 import type { Product as LocalProduct } from "@/lib/localProducts";
 import { WHATSAPP_COTIZAR, MESSAGES } from "@/lib/siteConfig";
 
-type Product = LocalProduct;
+type Product = LocalProduct & {
+  marca?: string | null;
+};
 
-// Helper to get the correct image URL (handles full URLs, local images, and fallback)
 function getProductImageUrl(image?: string | null) {
   if (!image) return "/images/placeholder.webp";
   if (image.startsWith("http")) return image;
@@ -16,16 +22,36 @@ function getProductImageUrl(image?: string | null) {
   return `/images/${image}`;
 }
 
+function formatBrandName(brand?: string | null) {
+  if (!brand) return "";
+
+  return brand
+    .toLowerCase()
+    .split(" ")
+    .map((word) => {
+      if (!word) return word;
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    })
+    .join(" ");
+}
+
 export default function ProductDetailClient({
   product,
   relatedProducts = [],
+  featuredProducts = [],
 }: {
   product: Product;
   relatedProducts?: Product[];
+  featuredProducts?: Product[];
 }) {
   const [screen, setScreen] = useState<"desktop" | "tablet" | "mobile">("desktop");
   const [waHover, setWaHover] = useState(false);
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
+  const [featuredIndex, setFeaturedIndex] = useState(0);
+  const [relatedPage, setRelatedPage] = useState(0);
+  const [featuredTransitioning, setFeaturedTransitioning] = useState(false);
+  const [relatedTransitioning, setRelatedTransitioning] = useState(false);
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -40,14 +66,34 @@ export default function ProductDetailClient({
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+
+
+  useEffect(() => {
+  if (featuredProducts.length <= 1) return;
+
+  const interval = window.setInterval(() => {
+    const nextIndex =
+      featuredIndex === featuredProducts.length - 1 ? 0 : featuredIndex + 1;
+
+    changeFeaturedSlide(nextIndex);
+  }, 4000);
+
+  return () => window.clearInterval(interval);
+}, [featuredIndex, featuredProducts.length]);
+
+
   const waLink = useMemo(() => {
     const message = `Hola, me gustaría recibir información, precios y disponibilidad del producto: *${product.name}*.`;
     return `https://wa.me/${WHATSAPP_COTIZAR}?text=${encodeURIComponent(message)}`;
   }, [product.name]);
 
+  const productBrand = product.brand ?? product.marca ?? null;
+  const formattedProductBrand = formatBrandName(productBrand);
+
   const specs = [
     { label: "Categoría", value: product.category },
     { label: "Tipo", value: product.type },
+    { label: "Marca", value: formattedProductBrand || undefined },
     { label: "Presentación", value: product.presentation },
     { label: "Ingrediente activo", value: product.activeIngredient },
     { label: "Registro", value: product.registrationNumber },
@@ -57,6 +103,72 @@ export default function ProductDetailClient({
   const hasApplications = !!product.applications?.length;
   const hasSpecs = specs.length > 0;
   const hasRelated = relatedProducts.length > 0;
+  const hasFeatured = featuredProducts.length > 0;
+
+  const activeFeatured = featuredProducts[featuredIndex];
+
+  const relatedItemsPerPage =
+    screen === "desktop" ? 4 : screen === "tablet" ? 2 : 1;
+
+  const relatedPages = Math.ceil(relatedProducts.length / relatedItemsPerPage);
+
+  const visibleRelatedProducts = relatedProducts.slice(
+    relatedPage * relatedItemsPerPage,
+    relatedPage * relatedItemsPerPage + relatedItemsPerPage
+  );
+
+ useEffect(() => {
+  setRelatedPage(0);
+  setRelatedTransitioning(false);
+}, [screen, relatedProducts.length]);
+
+  const goToPreviousFeatured = () => {
+  const nextIndex =
+    featuredIndex === 0 ? featuredProducts.length - 1 : featuredIndex - 1;
+
+  changeFeaturedSlide(nextIndex);
+};
+
+const goToNextFeatured = () => {
+  const nextIndex =
+    featuredIndex === featuredProducts.length - 1 ? 0 : featuredIndex + 1;
+
+  changeFeaturedSlide(nextIndex);
+};
+
+const changeRelatedPage = (nextPage: number) => {
+  if (nextPage === relatedPage || relatedPages <= 1) return;
+
+  setRelatedTransitioning(true);
+
+  window.setTimeout(() => {
+    setRelatedPage(nextPage);
+    setRelatedTransitioning(false);
+  }, 180);
+};
+
+const goToPreviousRelated = () => {
+  const nextPage = relatedPage === 0 ? relatedPages - 1 : relatedPage - 1;
+  changeRelatedPage(nextPage);
+};
+
+const goToNextRelated = () => {
+  const nextPage = relatedPage === relatedPages - 1 ? 0 : relatedPage + 1;
+  changeRelatedPage(nextPage);
+};
+  
+
+const changeFeaturedSlide = (nextIndex: number) => {
+  if (nextIndex === featuredIndex || featuredProducts.length <= 1) return;
+
+  setFeaturedTransitioning(true);
+
+  window.setTimeout(() => {
+    setFeaturedIndex(nextIndex);
+    setFeaturedTransitioning(false);
+  }, 180);
+};
+
 
   const shellWidth =
     screen === "desktop"
@@ -126,7 +238,6 @@ export default function ProductDetailClient({
           position: "relative",
         }}
       >
-        {/* ambient accent */}
         <div
           style={{
             position: "absolute",
@@ -141,7 +252,6 @@ export default function ProductDetailClient({
           }}
         />
 
-        {/* breadcrumb */}
         <nav
           aria-label="Breadcrumb"
           style={{
@@ -171,7 +281,6 @@ export default function ProductDetailClient({
           <span style={{ color: "var(--navy)", fontWeight: 800 }}>{product.name}</span>
         </nav>
 
-        {/* top accent line */}
         <div
           style={{
             display: "flex",
@@ -199,7 +308,6 @@ export default function ProductDetailClient({
           />
         </div>
 
-        {/* main layout */}
         <div
           style={{
             display: "grid",
@@ -208,7 +316,6 @@ export default function ProductDetailClient({
             alignItems: "start",
           }}
         >
-          {/* MAIN PRODUCT BLOCK */}
           <section style={{ minWidth: 0 }}>
             <div
               style={{
@@ -218,7 +325,6 @@ export default function ProductDetailClient({
                 overflow: "hidden",
               }}
             >
-              {/* vertical accent line */}
               <div
                 style={{
                   position: "absolute",
@@ -239,23 +345,21 @@ export default function ProductDetailClient({
                   gap: 24,
                 }}
               >
-                {/* top content: image + heading */}
                 <div
                   style={{
                     display: "grid",
                     gridTemplateColumns: heroColumns,
                     gap: screen === "mobile" ? 18 : 28,
-                    alignItems: "center", // 🔥 clave para centrar vertical
+                    alignItems: "center",
                   }}
                 >
-                  {/* LEFT — TITLE CENTERED */}
                   <div
                     style={{
                       minWidth: 0,
                       display: "flex",
                       flexDirection: "column",
-                      justifyContent: "center", // 🔥 vertical center
-                      alignItems: screen === "mobile" ? "flex-start" : "center", // center desktop
+                      justifyContent: "center",
+                      alignItems: screen === "mobile" ? "flex-start" : "center",
                       textAlign: screen === "mobile" ? "left" : "center",
                       gap: 16,
                       height: "100%",
@@ -310,6 +414,19 @@ export default function ProductDetailClient({
                           {product.type}
                         </span>
                       )}
+
+                      {formattedProductBrand && (
+                        <span
+                          style={{
+                            ...tagBase,
+                            background: "rgba(15, 23, 42, 0.05)",
+                            color: "var(--navy)",
+                            border: "1px solid rgba(15, 23, 42, 0.10)",
+                          }}
+                        >
+                          {formattedProductBrand}
+                        </span>
+                      )}
                     </div>
 
                     <div
@@ -323,16 +440,11 @@ export default function ProductDetailClient({
                     />
                   </div>
 
-                  {/* RIGHT — IMAGE */}
                   <div style={{ minWidth: 0 }}>
                     <div
                       style={{
-
-
-                        maxWidth: 260, // 👈 ADD THIS
-                        margin: "0 auto", // 👈 center it inside column
-
-
+                        maxWidth: 260,
+                        margin: "0 auto",
                         width: "100%",
                         aspectRatio: "4 / 5",
                         borderRadius: 22,
@@ -355,14 +467,14 @@ export default function ProductDetailClient({
                           display: "block",
                           padding: 18,
                         }}
-                        onError={e => {
+                        onError={(e) => {
                           (e.target as HTMLImageElement).src = "/images/placeholder.webp";
                         }}
                       />
                     </div>
                   </div>
                 </div>
-                {/* description */}
+
                 <div
                   style={{
                     display: "flex",
@@ -384,7 +496,6 @@ export default function ProductDetailClient({
                   </p>
                 </div>
 
-                {/* PDF + specs */}
                 {(product.pdf || hasSpecs) && (
                   <div
                     style={{
@@ -569,7 +680,6 @@ export default function ProductDetailClient({
                   </div>
                 )}
 
-                {/* applications / features */}
                 {(hasApplications || hasFeatures) && (
                   <div
                     style={{
@@ -597,12 +707,7 @@ export default function ProductDetailClient({
                           }}
                         >
                           {product.applications!.map((item, index) => (
-                            <li
-                              key={`${item}-${index}`}
-                              style={{
-                                lineHeight: 1.6,
-                              }}
-                            >
+                            <li key={`${item}-${index}`} style={{ lineHeight: 1.6 }}>
                               {item}
                             </li>
                           ))}
@@ -629,12 +734,7 @@ export default function ProductDetailClient({
                           }}
                         >
                           {product.features!.map((item, index) => (
-                            <li
-                              key={`${item}-${index}`}
-                              style={{
-                                lineHeight: 1.6,
-                              }}
-                            >
+                            <li key={`${item}-${index}`} style={{ lineHeight: 1.6 }}>
                               {item}
                             </li>
                           ))}
@@ -647,12 +747,14 @@ export default function ProductDetailClient({
             </div>
           </section>
 
-          {/* CTA BLOCK */}
           <aside style={{ minWidth: 0 }}>
             <div
               style={{
                 position: screen === "desktop" ? "sticky" : "static",
                 top: screen === "desktop" ? 110 : undefined,
+                display: "flex",
+                flexDirection: "column",
+                gap: 18,
               }}
             >
               <div
@@ -678,6 +780,7 @@ export default function ProductDetailClient({
                       "linear-gradient(90deg, #25d366 0%, #18b85a 100%)",
                   }}
                 />
+
                 <div
                   style={{
                     position: "absolute",
@@ -689,6 +792,7 @@ export default function ProductDetailClient({
                     background: "rgba(37, 211, 102, 0.08)",
                   }}
                 />
+
                 <div
                   style={{
                     position: "absolute",
@@ -710,19 +814,8 @@ export default function ProductDetailClient({
                     gap: 18,
                   }}
                 >
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: 10,
-                    }}
-                  >
-                    <span
-                      style={{
-                        ...sectionTitle,
-                        color: "#159c4c",
-                      }}
-                    >
+                  <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                    <span style={{ ...sectionTitle, color: "#159c4c" }}>
                       Cotización
                     </span>
 
@@ -785,8 +878,11 @@ export default function ProductDetailClient({
                       boxShadow: waHover
                         ? "0 18px 34px rgba(37, 211, 102, 0.32)"
                         : "0 14px 26px rgba(37, 211, 102, 0.18)",
-                      transform: waHover ? "translateY(-2px) scale(1.015)" : "translateY(0) scale(1)",
-                      transition: "background 180ms ease, box-shadow 180ms ease, transform 180ms ease",
+                      transform: waHover
+                        ? "translateY(-2px) scale(1.015)"
+                        : "translateY(0) scale(1)",
+                      transition:
+                        "background 180ms ease, box-shadow 180ms ease, transform 180ms ease",
                       cursor: "pointer",
                     }}
                   >
@@ -815,11 +911,212 @@ export default function ProductDetailClient({
                   </div>
                 </div>
               </div>
+
+              {hasFeatured && activeFeatured && (
+                <div
+                  style={{
+                    borderRadius: 24,
+                    border: "1px solid rgba(14, 51, 107, 0.12)",
+                    background:
+                      "radial-gradient(circle at top right, rgba(234, 179, 8, 0.22), transparent 34%), linear-gradient(180deg, #ffffff 0%, #f8fbff 100%)",
+                    boxShadow: "0 16px 40px rgba(14, 51, 107, 0.08)",
+                    padding: 18,
+                    overflow: "hidden",
+                  }}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      gap: 12,
+                      marginBottom: 14,
+                    }}
+                  >
+                    <div>
+                      <span
+                        style={{
+                          ...sectionTitle,
+                          color: "var(--blue)",
+                          fontSize: "0.68rem",
+                        }}
+                      >
+                        Destacados
+                      </span>
+                      <h3
+                        style={{
+                          margin: "6px 0 0",
+                          color: "var(--navy)",
+                          fontSize: "1rem",
+                          fontWeight: 850,
+                          lineHeight: 1.1,
+                        }}
+                      >
+                        Productos recomendados
+                      </h3>
+                    </div>
+
+                    {featuredProducts.length > 1 && (
+                      <div style={{ display: "flex", gap: 6 }}>
+                        <button
+                          type="button"
+                          onClick={goToPreviousFeatured}
+                          aria-label="Producto destacado anterior"
+                          style={{
+                            width: 32,
+                            height: 32,
+                            borderRadius: 999,
+                            border: "1px solid rgba(14, 51, 107, 0.12)",
+                            background: "#fff",
+                            color: "var(--navy)",
+                            display: "inline-flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            cursor: "pointer",
+                          }}
+                        >
+                          <ChevronLeft size={16} />
+                        </button>
+
+                        <button
+                          type="button"
+                          onClick={goToNextFeatured}
+                          aria-label="Siguiente producto destacado"
+                          style={{
+                            width: 32,
+                            height: 32,
+                            borderRadius: 999,
+                            border: "1px solid rgba(14, 51, 107, 0.12)",
+                            background: "#fff",
+                            color: "var(--navy)",
+                            display: "inline-flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            cursor: "pointer",
+                          }}
+                        >
+                          <ArrowRight size={15} />
+                        </button>
+                      </div>
+                    )}
+                  </div>
+
+                  <Link
+                    href={`/productos/${activeFeatured.slug}`}
+                    style={{
+                      display: "grid",
+                      gap: 12,
+                      textDecoration: "none",
+                      color: "inherit",
+                      opacity: featuredTransitioning ? 0 : 1,
+                      transform: featuredTransitioning
+                        ? "translateX(10px) scale(0.985)"
+                        : "translateX(0) scale(1)",
+                      transition: "opacity 220ms ease, transform 220ms ease",
+                    }}
+                  >
+                    <div
+                      style={{
+                        aspectRatio: "4 / 3",
+                        borderRadius: 18,
+                        background: "#fff",
+                        border: "1px solid rgba(14, 51, 107, 0.08)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        padding: 14,
+                        overflow: "hidden",
+                      }}
+                    >
+                      <img
+                        src={getProductImageUrl(activeFeatured.image)}
+                        alt={activeFeatured.name}
+                        loading="lazy"
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "contain",
+                        }}
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).src = "/images/placeholder.webp";
+                        }}
+                      />
+                    </div>
+
+                    <div style={{ display: "grid", gap: 8 }}>
+                      {activeFeatured.brand && (
+                        <span
+                          style={{
+                            ...tagBase,
+                            width: "fit-content",
+                            background: "rgba(15, 23, 42, 0.05)",
+                            color: "var(--navy)",
+                            border: "1px solid rgba(15, 23, 42, 0.10)",
+                          }}
+                        >
+                          {formatBrandName(activeFeatured.brand)}
+                        </span>
+                      )}
+
+                      <h4
+                        style={{
+                          margin: 0,
+                          color: "var(--navy)",
+                          fontSize: "1rem",
+                          fontWeight: 850,
+                          lineHeight: 1.25,
+                        }}
+                      >
+                        {activeFeatured.name}
+                      </h4>
+
+                      <span
+                        style={{
+                          color: "var(--blue)",
+                          fontSize: "0.86rem",
+                          fontWeight: 800,
+                        }}
+                      >
+                        Ver producto →
+                      </span>
+                    </div>
+                  </Link>
+
+                  {featuredProducts.length > 1 && (
+                    <div
+                      style={{
+                        display: "flex",
+                        gap: 6,
+                        marginTop: 14,
+                      }}
+                    >
+                      {featuredProducts.map((item, index) => (
+                        <button
+                          key={item.slug}
+                          type="button"
+                          onClick={() => changeFeaturedSlide(index)}
+                          aria-label={`Ver producto destacado ${index + 1}`}
+                          style={{
+                            height: 6,
+                            flex: 1,
+                            borderRadius: 999,
+                            border: "none",
+                            cursor: "pointer",
+                            background:
+                              index === featuredIndex
+                                ? "var(--blue)"
+                                : "rgba(14, 51, 107, 0.14)",
+                          }}
+                        />
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           </aside>
         </div>
 
-        {/* related */}
         {hasRelated && (
           <section
             style={{
@@ -854,44 +1151,105 @@ export default function ProductDetailClient({
               />
             </div>
 
-            <div style={{ marginBottom: 20 }}>
-              <h2
-                style={{
-                  margin: "0 0 6px",
-                  color: "var(--navy)",
-                  fontSize: "1.45rem",
-                  fontWeight: 800,
-                  letterSpacing: "-0.02em",
-                }}
-              >
-                Productos relacionados
-              </h2>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "flex-end",
+                justifyContent: "space-between",
+                gap: 18,
+                marginBottom: 20,
+              }}
+            >
+              <div>
+                <h2
+                  style={{
+                    margin: "0 0 6px",
+                    color: "var(--navy)",
+                    fontSize: "1.45rem",
+                    fontWeight: 800,
+                    letterSpacing: "-0.02em",
+                  }}
+                >
+                  Productos relacionados
+                </h2>
 
-              <p
-                style={{
-                  margin: 0,
-                  color: "var(--gray-500)",
-                  fontSize: "0.95rem",
-                  lineHeight: 1.6,
-                }}
-              >
-                Explore más productos similares dentro del catálogo.
-              </p>
+                <p
+                  style={{
+                    margin: 0,
+                    color: "var(--gray-500)",
+                    fontSize: "0.95rem",
+                    lineHeight: 1.6,
+                  }}
+                >
+                  Explore productos similares por marca, tipo o categoría.
+                </p>
+              </div>
+
+              {relatedPages > 1 && (
+                <div style={{ display: "flex", gap: 8, flexShrink: 0 }}>
+                  <button
+                    type="button"
+                    onClick={goToPreviousRelated}
+                    aria-label="Ver productos relacionados anteriores"
+                    style={{
+                      width: 40,
+                      height: 40,
+                      borderRadius: 999,
+                      border: "1px solid rgba(14, 51, 107, 0.14)",
+                      background: "#ffffff",
+                      color: "var(--navy)",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      cursor: "pointer",
+                      boxShadow: "0 8px 20px rgba(14, 51, 107, 0.08)",
+                    }}
+                  >
+                    <ChevronLeft size={18} />
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={goToNextRelated}
+                    aria-label="Ver más productos relacionados"
+                    style={{
+                      width: 40,
+                      height: 40,
+                      borderRadius: 999,
+                      border: "1px solid rgba(14, 51, 107, 0.14)",
+                      background: "var(--blue)",
+                      color: "#ffffff",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      cursor: "pointer",
+                      boxShadow: "0 8px 20px rgba(40, 123, 255, 0.18)",
+                    }}
+                  >
+                    <ArrowRight size={18} />
+                  </button>
+                </div>
+              )}
             </div>
 
             <div
-              style={{
-                display: "grid",
-                gridTemplateColumns:
-                  screen === "mobile"
-                    ? "1fr"
-                    : screen === "tablet"
-                      ? "repeat(2, minmax(0, 1fr))"
-                      : "repeat(3, minmax(0, 1fr))",
-                gap: 20,
-              }}
-            >
-              {relatedProducts.map((item) => (
+                style={{
+                  display: "grid",
+                  gridTemplateColumns:
+                    screen === "desktop"
+                      ? "repeat(4, minmax(0, 1fr))"
+                      : screen === "tablet"
+                        ? "repeat(2, minmax(0, 1fr))"
+                        : "1fr",
+                  gap: 20,
+                  opacity: relatedTransitioning ? 0 : 1,
+                  transform: relatedTransitioning
+                    ? "translateX(12px) scale(0.99)"
+                    : "translateX(0) scale(1)",
+                  transition: "opacity 220ms ease, transform 220ms ease",
+                }}
+              >
+              {visibleRelatedProducts.map((item) => (
                 <Link
                   key={item.slug}
                   href={`/productos/${item.slug}`}
@@ -903,10 +1261,12 @@ export default function ProductDetailClient({
                     textDecoration: "none",
                     display: "flex",
                     flexDirection: "column",
-                    transform: hoveredCard === item.slug ? "translateY(-6px)" : "translateY(0)",
-                    boxShadow: hoveredCard === item.slug
-                      ? "0 22px 48px rgba(14, 51, 107, 0.14)"
-                      : softCard.boxShadow,
+                    transform:
+                      hoveredCard === item.slug ? "translateY(-6px)" : "translateY(0)",
+                    boxShadow:
+                      hoveredCard === item.slug
+                        ? "0 22px 48px rgba(14, 51, 107, 0.14)"
+                        : softCard.boxShadow,
                     transition: "transform 200ms ease, box-shadow 200ms ease",
                     cursor: "pointer",
                   }}
@@ -918,6 +1278,10 @@ export default function ProductDetailClient({
                         "linear-gradient(180deg, #f8fbff 0%, #f5f8fb 100%)",
                       overflow: "hidden",
                       borderBottom: "1px solid rgba(14, 51, 107, 0.08)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      padding: 14,
                     }}
                   >
                     <img
@@ -927,10 +1291,10 @@ export default function ProductDetailClient({
                       style={{
                         width: "100%",
                         height: "100%",
-                        objectFit: "cover",
+                        objectFit: "contain",
                         display: "block",
                       }}
-                      onError={e => {
+                      onError={(e) => {
                         (e.target as HTMLImageElement).src = "/images/placeholder.webp";
                       }}
                     />
@@ -963,6 +1327,7 @@ export default function ProductDetailClient({
                           {item.category}
                         </span>
                       )}
+
                       {item.type && (
                         <span
                           style={{
@@ -973,6 +1338,19 @@ export default function ProductDetailClient({
                           }}
                         >
                           {item.type}
+                        </span>
+                      )}
+
+                      {item.brand && (
+                        <span
+                          style={{
+                            ...tagBase,
+                            background: "rgba(15, 23, 42, 0.05)",
+                            color: "var(--navy)",
+                            border: "1px solid rgba(15, 23, 42, 0.10)",
+                          }}
+                        >
+                          {formatBrandName(item.brand)}
                         </span>
                       )}
                     </div>
@@ -1002,6 +1380,38 @@ export default function ProductDetailClient({
                 </Link>
               ))}
             </div>
+
+            {relatedPages > 1 && (
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  gap: 7,
+                  marginTop: 18,
+                }}
+              >
+                {Array.from({ length: relatedPages }).map((_, index) => (
+                  <button
+                    key={index}
+                    type="button"
+                    onClick={() => changeRelatedPage(index)}
+                    aria-label={`Ver grupo de productos relacionados ${index + 1}`}
+                    style={{
+                      width: index === relatedPage ? 28 : 8,
+                      height: 8,
+                      borderRadius: 999,
+                      border: "none",
+                      cursor: "pointer",
+                      background:
+                        index === relatedPage
+                          ? "var(--blue)"
+                          : "rgba(14, 51, 107, 0.16)",
+                      transition: "width 180ms ease, background 180ms ease",
+                    }}
+                  />
+                ))}
+              </div>
+            )}
           </section>
         )}
       </div>
