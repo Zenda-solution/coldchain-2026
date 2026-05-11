@@ -8,6 +8,14 @@ interface Props {
   products: Product[];
 }
 
+// Helper to get the correct image URL (handles full URLs, local images, and fallback)
+function getProductImageUrl(image?: string | null) {
+  if (!image) return "/images/placeholder.webp";
+  if (image.startsWith("http")) return image;
+  if (image.startsWith("/")) return image;
+  return `/images/${image}`;
+}
+
 export function FeaturedProductsSlider({ products }: Props) {
   const [active, setActive] = useState(0);
   const [animating, setAnimating] = useState(false);
@@ -46,19 +54,13 @@ export function FeaturedProductsSlider({ products }: Props) {
         <div className={`fp-card fp-card--${direction} ${animating ? "fp-card--exit" : "fp-card--enter"}`}>
           {/* Left: image */}
           <div className="fp-card-img">
-            {p.image
-              ? <img src={p.image} alt={p.name} />
-              : (
-                <div className="fp-card-img-placeholder">
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none"
-                    stroke="var(--gray-400)" strokeWidth="1.5">
-                    <rect x="3" y="3" width="18" height="18" rx="2" />
-                    <circle cx="8.5" cy="8.5" r="1.5" />
-                    <path d="m21 15-5-5L5 21" />
-                  </svg>
-                </div>
-              )
-            }
+            <img
+              src={getProductImageUrl(p.image)}
+              alt={p.name}
+              onError={e => {
+                (e.target as HTMLImageElement).src = "/images/placeholder.webp";
+              }}
+            />
           </div>
 
           {/* Right: info */}
