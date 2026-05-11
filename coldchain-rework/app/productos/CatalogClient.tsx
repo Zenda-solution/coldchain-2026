@@ -53,15 +53,25 @@ export default function CatalogClient({ products }: { products: Product[] }) {
     });
   }, [products]);
 
-  // Normalize for search: remove diacritics, punctuation, and lowercase
   const normalizeForSearch = (s: string) =>
     s
       .normalize("NFD")
       .replace(/\p{Diacritic}/gu, "")
       .toLowerCase()
-      .replace(/[^a-z0-9\s]/gi, "") // remove punctuation
+      .replace(/[^a-z0-9\s]/gi, "")
       .replace(/\s+/g, " ")
       .trim();
+
+  const formatBrandName = (brand: string) => {
+    return brand
+      .toLowerCase()
+      .split(" ")
+      .map((word) => {
+        if (!word) return word;
+        return word.charAt(0).toUpperCase() + word.slice(1);
+      })
+      .join(" ");
+  };
 
   const rawCategories = Array.from(
     new Set(uniqueProducts.map((p) => p.category).filter((c): c is string => !!c))
@@ -90,6 +100,7 @@ export default function CatalogClient({ products }: { products: Product[] }) {
 
   const param = searchParams?.get("categoria");
   const typeParam = searchParams?.get("tipo");
+  const brandParam = searchParams?.get("marca");
 
   const findCategoryFromParam = (catParam?: string | null) => {
     if (!catParam) return null;
@@ -142,27 +153,79 @@ export default function CatalogClient({ products }: { products: Product[] }) {
 
   const selectedType = typeParam ? findTypeFromParam(typeParam) ?? ALL : ALL;
 
+  const allBrands = Array.from(
+    new Set(
+      uniqueProducts
+        .filter((p) => {
+          const matchCategory = selectedCategory === ALL || p.category === selectedCategory;
+          const matchType = selectedType === ALL || p.type === selectedType;
+
+          return matchCategory && matchType;
+        })
+        .map((p) => p.brand)
+        .filter((b): b is string => !!b)
+    )
+  ).sort((a, b) => a.localeCompare(b));
+
+  const findBrandFromParam = (incomingBrand?: string | null) => {
+    if (!incomingBrand) return null;
+
+    const direct = allBrands.find((b) => b.toLowerCase() === incomingBrand.toLowerCase());
+    if (direct) return direct;
+
+    const paramNorm = normalizeForSearch(incomingBrand);
+
+    const fuzzy = allBrands.find((b) => {
+      const bNorm = normalizeForSearch(b);
+      return bNorm === paramNorm || bNorm.includes(paramNorm) || paramNorm.includes(bNorm);
+    });
+
+    if (fuzzy) return fuzzy;
+    if (incomingBrand.toLowerCase() === ALL.toLowerCase()) return ALL;
+
+    return null;
+  };
+
+  const selectedBrand = brandParam ? findBrandFromParam(brandParam) ?? ALL : ALL;
+
   const normSearch = normalizeForSearch(search);
+
   const filtered = uniqueProducts.filter((p) => {
     const matchCat = selectedCategory === ALL || p.category === selectedCategory;
     const matchType = selectedType === ALL || p.type === selectedType;
-    const nameNorm = normalizeForSearch(p.name);
+    const matchBrand = selectedBrand === ALL || p.brand === selectedBrand;
+
+    const titleNorm = normalizeForSearch(p.name);
     const descNorm = p.description ? normalizeForSearch(p.description) : "";
+    const brandNorm = p.brand ? normalizeForSearch(p.brand) : "";
+
     const matchSearch =
       normSearch === "" ||
-      nameNorm.includes(normSearch) ||
-      descNorm.includes(normSearch);
+      titleNorm.includes(normSearch) ||
+      descNorm.includes(normSearch) ||
+      brandNorm.includes(normSearch);
 
-    return matchCat && matchType && matchSearch;
+    return matchCat && matchType && matchBrand && matchSearch;
   });
 
-  const updateFilters = ({ category, type }: { category?: string; type?: string }) => {
+  const updateFilters = ({
+    category,
+    type,
+    brand,
+  }: {
+    category?: string;
+    type?: string;
+    brand?: string;
+  }) => {
     const nextCategory = category ?? selectedCategory;
     const nextType = type ?? selectedType;
+    const nextBrand = brand ?? selectedBrand;
+
     const params = new URLSearchParams();
 
     if (nextCategory !== ALL) params.set("categoria", nextCategory);
     if (nextType !== ALL) params.set("tipo", nextType);
+    if (nextBrand !== ALL) params.set("marca", nextBrand);
 
     const query = params.toString();
     router.push(query ? `/productos?${query}` : "/productos");
@@ -174,7 +237,10 @@ export default function CatalogClient({ products }: { products: Product[] }) {
   };
 
   const hasActiveFilters =
-    selectedCategory !== ALL || selectedType !== ALL || search.trim() !== "";
+    selectedCategory !== ALL ||
+    selectedType !== ALL ||
+    selectedBrand !== ALL ||
+    search.trim() !== "";
 
   return (
     <div>
@@ -208,7 +274,7 @@ export default function CatalogClient({ products }: { products: Product[] }) {
         <button className="mobile-filter-btn" onClick={() => setSidebarOpen((v) => !v)}>
           <IconFilter />
           Filtros
-          {(selectedCategory !== ALL || selectedType !== ALL) && (
+          {(selectedCategory !== ALL || selectedType !== ALL || selectedBrand !== ALL) && (
             <span className="filter-active-dot" />
           )}
         </button>
@@ -242,7 +308,7 @@ export default function CatalogClient({ products }: { products: Product[] }) {
                   className={`cat-btn${selectedCategory === cat ? " active" : ""}`}
                   onClick={() => {
                     setSidebarOpen(false);
-                    updateFilters({ category: cat, type: ALL });
+                    updateFilters({ category: cat, type: ALL, brand: ALL });
                   }}
                 >
                   <span className="cat-dot" />
@@ -316,7 +382,13 @@ export default function CatalogClient({ products }: { products: Product[] }) {
                 <select
                   className="catalog-filter-select"
                   value={selectedCategory}
-                  onChange={(e) => updateFilters({ category: e.target.value, type: ALL })}
+                  onChange={(e) =>
+                    updateFilters({
+                      category: e.target.value,
+                      type: ALL,
+                      brand: ALL,
+                    })
+                  }
                 >
                   {[ALL, ...categories].map((cat) => (
                     <option key={cat} value={cat}>
@@ -332,11 +404,32 @@ export default function CatalogClient({ products }: { products: Product[] }) {
                 <select
                   className="catalog-filter-select"
                   value={selectedType}
-                  onChange={(e) => updateFilters({ type: e.target.value })}
+                  onChange={(e) =>
+                    updateFilters({
+                      type: e.target.value,
+                      brand: ALL,
+                    })
+                  }
                 >
                   {[ALL, ...allTypes].map((type) => (
                     <option key={type} value={type}>
                       {type}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="catalog-filter-inline catalog-filter-inline--brand">
+                <span className="catalog-filter-inline-label">Marca</span>
+
+                <select
+                  className="catalog-filter-select"
+                  value={selectedBrand}
+                  onChange={(e) => updateFilters({ brand: e.target.value })}
+                >
+                  {[ALL, ...allBrands].map((brand) => (
+                    <option key={brand} value={brand}>
+                      {brand === ALL ? brand : formatBrandName(brand)}
                     </option>
                   ))}
                 </select>
@@ -353,13 +446,13 @@ export default function CatalogClient({ products }: { products: Product[] }) {
             </div>
           </div>
 
-          {(selectedCategory !== ALL || selectedType !== ALL) && (
+          {(selectedCategory !== ALL || selectedType !== ALL || selectedBrand !== ALL) && (
             <div className="catalog-active-filters">
               {selectedCategory !== ALL && (
                 <div className="active-filter-chip">
                   <span>{displayNameFor(selectedCategory)}</span>
                   <button
-                    onClick={() => updateFilters({ category: ALL })}
+                    onClick={() => updateFilters({ category: ALL, type: ALL, brand: ALL })}
                     aria-label="Quitar filtro de categoría"
                   >
                     ×
@@ -371,8 +464,20 @@ export default function CatalogClient({ products }: { products: Product[] }) {
                 <div className="active-filter-chip">
                   <span>{selectedType}</span>
                   <button
-                    onClick={() => updateFilters({ type: ALL })}
+                    onClick={() => updateFilters({ type: ALL, brand: ALL })}
                     aria-label="Quitar filtro de tipo"
+                  >
+                    ×
+                  </button>
+                </div>
+              )}
+
+              {selectedBrand !== ALL && (
+                <div className="active-filter-chip">
+                  <span>{formatBrandName(selectedBrand)}</span>
+                  <button
+                    onClick={() => updateFilters({ brand: ALL })}
+                    aria-label="Quitar filtro de marca"
                   >
                     ×
                   </button>
@@ -439,6 +544,12 @@ export default function CatalogClient({ products }: { products: Product[] }) {
 
                         {product.type && (
                           <span className="card-type-badge">{product.type}</span>
+                        )}
+
+                        {product.brand && (
+                          <span className="card-brand-badge">
+                            {formatBrandName(product.brand)}
+                          </span>
                         )}
                       </div>
                     </div>

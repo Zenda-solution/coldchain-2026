@@ -38,7 +38,9 @@ async function getProducts(): Promise<Product[]> {
       "image": image.asset->url,
       "pdf": technicalFile.asset->url,
       "category": category->title,
-      "type": productType->title
+      "type": productType->title,
+      "brand": coalesce(marca->title, brand->title),
+      "brandSlug": coalesce(marca->slug.current, brand->slug.current),
     }
   `);
 }
