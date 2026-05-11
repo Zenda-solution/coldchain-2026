@@ -63,14 +63,13 @@ export default async function Hero() {
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 flex flex-col items-center text-center gap-5 sm:gap-6">
 
           <div className="animate-fade-in-up px-4 py-1 rounded-full border border-white/20 bg-white/5 text-xs sm:text-sm text-white/80">
-            +30 años en el mercado ecuatoriano
+            +25 años en el mercado ecuatoriano
           </div>
 
           <h1 className="animate-fade-in-up-delayed w-full text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1]">
-            Precisión y{" "}
-            <span className="text-yellow-400">confianza</span>
-            <br />
-            para el sector agrícola
+            Control, {" "}
+            <span className="text-yellow-400">precisión </span>
+             y trazabilidad en cada etapa de tu cadena productiva
           </h1>
 
           <p className="animate-fade-in-up-slow w-full max-w-4xl text-white/80 text-base sm:text-lg">

@@ -1,9 +1,9 @@
 "use client";
 
-import { WHATSAPP } from "../lib/siteConfig";
+import { WHATSAPP_FLOAT } from "../lib/siteConfig";
 
 export function FloatingWhatsApp() {
-  const phone = WHATSAPP; // from site config
+  const phone = WHATSAPP_FLOAT; // from site config
 
   const message = encodeURIComponent(
     "Hola, me gustaría obtener más información sobre sus productos."

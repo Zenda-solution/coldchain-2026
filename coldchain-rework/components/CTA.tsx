@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { WHATSAPP, CTA_TEXTS } from "@/lib/siteConfig";
+import { WHATSAPP_COTIZAR, CTA_TEXTS } from "@/lib/siteConfig";
 
 export function CTA() {
   return (
@@ -41,7 +41,7 @@ export function CTA() {
 
         <div className="mt-4 md:mt-6 flex gap-4 flex-wrap justify-center">
           <a
-            href={`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(CTA_TEXTS.startConversationMessage)}`}
+            href={`https://wa.me/${WHATSAPP_COTIZAR}?text=${encodeURIComponent(CTA_TEXTS.startConversationMessage)}`}
             target="_blank"
             rel="noopener noreferrer"
             role="button"

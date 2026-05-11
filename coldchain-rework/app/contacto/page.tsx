@@ -1,4 +1,4 @@
-import { ContactForm } from "@/components/Contact";
+import { TrabajaConNosotrosCTA } from "@/components/TrabajaConNosotrosCTA";
 import { Footer } from "@/components/Footer";
 import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 import type { Metadata } from "next";
@@ -117,7 +117,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <ContactForm />
+      <TrabajaConNosotrosCTA />
       <Footer />
       <FloatingWhatsApp />
     </>

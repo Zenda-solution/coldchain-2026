@@ -1,6 +1,9 @@
 export type NavCategory = { label: string; param?: string };
 
-export const WHATSAPP = "593958871713";
+// WhatsApp numbers for different use cases
+export const WHATSAPP_TRABAJA = "593998873840"; // Trabaja con Nosotros (Contact page)
+export const WHATSAPP_COTIZAR = "593958871713"; // Cotizar button
+export const WHATSAPP_FLOAT = "593987004993";   // Floating WhatsApp button
 
 export const NAV_CATEGORIES: NavCategory[] = [
   { label: "Agricultura", param: "Agricultura" },

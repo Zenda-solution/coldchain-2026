@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { NAV_CATEGORIES, categoryHref, CTA_TEXTS, ROUTES, WHATSAPP } from "@/lib/siteConfig";
+import { NAV_CATEGORIES, categoryHref, CTA_TEXTS, ROUTES, WHATSAPP_FLOAT } from "@/lib/siteConfig";
 
 const categories = NAV_CATEGORIES.map((c) => ({
   label: c.label,
@@ -15,7 +15,7 @@ export default function Navbar() {
   const [dropdownOpen, setDropdown] = useState(false);
   const leaveTimeout = useRef<number | null>(null);
 
-  const waHref = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(CTA_TEXTS.startConversationMessage)}`;
+  const waHref = `https://wa.me/${WHATSAPP_FLOAT}?text=${encodeURIComponent(CTA_TEXTS.startConversationMessage)}`;
 
   useEffect(() => {
     return () => {

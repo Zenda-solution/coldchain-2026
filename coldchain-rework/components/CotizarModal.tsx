@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { WHATSAPP_COTIZAR } from "../lib/siteConfig";
 import { X } from "lucide-react";
 
 interface CotizarModalProps {
@@ -24,7 +25,7 @@ export default function CotizarModal({ onClose }: CotizarModalProps) {
     e.preventDefault();
     const text = `Hola, me interesa cotizar:\n\nNombre: ${formData.nombre}\nEmail: ${formData.email}\nTeléfono: ${formData.telefono}\nProducto: ${formData.producto}\nMensaje: ${formData.mensaje}`;
     const encoded = encodeURIComponent(text);
-    window.open(`https://wa.me/5491100000000?text=${encoded}`, "_blank");
+    window.open(`https://wa.me/${WHATSAPP_COTIZAR}?text=${encoded}`, "_blank");
     onClose();
   };
 

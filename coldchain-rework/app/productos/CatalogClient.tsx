@@ -4,10 +4,10 @@ import { useState, useMemo } from "react";
 import Image from "next/image";
 import { useSearchParams, useRouter } from "next/navigation";
 import type { Product } from "./page";
-import { WHATSAPP, NAV_CATEGORIES, ALL, CTA_TEXTS } from "@/lib/siteConfig";
+import { WHATSAPP_COTIZAR, NAV_CATEGORIES, ALL, CTA_TEXTS } from "@/lib/siteConfig";
 
 function waLink(name: string) {
-  return `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(
+  return `https://wa.me/${WHATSAPP_COTIZAR}?text=${encodeURIComponent(
     `Hola, me gustaría cotizar el producto: *${name}*. ¿Podrían darme más información?`
   )}`;
 }
@@ -53,12 +53,14 @@ export default function CatalogClient({ products }: { products: Product[] }) {
     });
   }, [products]);
 
-  const normalizeForSort = (s: string) =>
+  // Normalize for search: remove diacritics, punctuation, and lowercase
+  const normalizeForSearch = (s: string) =>
     s
       .normalize("NFD")
       .replace(/\p{Diacritic}/gu, "")
       .toLowerCase()
-      .replace(/[^a-z0-9]+/g, " ")
+      .replace(/[^a-z0-9\s]/gi, "") // remove punctuation
+      .replace(/\s+/g, " ")
       .trim();
 
   const rawCategories = Array.from(
@@ -69,18 +71,18 @@ export default function CatalogClient({ products }: { products: Product[] }) {
 
   const categories = [
     ...preferredParams.filter((p) =>
-      rawCategories.some((c) => normalizeForSort(c) === normalizeForSort(p))
+      rawCategories.some((c) => normalizeForSearch(c) === normalizeForSearch(p))
     ),
     ...rawCategories.filter(
-      (c) => !preferredParams.some((p) => normalizeForSort(c) === normalizeForSort(p))
+      (c) => !preferredParams.some((p) => normalizeForSearch(c) === normalizeForSearch(p))
     ),
   ];
 
   const displayNameFor = (cat: string) => {
     const match = NAV_CATEGORIES.find(
       (n) =>
-        normalizeForSort(n.param ?? n.label) === normalizeForSort(cat) ||
-        normalizeForSort(n.label) === normalizeForSort(cat)
+        normalizeForSearch(n.param ?? n.label) === normalizeForSearch(cat) ||
+        normalizeForSearch(n.label) === normalizeForSearch(cat)
     );
 
     return match ? match.label : cat;
@@ -95,10 +97,10 @@ export default function CatalogClient({ products }: { products: Product[] }) {
     const direct = categories.find((c) => c.toLowerCase() === catParam.toLowerCase());
     if (direct) return direct;
 
-    const paramNorm = normalizeForSort(catParam);
+    const paramNorm = normalizeForSearch(catParam);
 
     const fuzzy = categories.find((c) => {
-      const cNorm = normalizeForSort(c);
+      const cNorm = normalizeForSearch(c);
       return cNorm === paramNorm || cNorm.includes(paramNorm) || paramNorm.includes(cNorm);
     });
 
@@ -125,10 +127,10 @@ export default function CatalogClient({ products }: { products: Product[] }) {
     const direct = allTypes.find((t) => t.toLowerCase() === incomingType.toLowerCase());
     if (direct) return direct;
 
-    const paramNorm = normalizeForSort(incomingType);
+    const paramNorm = normalizeForSearch(incomingType);
 
     const fuzzy = allTypes.find((t) => {
-      const tNorm = normalizeForSort(t);
+      const tNorm = normalizeForSearch(t);
       return tNorm === paramNorm || tNorm.includes(paramNorm) || paramNorm.includes(tNorm);
     });
 
@@ -140,18 +142,19 @@ export default function CatalogClient({ products }: { products: Product[] }) {
 
   const selectedType = typeParam ? findTypeFromParam(typeParam) ?? ALL : ALL;
 
-  const filtered = useMemo(() => {
-    return uniqueProducts.filter((p) => {
-      const matchCat = selectedCategory === ALL || p.category === selectedCategory;
-      const matchType = selectedType === ALL || p.type === selectedType;
-      const matchSearch =
-        search === "" ||
-        p.name.toLowerCase().includes(search.toLowerCase()) ||
-        p.description?.toLowerCase().includes(search.toLowerCase());
+  const normSearch = normalizeForSearch(search);
+  const filtered = uniqueProducts.filter((p) => {
+    const matchCat = selectedCategory === ALL || p.category === selectedCategory;
+    const matchType = selectedType === ALL || p.type === selectedType;
+    const nameNorm = normalizeForSearch(p.name);
+    const descNorm = p.description ? normalizeForSearch(p.description) : "";
+    const matchSearch =
+      normSearch === "" ||
+      nameNorm.includes(normSearch) ||
+      descNorm.includes(normSearch);
 
-      return matchCat && matchType && matchSearch;
-    });
-  }, [uniqueProducts, selectedCategory, selectedType, search]);
+    return matchCat && matchType && matchSearch;
+  });
 
   const updateFilters = ({ category, type }: { category?: string; type?: string }) => {
     const nextCategory = category ?? selectedCategory;
@@ -262,7 +265,7 @@ export default function CatalogClient({ products }: { products: Product[] }) {
           </p>
 
           <a
-            href={`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(
+            href={`https://wa.me/${WHATSAPP_COTIZAR}?text=${encodeURIComponent(
               "Hola, necesito asesoría sobre sus productos agrícolas."
             )}`}
             target="_blank"

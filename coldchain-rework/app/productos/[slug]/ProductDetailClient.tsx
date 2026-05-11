@@ -4,9 +4,17 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { ChevronRight, Download, ArrowRight } from "lucide-react";
 import type { Product as LocalProduct } from "@/lib/localProducts";
-import { WHATSAPP, MESSAGES } from "@/lib/siteConfig";
+import { WHATSAPP_COTIZAR, MESSAGES } from "@/lib/siteConfig";
 
 type Product = LocalProduct;
+
+// Helper to get the correct image URL (handles full URLs, local images, and fallback)
+function getProductImageUrl(image?: string | null) {
+  if (!image) return "/images/placeholder.webp";
+  if (image.startsWith("http")) return image;
+  if (image.startsWith("/")) return image;
+  return `/images/${image}`;
+}
 
 export default function ProductDetailClient({
   product,
@@ -34,7 +42,7 @@ export default function ProductDetailClient({
 
   const waLink = useMemo(() => {
     const message = `Hola, me gustaría recibir información, precios y disponibilidad del producto: *${product.name}*.`;
-    return `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(message)}`;
+    return `https://wa.me/${WHATSAPP_COTIZAR}?text=${encodeURIComponent(message)}`;
   }, [product.name]);
 
   const specs = [
@@ -336,33 +344,21 @@ export default function ProductDetailClient({
                         justifyContent: "center",
                       }}
                     >
-                      {product.image ? (
-                        <img
-                          src={product.image}
-                          alt={product.name}
-                          loading="lazy"
-                          style={{
-                            width: "100%",
-                            height: "80%",
-                            objectFit: "contain",
-                            display: "block",
-                            padding: 18,
-                          }}
-                        />
-                      ) : (
-                        <div
-                          style={{
-                            width: "100%",
-                            height: "100%",
-                            display: "grid",
-                            placeItems: "center",
-                            color: "var(--gray-400)",
-                            fontSize: "0.95rem",
-                          }}
-                        >
-                          Sin imagen
-                        </div>
-                      )}
+                      <img
+                        src={getProductImageUrl(product.image)}
+                        alt={product.name}
+                        loading="lazy"
+                        style={{
+                          width: "100%",
+                          height: "80%",
+                          objectFit: "contain",
+                          display: "block",
+                          padding: 18,
+                        }}
+                        onError={e => {
+                          (e.target as HTMLImageElement).src = "/images/placeholder.webp";
+                        }}
+                      />
                     </div>
                   </div>
                 </div>
@@ -924,32 +920,20 @@ export default function ProductDetailClient({
                       borderBottom: "1px solid rgba(14, 51, 107, 0.08)",
                     }}
                   >
-                    {item.image ? (
-                      <img
-                        src={item.image}
-                        alt={item.name}
-                        loading="lazy"
-                        style={{
-                          width: "100%",
-                          height: "100%",
-                          objectFit: "cover",
-                          display: "block",
-                        }}
-                      />
-                    ) : (
-                      <div
-                        style={{
-                          width: "100%",
-                          height: "100%",
-                          display: "grid",
-                          placeItems: "center",
-                          color: "var(--gray-400)",
-                          fontSize: "0.9rem",
-                        }}
-                      >
-                        Sin imagen
-                      </div>
-                    )}
+                    <img
+                      src={getProductImageUrl(item.image)}
+                      alt={item.name}
+                      loading="lazy"
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                        display: "block",
+                      }}
+                      onError={e => {
+                        (e.target as HTMLImageElement).src = "/images/placeholder.webp";
+                      }}
+                    />
                   </div>
 
                   <div
