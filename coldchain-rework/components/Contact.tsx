@@ -13,9 +13,11 @@ export function ContactForm() {
     phone: "",
     interest: "",
     message: "",
+    website: "",
   });
 
   const [status, setStatus] = useState<"idle" | "loading" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -28,27 +30,37 @@ export function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("loading");
+    setErrorMessage("");
 
     try {
-      const res = await fetch("https://api.web3forms.com/submit", {
+      const res = await fetch("/api/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
         body: JSON.stringify({
-          access_key: "03fc3475-1a20-4e4d-baa4-d2720fb34211", // 🔑 Replace this
-          reply_to: "coldchainsoporteweb@gmail.com",
-          ...formData,
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          company: formData.company,
+          interest: formData.interest,
+          message: formData.message,
+          website: formData.website,
         }),
       });
 
       const data = await res.json();
 
-      if (data.success) {
+      if (res.ok && data.success) {
         router.push("/gracias");
       } else {
         setStatus("error");
+        setErrorMessage(data?.message || "No se pudo enviar el formulario. Intenta nuevamente.");
       }
     } catch {
       setStatus("error");
+      setErrorMessage("No se pudo conectar con el servicio de correo.");
     }
   };
 
@@ -73,6 +85,16 @@ export function ContactForm() {
 
           {/* FORM */}
           <form className="space-y-4 sm:space-y-6" onSubmit={handleSubmit}>
+            <input
+              type="text"
+              name="website"
+              value={formData.website}
+              onChange={handleChange}
+              className="hidden"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+            />
 
             {/* NOMBRE + EMPRESA */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
@@ -146,7 +168,7 @@ export function ContactForm() {
             {/* ERROR */}
             {status === "error" && (
               <p className="text-red-500 text-sm text-center">
-                Hubo un error al enviar el mensaje. Por favor intenta de nuevo.
+                Hubo un error al enviar el mensaje. {errorMessage || "Por favor intenta de nuevo."}
               </p>
             )}
 
