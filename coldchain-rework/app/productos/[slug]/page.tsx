@@ -2,8 +2,21 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import ProductDetailClient from "./ProductDetailClient";
 import { client } from "@/lib/client";
+import { getProductStaticParams } from "@/lib/staticParams";
 
 const BASE = "https://coldchain.com.ec";
+
+export const dynamic = "force-static";
+export const dynamicParams = false;
+
+const PRODUCT_SLUG_ALIASES: Record<string, string> = {
+  tensiometro: "tensiometro-irrometer",
+  "jeringa-irromet": "jeringa-irrometer",
+};
+
+function resolveProductSlug(slug: string): string {
+  return PRODUCT_SLUG_ALIASES[slug] ?? slug;
+}
 
 async function getProduct(slug: string) {
   return client.fetch(
@@ -24,10 +37,9 @@ async function getProduct(slug: string) {
 }
 
 export async function generateStaticParams() {
-  const slugs = await client.fetch(`
-    *[_type == "product" && defined(slug.current)]{ "slug": slug.current }
-  `);
-  return slugs.map((p: { slug: string }) => ({ slug: p.slug }));
+  const canonicalParams = await getProductStaticParams();
+  const aliasParams = Object.keys(PRODUCT_SLUG_ALIASES).map((slug) => ({ slug }));
+  return [...canonicalParams, ...aliasParams];
 }
 
 export async function generateMetadata({
@@ -36,13 +48,13 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const product = await getProduct(slug);
+  const product = await getProduct(resolveProductSlug(slug));
   if (!product) return {};
 
   const title = `${product.name} en Ecuador`;
   const description = `Cotiza el ${product.name} en Ecuador. Equipo profesional para medición agrícola, laboratorio e industria. Disponible con Coldchain.`;
   const imageUrl = product.image ?? `${BASE}/og-default.png`;
-  const url = `${BASE}/productos/${slug}`;
+  const url = `${BASE}/productos/${product.slug}`;
 
   return {
     title,
@@ -65,7 +77,8 @@ export default async function ProductoDetallePage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const product = await getProduct(slug);
+  const resolvedSlug = resolveProductSlug(slug);
+  const product = await getProduct(resolvedSlug);
   if (!product) notFound();
 
   const relatedNames = ["Proyem", "Irrometer", "Termógrafos"];
@@ -73,6 +86,7 @@ export default async function ProductoDetallePage({
 const relatedProducts = await client.fetch(
   `*[
     _type == "product" &&
+    defined(slug.current) &&
     slug.current != $slug &&
     (
       title match "*Proyem*" ||
@@ -92,10 +106,10 @@ const relatedProducts = await client.fetch(
     "category": category->title,
     "type": productType->title
   }`,
-  { slug }
+  { slug: resolvedSlug }
 );
 
-  const url = `${BASE}/productos/${slug}`;
+  const url = `${BASE}/productos/${product.slug}`;
 
   const productSchema = {
     "@context": "https://schema.org",

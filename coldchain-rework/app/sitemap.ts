@@ -1,3 +1,4 @@
+export const dynamic = "force-static";
 import type { MetadataRoute } from "next";
 import { client } from "@/lib/client";
 
@@ -80,3 +81,4 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [...staticPages, ...productPages, ...categoryPages, ...typePages];
 }
+

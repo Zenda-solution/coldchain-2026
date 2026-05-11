@@ -3,8 +3,12 @@ import CatalogClient from "@/app/productos/CatalogClient";
 import { client } from "@/lib/client";
 import type { Metadata } from "next";
 import type { Product } from "@/app/productos/page";
+import { getCategoryStaticParams } from "@/lib/staticParams";
 
 const BASE = "https://coldchain.com.ec";
+
+export const dynamic = "force-static";
+export const dynamicParams = false;
 
 async function getCategoryProducts(slug: string): Promise<{ category: string | null; products: Product[] }> {
   const category: { title: string } | null = await client
@@ -28,10 +32,7 @@ async function getCategoryProducts(slug: string): Promise<{ category: string | n
 }
 
 export async function generateStaticParams() {
-  const categories = await client
-    .fetch(`*[_type == "category" && defined(slug.current)]{ "slug": slug.current }`)
-    .catch(() => []);
-  return categories.map((c: { slug: string }) => ({ slug: c.slug }));
+  return getCategoryStaticParams();
 }
 
 export async function generateMetadata({

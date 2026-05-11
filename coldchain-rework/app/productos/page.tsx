@@ -31,7 +31,7 @@ import type { Product } from "@/lib/localProducts";
 
 async function getProducts(): Promise<Product[]> {
   return client.fetch(`
-    *[_type == "product"] | order(title asc) {
+    *[_type == "product" && defined(slug.current)] | order(title asc) {
       "name": title,
       "slug": slug.current,
       description,

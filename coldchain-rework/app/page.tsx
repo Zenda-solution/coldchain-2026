@@ -36,6 +36,7 @@ async function getFeaturedProducts(): Promise<Product[]> {
   return client.fetch(`
     *[
       _type == "product" &&
+      defined(slug.current) &&
       (
         title match "*Proyem*" ||
         title match "*Irrometer*" ||
