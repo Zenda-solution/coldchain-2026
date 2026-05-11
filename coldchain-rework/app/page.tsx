@@ -12,6 +12,7 @@ import type { Metadata } from "next";
 import { FeaturedProductsSlider } from "@/components/FeaturedProducts";
 import { client } from "@/lib/client";
 import type { Product } from "@/lib/localProducts";
+import { TrabajaConNosotrosCTA } from "@/components/TrabajaConNosotrosCTA";
 
 export const metadata: Metadata = {
   title: "Coldchain | Equipos de Medición para Agricultura e Industria en Ecuador",
@@ -120,6 +121,8 @@ export default async function Hero() {
       </section>
 
       <ContactForm />
+      
+      
       <Footer />
       <FloatingWhatsApp />
     </>

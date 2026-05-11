@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xqenwjyz';
+
 export function ContactForm() {
   const router = useRouter();
 
@@ -29,11 +31,15 @@ export function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Honeypot anti-spam field
+    if (formData.website) return;
+
     setStatus("loading");
     setErrorMessage("");
 
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -41,26 +47,31 @@ export function ContactForm() {
         },
         body: JSON.stringify({
           name: formData.name,
+          company: formData.company,
           email: formData.email,
           phone: formData.phone,
-          company: formData.company,
           interest: formData.interest,
           message: formData.message,
-          website: formData.website,
+
+          // Optional: better email subject inside Formspree
+          _subject: `Nuevo mensaje de ${formData.name} - Coldchain`,
         }),
       });
 
-      const data = await res.json();
-
-      if (res.ok && data.success) {
+      if (res.ok) {
         router.push("/gracias");
       } else {
+        const data = await res.json().catch(() => null);
+
         setStatus("error");
-        setErrorMessage(data?.message || "No se pudo enviar el formulario. Intenta nuevamente.");
+        setErrorMessage(
+          data?.errors?.[0]?.message ||
+            "No se pudo enviar el formulario. Intenta nuevamente."
+        );
       }
     } catch {
       setStatus("error");
-      setErrorMessage("No se pudo conectar con el servicio de correo.");
+      setErrorMessage("No se pudo conectar con Formspree.");
     }
   };
 
@@ -70,10 +81,7 @@ export function ContactForm() {
   return (
     <section className="relative mt-0 md:-mt-24 py-16 sm:py-20 md:py-28 bg-yellow-400">
       <div className="max-w-[800px] mx-auto px-4 sm:px-6">
-        {/* CARD */}
         <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8 md:p-12">
-
-          {/* HEADER */}
           <div className="text-center mb-6 md:mb-8">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-900">
               Hablemos de tu proyecto
@@ -83,7 +91,6 @@ export function ContactForm() {
             </p>
           </div>
 
-          {/* FORM */}
           <form className="space-y-4 sm:space-y-6" onSubmit={handleSubmit}>
             <input
               type="text"
@@ -96,7 +103,6 @@ export function ContactForm() {
               aria-hidden="true"
             />
 
-            {/* NOMBRE + EMPRESA */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <input
                 type="text"
@@ -107,6 +113,7 @@ export function ContactForm() {
                 onChange={handleChange}
                 className={inputClass}
               />
+
               <input
                 type="text"
                 name="company"
@@ -117,7 +124,6 @@ export function ContactForm() {
               />
             </div>
 
-            {/* EMAIL + TEL */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <input
                 type="email"
@@ -128,6 +134,7 @@ export function ContactForm() {
                 onChange={handleChange}
                 className={inputClass}
               />
+
               <input
                 type="tel"
                 name="phone"
@@ -138,7 +145,6 @@ export function ContactForm() {
               />
             </div>
 
-            {/* SELECT */}
             <select
               name="interest"
               required
@@ -155,7 +161,6 @@ export function ContactForm() {
               <option value="Industria">Industria</option>
             </select>
 
-            {/* MENSAJE */}
             <textarea
               name="message"
               placeholder="Cuéntanos un poco más sobre lo que necesitas..."
@@ -165,14 +170,13 @@ export function ContactForm() {
               className={`${inputClass} h-32 sm:h-36 resize-none`}
             />
 
-            {/* ERROR */}
             {status === "error" && (
               <p className="text-red-500 text-sm text-center">
-                Hubo un error al enviar el mensaje. {errorMessage || "Por favor intenta de nuevo."}
+                Hubo un error al enviar el mensaje.{" "}
+                {errorMessage || "Por favor intenta de nuevo."}
               </p>
             )}
 
-            {/* SUBMIT */}
             <div className="text-center pt-2 sm:pt-4">
               <button
                 type="submit"
@@ -187,7 +191,6 @@ export function ContactForm() {
                 )}
               </button>
             </div>
-
           </form>
         </div>
       </div>
