@@ -64,7 +64,6 @@ export function Footer() {
               Atención al Cliente
             </h4>
             <p className="text-white text-base leading-loose">
-              (593) 096 355 9394 <br />
               atencionalcliente@coldchain.com.ec
             </p>
           </div>
