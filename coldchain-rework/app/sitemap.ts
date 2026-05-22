@@ -2,7 +2,7 @@ export const dynamic = "force-static";
 import type { MetadataRoute } from "next";
 import { client } from "@/lib/client";
 
-const BASE = "https://coldchain.com.ec";
+const BASE = "https://www.coldchain.com.ec";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // --- Fetch dynamic slugs from Sanity ---
