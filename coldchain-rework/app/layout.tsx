@@ -18,7 +18,7 @@ const serif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://coldchain.com.ec"),
+  metadataBase: new URL("https://www.coldchain.com.ec"),
   title: {
     default: "Coldchain | Equipos de Medición para Agricultura en Ecuador",
     template: "%s | Coldchain",
@@ -56,8 +56,8 @@ const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "Coldchain",
-  url: "https://coldchain.com.ec",
-  logo: "https://coldchain.com.ec/logo.png",
+  url: "https://www.coldchain.com.ec",
+  logo: "https://www.coldchain.com.ec/images/hero/logo.webp",
   contactPoint: [
     {
       "@type": "ContactPoint",
