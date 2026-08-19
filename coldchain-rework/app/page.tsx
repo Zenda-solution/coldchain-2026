@@ -18,12 +18,12 @@ export const metadata: Metadata = {
   title: "Coldchain | Equipos de Medición para Agricultura e Industria en Ecuador",
   description:
     "Más de 30 años proveyendo equipos de medición y análisis para agricultura, floricultura, laboratorio e industria en Ecuador. Cotiza con Coldchain.",
-  alternates: { canonical: "https://coldchain.com.ec" },
+  alternates: { canonical: "https://www.coldchain.com.ec" },
   openGraph: {
     title: "Coldchain | Equipos de Medición en Ecuador",
     description:
       "Más de 30 años proveyendo equipos de medición y análisis para agricultura, floricultura, laboratorio e industria en Ecuador.",
-    url: "https://coldchain.com.ec",
+    url: "https://www.coldchain.com.ec",
     type: "website",
   },
   twitter: {
