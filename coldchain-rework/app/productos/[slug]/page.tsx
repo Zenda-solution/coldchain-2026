@@ -5,7 +5,7 @@ import { client } from "@/lib/client";
 import { getProductStaticParams } from "@/lib/staticParams";
 import { Footer } from "@/components/Footer";
 
-const BASE = "https://coldchain.com.ec";
+const BASE = "https://www.coldchain.com.ec";
 
 export const dynamic = "force-static";
 export const dynamicParams = false;
@@ -243,16 +243,6 @@ export default async function ProductoDetallePage({
     },
     category: product.category ?? "",
     url,
-    offers: {
-      "@type": "Offer",
-      availability: "https://schema.org/InStock",
-      url,
-      priceCurrency: "USD",
-      seller: {
-        "@type": "Organization",
-        name: "Coldchain",
-      },
-    },
   };
 
   const breadcrumbSchema = {
