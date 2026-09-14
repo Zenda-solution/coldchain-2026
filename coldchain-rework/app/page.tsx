@@ -109,8 +109,6 @@ export default async function Hero() {
           <Products />
         </div>
 
-       
-
         <div className="mt-14 sm:mt-20">
           <MisionVision />
         </div>
@@ -119,10 +117,7 @@ export default async function Hero() {
           <CTA />
         </div>
       </section>
-
       <ContactForm />
-      
-      
       <Footer />
       <FloatingWhatsApp />
     </>

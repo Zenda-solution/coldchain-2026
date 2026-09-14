@@ -8,13 +8,13 @@ export const metadata: Metadata = {
   description:
     "Ponté en contacto con Coldchain. Visítanos en Quito, llámanos o escríbenos. Expertos en equipos de medición para agricultura, laboratorio e industria en Ecuador.",
   alternates: {
-    canonical: "https://coldchain.com.ec/contacto",
+    canonical: "https://www.coldchain.com.ec/contacto",
   },
   openGraph: {
     title: "Contacto | Coldchain Ecuador",
     description:
       "Ponté en contacto con Coldchain. Expertos en equipos de medición para agricultura, laboratorio e industria en Ecuador.",
-    url: "https://coldchain.com.ec/contacto",
+    url: "https://www.coldchain.com.ec/contacto",
     type: "website",
   },
   twitter: {

@@ -10,6 +10,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/", "/studio/", "/admin/"],
       },
     ],
-    sitemap: "https://coldchain.com.ec/sitemap.xml",
+    sitemap: "https://www.coldchain.com.ec/sitemap.xml",
   };
 }

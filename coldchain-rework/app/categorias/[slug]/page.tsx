@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 import type { Product } from "@/app/productos/page";
 import { getCategoryStaticParams } from "@/lib/staticParams";
 
-const BASE = "https://coldchain.com.ec";
+const BASE = "https://www.coldchain.com.ec";
 
 export const dynamic = "force-static";
 export const dynamicParams = false;
