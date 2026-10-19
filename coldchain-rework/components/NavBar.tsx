@@ -3,7 +3,13 @@
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { NAV_CATEGORIES, categoryHref, CTA_TEXTS, ROUTES, WHATSAPP_FLOAT } from "@/lib/siteConfig";
+import {
+  NAV_CATEGORIES,
+  categoryHref,
+  CTA_TEXTS,
+  ROUTES,
+  WHATSAPP_FLOAT,
+} from "@/lib/siteConfig";
 
 const categories = NAV_CATEGORIES.map((c) => ({
   label: c.label,
@@ -11,11 +17,25 @@ const categories = NAV_CATEGORIES.map((c) => ({
 }));
 
 export default function Navbar() {
-  const [menuOpen, setMenuOpen]     = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdown] = useState(false);
   const leaveTimeout = useRef<number | null>(null);
 
-  const waHref = `https://wa.me/${WHATSAPP_FLOAT}?text=${encodeURIComponent(CTA_TEXTS.startConversationMessage)}`;
+  const waHref = `https://wa.me/${WHATSAPP_FLOAT}?text=${encodeURIComponent(
+    CTA_TEXTS.startConversationMessage
+  )}`;
+
+  const handleWhatsAppClick = () => {
+    const googleWindow = window as typeof window & {
+      gtag?: (
+        command: "event",
+        eventName: string,
+        parameters?: Record<string, unknown>
+      ) => void;
+    };
+
+    googleWindow.gtag?.("event", "ads_conversion_Contactar_1");
+  };
 
   useEffect(() => {
     return () => {
@@ -28,7 +48,6 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar-inner">
-
         {/* LOGO */}
         <Link href="/" className="navbar-logo">
           <Image
@@ -43,7 +62,9 @@ export default function Navbar() {
 
         {/* DESKTOP LINKS */}
         <div className="navbar-links">
-          <Link href="/" className="nav-link">Inicio</Link>
+          <Link href="/" className="nav-link">
+            Inicio
+          </Link>
 
           {/* Dropdown */}
           <div
@@ -56,20 +77,31 @@ export default function Navbar() {
               setDropdown(true);
             }}
             onMouseLeave={() => {
-              leaveTimeout.current = window.setTimeout(() => setDropdown(false), 300);
+              leaveTimeout.current = window.setTimeout(
+                () => setDropdown(false),
+                300
+              );
             }}
           >
             <Link href="/productos" className="nav-dropdown-trigger">
               Productos
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" strokeWidth="2.5">
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+              >
                 <polyline points="6 9 12 15 18 9" />
               </svg>
             </Link>
 
             {dropdownOpen && (
               <div
-                className={`nav-dropdown-menu ${dropdownOpen ? "open" : ""}`}
+                className={`nav-dropdown-menu ${
+                  dropdownOpen ? "open" : ""
+                }`}
                 onMouseEnter={() => {
                   if (leaveTimeout.current) {
                     clearTimeout(leaveTimeout.current);
@@ -77,11 +109,18 @@ export default function Navbar() {
                   }
                 }}
                 onMouseLeave={() => {
-                  leaveTimeout.current = window.setTimeout(() => setDropdown(false), 300);
+                  leaveTimeout.current = window.setTimeout(
+                    () => setDropdown(false),
+                    300
+                  );
                 }}
               >
                 {categories.map((c) => (
-                  <Link key={c.href} href={c.href} className="nav-dropdown-item">
+                  <Link
+                    key={c.href}
+                    href={c.href}
+                    className="nav-dropdown-item"
+                  >
                     {c.label}
                   </Link>
                 ))}
@@ -89,11 +128,19 @@ export default function Navbar() {
             )}
           </div>
 
-          <Link href={ROUTES.contact} className="nav-link">{CTA_TEXTS.contactLabel}</Link>
+          <Link href={ROUTES.contact} className="nav-link">
+            {CTA_TEXTS.contactLabel}
+          </Link>
         </div>
 
         {/* DESKTOP CTA */}
-        <a href={waHref} target="_blank" rel="noopener noreferrer" className="navbar-cta hidden md:inline-flex">
+        <a
+          href={waHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="navbar-cta hidden md:inline-flex"
+          onClick={handleWhatsAppClick}
+        >
           {CTA_TEXTS.quoteLabel}
         </a>
 
@@ -104,14 +151,26 @@ export default function Navbar() {
           aria-label="Abrir menú"
         >
           {menuOpen ? (
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" strokeWidth="2.5">
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+            >
               <line x1="18" y1="6" x2="6" y2="18" />
               <line x1="6" y1="6" x2="18" y2="18" />
             </svg>
           ) : (
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" strokeWidth="2.5">
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+            >
               <line x1="3" y1="6" x2="21" y2="6" />
               <line x1="3" y1="12" x2="21" y2="12" />
               <line x1="3" y1="18" x2="21" y2="18" />
@@ -121,22 +180,62 @@ export default function Navbar() {
       </div>
 
       {/* MOBILE MENU */}
-      <div className={`navbar-mobile ${menuOpen ? "mobile-open" : ""}`}>
-        <Link href="/"         className="mobile-nav-link" onClick={() => setMenuOpen(false)}>Inicio</Link>
-        <Link href="/productos" className="mobile-nav-link" onClick={() => setMenuOpen(false)}>Productos</Link>
+      <div
+        className={`navbar-mobile ${menuOpen ? "mobile-open" : ""}`}
+      >
+        <Link
+          href="/"
+          className="mobile-nav-link"
+          onClick={() => setMenuOpen(false)}
+        >
+          Inicio
+        </Link>
+
+        <Link
+          href="/productos"
+          className="mobile-nav-link"
+          onClick={() => setMenuOpen(false)}
+        >
+          Productos
+        </Link>
+
         {categories.map((c) => (
           <Link
             key={c.href}
             href={c.href}
             className="mobile-nav-link"
-            style={{ paddingLeft: "28px", fontSize: ".84rem", color: "var(--gray-400)" }}
+            style={{
+              paddingLeft: "28px",
+              fontSize: ".84rem",
+              color: "var(--gray-400)",
+            }}
             onClick={() => setMenuOpen(false)}
           >
             {c.label}
           </Link>
         ))}
-        <Link href={ROUTES.contact} className="mobile-nav-link" onClick={() => setMenuOpen(false)}>{CTA_TEXTS.contactLabel}</Link>
-        <a href={waHref} className="mobile-nav-cta" onClick={() => setMenuOpen(false)} target="_blank" rel="noopener noreferrer">{CTA_TEXTS.quoteLabel}</a>
+
+        <Link
+          href={ROUTES.contact}
+          className="mobile-nav-link"
+          onClick={() => setMenuOpen(false)}
+        >
+          {CTA_TEXTS.contactLabel}
+        </Link>
+
+        {/* MOBILE CTA */}
+        <a
+          href={waHref}
+          className="mobile-nav-cta"
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => {
+            handleWhatsAppClick();
+            setMenuOpen(false);
+          }}
+        >
+          {CTA_TEXTS.quoteLabel}
+        </a>
       </div>
     </nav>
   );
